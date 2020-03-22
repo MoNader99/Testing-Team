@@ -5,6 +5,8 @@ const driver = new Builder().forBrowser('firefox').build();
 
 describe('Login on Spotify website', function() {
 
+    this.timeout('1500000000');
+
     beforeEach(async function(){
 
         console.log("Open Spotify website")
@@ -13,7 +15,7 @@ describe('Login on Spotify website', function() {
         var title = await driver.getTitle();
         expect(title).to.equal('Music for everyone - Spotify');
         
-        await driver.findElement(By.xpath("//a[@href='https://www.spotify.com/eg-en/account/overview/']")).click()
+        await driver.findElement(By.xpath(require("../AppSelectors").SignInbuttonXbath)).click()
         
         await driver.sleep(3000);
 
@@ -129,7 +131,8 @@ describe('Login on Spotify website', function() {
 
         await driver.findElement(By.id(require("../AppSelectors").LoginID)).click();
 
-        await driver.sleep(3000);
+        await driver.sleep(5000);
+
         var title = await driver.getTitle();
         expect(title).to.equal('Account overview - Spotify');
 
@@ -137,12 +140,6 @@ describe('Login on Spotify website', function() {
         await driver.findElement(By.linkText(require("../AppSelectors").LogoutLinkText)).click(); 
     });
     
-
-
-
-
-
-
 
     after(async function() {
         await driver.quit();

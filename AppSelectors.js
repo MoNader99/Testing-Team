@@ -25,15 +25,43 @@ exports.SignUpInvalidGendermsg="//*[@id='li-gender']/label[4]";
 
 
 //Log in Selectors
+exports.SignInbuttonXbath = "//a[contains(text(),'Log In')]";
+
 exports.EmailID = "login-username";
 exports.PasswordID = "login-password";
-exports.RememberMeCss = ".checkbox > .ng-binding"
-exports.LoginID = "login-button"
+exports.RememberMeCss = ".checkbox > .ng-binding";
+exports.LoginID = "login-button";
 
-exports.NoEmailOrUsernameEnteredXpath = "//*[@name='$parent.accounts']/div/div/div/label"
-exports.NoPasswordEnteredXpath = "//*[@name='$parent.accounts']/div[2]/div/div/label"
-exports.IncorrentUsernameOrPasswordXpath = "//*[@class='content']/div[2]/div/p/span"
+exports.NoEmailOrUsernameEnteredXpath = "//*[@name='$parent.accounts']/div/div/div/label";
+exports.NoPasswordEnteredXpath = "//*[@name='$parent.accounts']/div[2]/div/div/label";
+exports.IncorrentUsernameOrPasswordXpath = "//*[@class='content']/div[2]/div/p/span";
 
 //Log out Selectors
-exports.ProfileTitleCss = ".mh-profile-title"
-exports.LogoutLinkText = "Log Out"
+exports.ProfileTitleCss = ".mh-profile-title";
+exports.LogoutLinkText = "Log Out";
+
+//Edit Profile Selectors
+exports.EditProfileButtonXbath ='//*[@id="account-csr-container"]/div/article[1]/div/a';
+
+exports.EditProfileEmailXbath = '//*[@id="profile_email"]';
+exports.EditProfileEmailMsgErrorXbath ='//*[@id="profile"]/div[1]/label[2]';
+
+exports.EditProfileGenderXbath ='//*[@id="profile_gender"]';
+
+exports.EditProfileDayOfBirthXbath = "//select[@id='profile_birthdate_day']/option[@value='1']";
+exports.EditProfileMonthOfBirthXbath ="//select[@id='profile_birthdate_month']/option[@value='2']";
+exports.EditProfileYearOfBirthXbath = "//select[@id='profile_birthdate_year']/option[@value='2001']";
+
+exports.EditProfileMobileNumberXbath = '//*[@id="profile_mobile_number"]';
+
+exports.EditProfileSaveButton = '//*[@id="profile_save_profile"]';
+exports.EditProfileCancelButton = '//*[@id="profile_cancel"]';
+
+exports.EditProfilePasswordMsgErrorXbath = '//*[@id="profile"]/div[1]';
+exports.EditProfilePasswordXbath ='//*[@id="profile_confirmPassword"]';
+
+exports.EditProfileSuccessMessageXbath ='/html/body/div[2]/div[2]/div[2]/div/div/div[2]/div/div[1]/div[1]';
+
+
+
+
