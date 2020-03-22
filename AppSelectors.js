@@ -22,3 +22,18 @@ exports.SignUpInvalidDayOfBirthmsg="//*[@id='li-dob']/label[2]";
 exports.SignUpInvalidMonthOfBirthmsg="//*[@id='li-dob']/label[3]";
 exports.SignUpInvalidyearOfBirthmsg="//*[@id='li-dob']/label[4]";
 exports.SignUpInvalidGendermsg="//*[@id='li-gender']/label[4]";
+
+
+//Log in Selectors
+exports.EmailID = "login-username";
+exports.PasswordID = "login-password";
+exports.RememberMeCss = ".checkbox > .ng-binding"
+exports.LoginID = "login-button"
+
+exports.NoEmailOrUsernameEnteredXpath = "//*[@name='$parent.accounts']/div/div/div/label"
+exports.NoPasswordEnteredXpath = "//*[@name='$parent.accounts']/div[2]/div/div/label"
+exports.IncorrentUsernameOrPasswordXpath = "//*[@class='content']/div[2]/div/p/span"
+
+//Log out Selectors
+exports.ProfileTitleCss = ".mh-profile-title"
+exports.LogoutLinkText = "Log Out"
