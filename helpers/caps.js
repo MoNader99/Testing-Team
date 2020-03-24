@@ -17,8 +17,8 @@ exports.androidHA = {
 exports.androidAS = {
   browserName: '',
   platformName: 'Android',
-  platformVersion: '6',
-  deviceName: 'Galaxy Grand Prime+',
+  platformVersion: '9',
+  deviceName: 'Galaxy A6',
   appActivity: undefined // will be set later
 };
 
