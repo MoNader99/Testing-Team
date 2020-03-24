@@ -1,24 +1,19 @@
+AppSelectorsRealSpot
 exports.EmailID = "email";
 exports.PasswordID = "pass";
 exports.loginId="u_0_b";
-//////////////////////////////////////////
 ///////SignUpSelectors All by Xpath//////
-exports.SignUpbutton="//a[@href='/signup']";
-exports.SignUpEmail="//input[@id='email']";
-exports.SignUpConfirmEmail="//input[@id='confirm-email']";
-exports.SignUpPassword="///input[@id='password']";
-exports.SignUpDispName="//input[@id='username']";
-exports.SignUpDayOfBirth="//input[@id='day']";
-exports.SignUpMonthOfBirth="//select[@id='month']";
-exports.SignUpMonthOfBirthNovember="//*[@id='month']/option[12]";
-exports.SignUpyearOfBirth="//input[@id='year']";
-exports.SignUpFemaleGender="//input[@value='female']";
-exports.SignUpAccountType="//*[@id='account-type']/select";
-exports.SignUpAccountTypeReg="//*[@id='account-type']/select/option[2]";
-exports.SignUpAccountTypePrem="//*[@id='account-type']/select/option[3]";
-exports.SignUpAccountTypeArtist="//*[@id='account-type']/select/option[4]";
-exports.SignUpSubmitButton="//button[@id='signup-button']";
-//////////////////////////////////////////////////
+exports.SignUpbutton="//a[@data-ga-action='sign-up']";
+exports.SignUpEmail="//input[@id='register-email']";
+exports.SignUpConfirmEmail="//input[@id='register-confirm-email']";
+exports.SignUpPassword="//input[@id='register-password']";
+exports.SignUpDispName="//input[@id='register-displayname']";
+exports.SignUpDayOfBirth="//input[@id='register-dob-day']";
+exports.SignUpMonthOfBirth="//select[@id='register-dob-month']";
+exports.SignUpMonthOfBirthNovember="//option[@value='11']";
+exports.SignUpyearOfBirth="//input[@id='register-dob-year']";
+exports.SignUpFemaleGender="//input[@id='register-female']";
+exports.SignUpSubmitButton="//a[@id='register-button-email-submit']";
 ///////SignUpErrorMsgsSelectors All by Xpath//////
 exports.SignUpInvalidEmailmsg="//*[@id='js-register-with-email']/fieldset/ul/li[1]/label[2]";
 exports.SignUpInvalidConfirmEmailmsg="//*[@id='js-register-with-email']/fieldset/ul/li[2]/label[2]";
@@ -30,26 +25,24 @@ exports.SignUpInvalidyearOfBirthmsg="//*[@id='li-dob']/label[4]";
 exports.SignUpInvalidGendermsg="//*[@id='li-gender']/label[4]";
 /////////////////////////////////////////////////////////////////
 ////////////////HelpPageSelectors All by Xpath//////////////////
-exports.HelpPageButton="//a[@href='/help']";
-exports.AccountHelpButton="//*[@id='root']/div/div/div[3]/div/div/div[1]/p[1]";
-exports.PaymentHelpButton="//*[@id='root']/div/div/div[3]/div/div/div[1]/p[2]";
-exports.SubscriptionOptionsButton="//*[@id='root']/div/div/div[3]/div/div/div[1]/p[3]";
-exports.PrivacyAndSecurityButton="//*[@id='root']/div/div/div[3]/div/div/div[1]/p[4]";
-exports.VideotutorialsButton="//*[@id='root']/div/div/div[3]/div/div/div[2]/p[1]";
-exports.GettingstartedButton="//*[@id='root']/div/div/div[3]/div/div/div[2]/p[2]";
-exports.PlaylistsButton="//*[@id='root']/div/div/div[3]/div/div/div[2]/p[3]";
-exports.FeaturesButton="//*[@id='root']/div/div/div[3]/div/div/div[2]/p[4]";
-exports.SystemAndsettingsButton="//*[@id='root']/div/div/div[3]/div/div/div[2]/p[5]";
-exports.SpeakersButton="//*[@id='root']/div/div/div[3]/div/div/div[3]/p[1]";
-exports.TVsButton="//*[@id='root']/div/div/div[3]/div/div/div[3]/p[2]";
-exports.CarsButton="//*[@id='root']/div/div/div[3]/div/div/div[3]/p[3]";
-exports.GamingButton="//*[@id='root']/div/div/div[3]/div/div/div[3]/p[4]";
-exports.SmartWatchesButton="//*[@id='root']/div/div/div[3]/div/div/div[3]/p[5]";
-exports.GetSpotifyButton="//a[@href='/signup/']";
-exports.BacktoHelpButton="";
-//////////////////////////////////////////////////////////////
-
-
+exports.HelpPageButton="/html/body/div[2]/div/header/div/nav/ul/li[2]/a";
+exports.AccountHelpButton="//a[@data-ga-event-action='account_help']";
+exports.PaymentHelpButton="//a[@data-ga-event-action='payment_help']";
+exports.SubscriptionOptionsButton="//a[@data-ga-event-action='subscription_options']";
+exports.PrivacyAndSecurityButton="//a[@data-ga-event-action='privacy']";
+exports.VideotutorialsButton="//a[@data-ga-event-action='video_tutorials']";
+exports.GettingstartedButton="//a[@data-ga-event-action='getting_started']";
+exports.PlaylistsButton="//*[@id='navigation']/div/div/div/div/div[2]/ul/li[3]/a";
+exports.FeaturesButton="//a[@data-ga-event-action='features']";
+exports.SystemAndsettingsButton="//a[@data-ga-event-action='system_settings']";
+exports.SpeakersButton="//a[@data-ga-event-action='on_speaker']";
+exports.TVsButton="//a[@data-ga-event-action='on_tv']";
+exports.CarsButton="//a[@data-ga-event-action='in_the_car']";
+exports.GamingButton="//a[@data-ga-event-action='gaming']";
+exports.SmartWatchesButton="//a[@data-ga-event-action='smart_watches']";
+exports.GetSpotifyButton="//*[@id='using-spotify']/div/div/div[2]/a";
+exports.BacktoHelpButton="//*[@id='nav-link-help']";
+//////////////////////////////////////////////
 //Log in Selectors
 exports.SignInbuttonXbath = "//a[contains(text(),'Log In')]";
 
@@ -87,7 +80,3 @@ exports.EditProfilePasswordMsgErrorXbath = '//*[@id="profile"]/div[1]';
 exports.EditProfilePasswordXbath ='//*[@id="profile_confirmPassword"]';
 
 exports.EditProfileSuccessMessageXbath ='/html/body/div[2]/div[2]/div[2]/div/div/div[2]/div/div[1]/div[1]';
-
-
-
-
