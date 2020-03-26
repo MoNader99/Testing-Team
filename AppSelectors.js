@@ -20,14 +20,15 @@ exports.SignUpAccountTypeArtist="//*[@id='account-type']/select/option[4]";
 exports.SignUpSubmitButton="//button[@id='signup-button']";
 //////////////////////////////////////////////////
 ///////SignUpErrorMsgsSelectors All by Xpath//////
-exports.SignUpInvalidEmailmsg="//*[@id='js-register-with-email']/fieldset/ul/li[1]/label[2]";
-exports.SignUpInvalidConfirmEmailmsg="//*[@id='js-register-with-email']/fieldset/ul/li[2]/label[2]";
-exports.SignUpInvalidPasswordmsg="//*[@id='js-register-with-email']/fieldset/ul/li[3]/label[2]";
-exports.SignUpInvalidDispNamemsg="//*[@id='js-register-with-email']/fieldset/ul/li[4]/label[2]";
-exports.SignUpInvalidDayOfBirthmsg="//*[@id='li-dob']/label[2]";
-exports.SignUpInvalidMonthOfBirthmsg="//*[@id='li-dob']/label[3]";
-exports.SignUpInvalidyearOfBirthmsg="//*[@id='li-dob']/label[4]";
-exports.SignUpInvalidGendermsg="//*[@id='li-gender']/label[4]";
+exports.SignUpInvalidEmailmsg="//p[@id='empty-email']";
+exports.SignUpInvalidConfirmEmailmsg="//p[@id='empty-confirm-email']";
+exports.SignUpInvalidPasswordmsg="//p[@id='empty-password']";
+exports.SignUpInvalidDispNamemsg="//p[@id='empty-userame']";
+exports.SignUpInvalidDayOfBirthmsg="//p[@id='empty-day']";
+exports.SignUpInvalidMonthOfBirthmsg="//p[@id='empty-month']";
+exports.SignUpInvalidyearOfBirthmsg="//p[@id='empty-year']";
+exports.SignUpInvalidGendermsg="//p[@id='empty-gender']";
+exports.SignUpInvalidAccountTypemsg="//p[@id='empty-account-type']";
 /////////////////////////////////////////////////////////////////
 ////////////////HelpPageSelectors All by Xpath//////////////////
 exports.HelpPageButton="//a[@href='/help']";
