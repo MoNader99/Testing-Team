@@ -79,3 +79,12 @@ exports.EditProfilePasswordMsgErrorXbath = '//*[@id="profile"]/div[1]';
 exports.EditProfilePasswordXbath ='//*[@id="profile_confirmPassword"]';
 
 exports.EditProfileSuccessMessageXbath ='/html/body/div[2]/div[2]/div[2]/div/div/div[2]/div/div[1]/div[1]';
+
+//Change Password Selectors
+exports.ChangePasswordButtonXpath='//*[@id="submenu-item-change-password"]';
+exports.ChangePasswordCurrentXpath = '//*[@id="change_password_validatePassword"]';
+exports.ChangePasswordNewXpath = '//*[@id="change_password_new_password"]';
+exports.ChangePasswordNewValidXpath = '//*[@id="change_password_check_password"]';
+exports.ChangePasswordSetPasswordButton ='//*[@id="change_password_submit"]'
+exports.ChangePasswordCurrentErrorXpath='//*[@id="change_password"]/div[1]/div/div/label[2]'
+exports.ChangePasswordNewErrorXpath = '//*[@id="change_password"]/div[2]/div/div/label[2]';
