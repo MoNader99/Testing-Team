@@ -14,7 +14,7 @@ exports.androidHA = {
   appActivity: undefined // will be set later
 };
 
-exports.android = {
+exports.androidAS = {
   browserName: '',
   platformName: 'Android',
   platformVersion: '9',
