@@ -1,4 +1,3 @@
-SignUpTestAndroid
 "use strict";
 
 require("./helpers/setup");
@@ -11,20 +10,23 @@ describe("SignUp Test", function () {
   this.timeout(300000);
   var driver;
   var allPassed = true;
-
+  var appSelectors=require("./helpers/AppSelectorsAndroid");
+  
   before(function () {
     var serverConfig = serverConfigs.local;
     driver = wd.promiseChainRemote(serverConfig);
     require("./helpers/logging").configure(driver);
-
+    
+    
+    
     var desired =_.clone(require("./helpers/caps").android);
     desired.automationName= "UiAutomator2",
-    desired.appPackage= "com.sec.android.app.popupcalculator",//to be updated
-    desired.appActivity= ".Calculator" //to be updated
+    desired.appPackage= "com.example.spotify",
+    desired.appActivity= "com.example.spotify.MainActivity" 
 
     return driver
       .init(desired)
-      .setImplicitWaitTimeout(3000);
+      .setImplicitWaitTimeout(10000);
   });
 
   after(function () {
@@ -40,63 +42,131 @@ describe("SignUp Test", function () {
 
   it("should press on sign up button", function () {
     return driver
-	  .sleep(3000)
-      .elementById('')
+	  .sleep(10000)
+      .elementById(appSelectors.SignupButton)
       .click()
+    .sleep(10000)  
+      .elementById(appSelectors.SignUpUserNameID)//to check that the next page has been reached successfuly
      
   });
-  var Checkstring;
-  //////////email test cases
-    ///////test1:invalid mail
-  it("should test entering invalid email button", function () {
+  
+   ///////Displayname test cases testing
+    /////test 1: very long max 30 length
+  it("should test the username length", function () {
+      return driver
+      .sleep(5000)
+        .elementById(appSelectors.SignUpUserNameID)
+        .click()
+        .sendKeys('fffffffffffffffffffffffgggghhh')
+        ///check that it only accepts till the last g letter
+       
+  });
+    /////test 2: Not entered
+  it("should test if the username is not entered", function () {
+      return driver
+      .sleep(5000)
+        .elementById(appSelectors.SignUpUserNameID)
+        .click()
+      .sleep(5000)  
+        .elementById(appSelectors.SignUpPasswordID)//clicking anywhere for the error msg to appear
+        ///check the error msg
+       
+  });
+   ///////Password test cases testing
+    /////test 1: Very Short password
+  it("should test if the password is not entered", function () {
+      return driver
+      .sleep(5000)
+        .elementById(appSelectors.SignUpPasswordID)
+        .click()
+        .sendKeys('fff')
+      .sleep(5000)   
+        .elementById(appSelectors.SignUpUserNameID)//clicking anywhere for the error msg to appear
+        ///check the error msg
+       
+  });
+    /////test 2: Not entered
+  it("should test if the password is not entered", function () {
+      return driver
+      .sleep(5000)
+        .elementById(appSelectors.SignUpPasswordID)
+        .clear()
+      .sleep(5000)  
+        .elementById(appSelectors.SignUpUserNameID)//clicking anywhere for the error msg to appear
+        ///check the error msg
+       
+  });
+    ///////////////////////////////
+    //successful case for username and password to get to the next page
+  it("should put a successful case for username and password to get to the next page", function () {
+      return driver
+      .sleep(3000)
+        .elementById(appSelectors.SignUpUserNameID)
+        .sendKeys("akjdhbhfdvfv")
+      .sleep(5000)  
+        .elementById(appSelectors.SignUpPasswordID)
+        .sendKeys("akjdhbh")
+      .sleep(5000)
+        .elementById(appSelectors.SignUpNextButtonOfThePassAndUsernamePage) 
+        .click()
+  });
+    //////////////////////////////
+   //////////email test cases
+    ///////test1:invalid mail //fxv//hjgbhg@hjg.co//1234@hgd.c//1@g.com
+  it("should test entering invalid email ", function () {
     return driver
 	  .sleep(3000)
-      .elementById('')
+      .elementById(appSelectors.SignUpEmailID)
       .sendKeys("fxv")
-     /////clicking on next
-     .elementById('')
-     .click()
-     //Checkstring= driver.elementById('').getText(); //finding the msg place and copying its text
-     //expect(Checkstring).to.equal('The email address you supplied is invalid.');//comparing the text copied with the expected one
+     /////checking error msg
+    
   });
     /////test 2: Already exist
+  it("should test  the email if it is aleardy exist", function () {
+      return driver
+      .sleep(3000)
+        .elementById(appSelectors.SignUpEmailID)
+        .sendKeys("")//an existing email account
+       /////checking error msg
+      
+  });
     /////test 3: Not entered
-   ///////confirm email test cases testing
+  it("should test the email if it is not entered", function () {
+      return driver
+      .sleep(3000)
+        .elementById(appSelectors.SignUpEmailID)
+        .clear()
+       /////checking error msg
+      
+  });
+    ///////Female-male test cases testing
+            /////test 1: Not entered //un able to not enter
+
+   ///////entering a successful case to reach the next page
+  it("should enter a successful case for email and gender to reach the next page ", function () {
+    return driver
+    .sleep(5000)
+     .elementById(appSelectors.SignUpEmailID)
+     .sendKeys("aya.sameh.99@gmail.com")
+    .sleep(5000) 
+     .elementById(appSelectors.SignUpNextButtonOfTheEmailAndGenderPage)
+   
+  });
+    ///date of birth
+       ////test1: Not Entered
+  it("should test the date of birth if it is not entered", function () {
+        return driver
+        .sleep(3000)
+          .elementById(appSelectors.SignupDoneButton)
+          .click()
+         /////checking error msg
+        
+  });
+
+   ///////confirm email test cases testing //they didn't do it
     //test 1: confirm email doesn't match 
     //test 2: invalid email 
     //test 3: Not entered 
-   ///////Password test cases testing
-    /////test 1: Very Short password
-    /////test 2: Not entered
-   ///////Displayname test cases testing
-    /////test 1: very long max 30 length
-    /////test 2: Not entered
-    ///////Day of birth test cases testing
-            /////test 1: Invalid not less than 1
-            /////test 2: Invalid not more than 31
-            /////test 3: Invalid not more than 2 digits such as 017
-            /////test 4: Invalid entering negative number
-            /////test 5: Invalid not entered
-            /////test 6: Invalid not accepting any letter including special chars
-    ///////Month of birth test cases testing
-            /////test 1: Not entered       
-  ///////Year of birth test cases testing
-            /////test 1: Invalid not less than 1900
-            /////test 2: Invalid not more than 1999
-            /////test 3: Invalid not more than 4 digits such as 01956
-            /////test 4: Invalid entering negative number
-            /////test 5: Invalid not entered
-            /////test 6: Invalid not accepting any letter including special chars
-     ///////Female-male test cases testing
-            /////test 1: Not entered
-
-
-      ///signingup with facebook      
-            ////Sucessfull Test case       
-
-
-
-
-
-
+    ///signingup with facebook      
+ 
 });
