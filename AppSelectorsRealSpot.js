@@ -42,6 +42,14 @@ exports.SmartWatchesButton="//a[@data-ga-event-action='smart_watches']";
 exports.GetSpotifyButton="//*[@id='using-spotify']/div/div/div[2]/a";
 exports.BacktoHelpButton="//*[@id='nav-link-help']";
 //////////////////////////////////////////////
+////////////////PremiumPageSelectors All by Xpath//////////////////
+exports.Premiumbutton="//a[@data-ga-action='premium']";
+exports.GetPremiumbutton="//*[@id='HERO-0']/article/header/div/div[4]/div/a/span";
+exports.GetPremiumbuttonAtTheEndOfThePage="//*[@id='PLANS']/article/article[1]/article/a";
+
+
+
+//////////////////////////////////////////////
 //Log in Selectors
 exports.SignInbuttonXbath = "//a[contains(text(),'Log In')]";
 

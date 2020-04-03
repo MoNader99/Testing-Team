@@ -48,9 +48,12 @@ exports.GamingButton="//*[@id='root']/div/div/div[3]/div/div/div[3]/p[4]";
 exports.SmartWatchesButton="//*[@id='root']/div/div/div[3]/div/div/div[3]/p[5]";
 exports.GetSpotifyButton="//a[@href='/signup/']";
 exports.BacktoHelpButton="";
-//////////////////////////////////////////////////////////////
-
-
+//////////////////////////////////////////////
+////////////////PremiumPageSelectors All by Xpath//////////////////
+exports.Premiumbutton="";
+exports.GetPremiumbutton="";
+exports.GetPremiumbuttonAtTheEndOfThePage="";
+//////////////////////////////////////////////
 //Log in Selectors
 exports.SignInbuttonXbath = "//a[contains(text(),'Log In')]";
 
