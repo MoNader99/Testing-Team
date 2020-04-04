@@ -1,4 +1,4 @@
-exports.EmailID = "email";
+ exports.EmailID = "email";
 exports.PasswordID = "pass";
 exports.loginId="u_0_b";
 //////////////////////////////////////////
@@ -55,12 +55,11 @@ exports.GetPremiumbutton="";
 exports.GetPremiumbuttonAtTheEndOfThePage="";
 //////////////////////////////////////////////
 //Log in Selectors
-exports.SignInbuttonXbath = "//a[contains(text(),'Log In')]";
-
-exports.EmailID = "login-username";
-exports.PasswordID = "login-password";
-exports.RememberMeCss = ".checkbox > .ng-binding";
+exports.SignInbuttonLinkText = "Log in";
+exports.EmailID = "email-input";
+exports.PasswordID = "password-input";
 exports.LoginID = "login-button";
+
 
 exports.NoEmailOrUsernameEnteredXpath = "//*[@name='$parent.accounts']/div/div/div/label";
 exports.NoPasswordEnteredXpath = "//*[@name='$parent.accounts']/div[2]/div/div/label";
@@ -95,3 +94,11 @@ exports.EditProfileSuccessMessageXbath ='/html/body/div[2]/div[2]/div[2]/div/div
 
 
 
+ 
+//Webplayer Selectors
+exports.GoToWebPlayerLinkText = "Web Player";
+exports.NewPlaylistLinkText = "Create Playlist";
+exports.CancelCreateNewPlaylistXpath = "//div[@id='popup']/div[3]/div/div/button"
+exports.ExitCreateNewPlaylistXpath = "//div[@id='popup']/div/button/i"
+exports.CreateNewPlaylistXpath = "//div[@id='popup']/div[3]/div/div[2]/a"
+exports.InputNewPlaylistNameID="new-playlist-name"
