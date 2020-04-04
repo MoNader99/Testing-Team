@@ -18,8 +18,7 @@ describe('Login on Spotify website to use webplayer', function() {
         await driver.findElement(By.linkText(Selectors.SignInbuttonLinkText)).click()
         
         await driver.sleep(3000);
-        var URL = driver.getCurrentUrl();
-        expect(URL).to.equal/("http://ec2-13-59-26-117.us-east-2.compute.amazonaws.com:3000/logIn" );
+        await driver.getCurrentUrl().then(function(URL){expect(URL).equals("http://ec2-13-59-26-117.us-east-2.compute.amazonaws.com:3000/logIn")});
 
 
 
@@ -28,14 +27,12 @@ describe('Login on Spotify website to use webplayer', function() {
         await driver.findElement(By.id(Selectors.LoginID)).click();
 
         await driver.sleep(3000);
-        URL = driver.getCurrentUrl();
-        expect(URL).to.equal/("http://ec2-13-59-26-117.us-east-2.compute.amazonaws.com:3000/account/overview/" );
+        await driver.getCurrentUrl().then(function(URL){expect(URL).equals("http://ec2-13-59-26-117.us-east-2.compute.amazonaws.com:3000/account/overview/")});
 
         await driver.findElement(By.linkText(Selectors.GoToWebPlayerLinkText)).click();
         
         await driver.sleep(3000);
-        URL = driver.getCurrentUrl();
-        expect(URL).to.equal/("http://ec2-13-59-26-117.us-east-2.compute.amazonaws.com:3000/webplayer" );
+        await driver.getCurrentUrl().then(function(URL){expect(URL).equals("http://ec2-13-59-26-117.us-east-2.compute.amazonaws.com:3000/webplayer" )});
 
 
         
