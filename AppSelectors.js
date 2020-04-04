@@ -54,20 +54,6 @@ exports.Premiumbutton="";
 exports.GetPremiumbutton="";
 exports.GetPremiumbuttonAtTheEndOfThePage="";
 //////////////////////////////////////////////
-//Log in Selectors
-exports.SignInbuttonLinkText = "Log in";
-exports.EmailID = "email-input";
-exports.PasswordID = "password-input";
-exports.LoginID = "login-button";
-
-
-exports.NoEmailOrUsernameEnteredXpath = "//*[@name='$parent.accounts']/div/div/div/label";
-exports.NoPasswordEnteredXpath = "//*[@name='$parent.accounts']/div[2]/div/div/label";
-exports.IncorrentUsernameOrPasswordXpath = "//*[@class='content']/div[2]/div/p/span";
-
-//Log out Selectors
-exports.ProfileTitleCss = ".mh-profile-title";
-exports.LogoutLinkText = "Log Out";
 
 //Edit Profile Selectors
 exports.EditProfileButtonXbath ='//*[@id="account-csr-container"]/div/article[1]/div/a';
@@ -95,10 +81,33 @@ exports.EditProfileSuccessMessageXbath ='/html/body/div[2]/div[2]/div[2]/div/div
 
 
  
+
+
+
 //Webplayer Selectors
 exports.GoToWebPlayerLinkText = "Web Player";
 exports.NewPlaylistLinkText = "Create Playlist";
 exports.CancelCreateNewPlaylistXpath = "//div[@id='popup']/div[3]/div/div/button"
 exports.ExitCreateNewPlaylistXpath = "//div[@id='popup']/div/button/i"
 exports.CreateNewPlaylistXpath = "//div[@id='popup']/div[3]/div/div[2]/a"
-exports.InputNewPlaylistNameID="new-playlist-name"
+exports.InputNewPlaylistNameID = "new-playlist-name"
+exports.NewPlaylistPopUpID ="popup"
+//exports.NewPlaylistPopUpXpath = "//a[contains(text(),'Create Playlist')]"
+//exports.NewPlaylistPopUpNotActiveXpath = "//a[contains(text(),'Create Playlist')]"
+
+
+//Log in Selectors
+exports.SignInbuttonLinkText = "Log in";
+exports.EmailID = "email-input";
+exports.PasswordID = "password-input";
+exports.LoginID = "login-button";
+exports.LoginWithFacebookID = "facebook-button"
+
+exports.NoEmailOrUsernameEnteredXpath = "//p[@id='missing-email']";
+exports.NoPasswordEnteredXpath = "//p[@id='missing-password']";
+//exports.IncorrentUsernameOrPasswordID = "//*[@class='content']/div[2]/div/p/span";
+
+
+//Log out Selectors
+exports.ProfileXpath = "//a[contains(text(),'Profile')]";
+exports.LogoutFromProfileXpath = "//a[contains(text(),'Sign out')]";
