@@ -105,3 +105,6 @@ exports.CancelCreateNewPlaylistXpath = "(//button[@type='button'])[5]"
 exports.ConfirmCreateNewPlaylistXpath = "(//button[@type='button'])[6]"
 exports.InputNewPlaylistNameCss=".inputBox-input"
 exports.InputNewPlaylistNameXpath="//div[@id='main']/div/div[4]/div/div/div/div/input";
+exports.GoToHomePageXpath="//div[@id='main']/div/div[3]/div[2]/nav/ul/li/div/a/div/div[3]"
+exports.GoToAvatarXpath="(//button[@type='button'])[2]"
+exports.LogOutFromWebPlayetXpath="(//button[@type='button'])[3]"
