@@ -29,6 +29,12 @@ describe('SignUpTest', function(){
         expect(titleSpotReg).to.equal('http://52.14.190.202:3000/');//testing that i reached the req page
         await driver.get("http://52.14.190.202:3000/signup");//getting to signup page to continue testing
     }) 
+    it('should refresh the page and get the current page url',async function() {
+        await driver.navigate().refresh();
+        await driver.sleep(5000);
+        const titleSpotReg = await driver.getCurrentUrl();
+        expect(titleSpotReg).to.equal('http://52.14.190.202:3000/signup');//testing that i reached the req page
+    }) 
 
         ///////email test cases testing
             /////test 1: invalid email veryshort without @.com //1@2.co//12334@5435.com
@@ -379,14 +385,14 @@ describe('SignUpTest', function(){
         ////Sucessfull Test case
     it('should test a Successful case',async function() {
             await driver.get("http://52.14.190.202:3000/signup");///getting back to signup page to test the successful case
-            await driver.findElement(By.xpath(Selectors.SignUpEmail)).sendKeys("aygeerga.samffhfeh.99@gmail.com"); 
+            await driver.findElement(By.xpath(Selectors.SignUpEmail)).sendKeys("aygeeddrga.samffhfeh.99@gmail.com"); 
             await driver.findElement(By.xpath(Selectors.SignUpPassword)).sendKeys("aya99sameh999");
-            await driver.findElement(By.xpath(Selectors.SignUpDispName)).sendKeys("AyajhSagdfxnhfmeh99");
+            await driver.findElement(By.xpath(Selectors.SignUpDispName)).sendKeys("AyajhSaddgdfxnhfmeh99");
             await driver.findElement(By.xpath(Selectors.SignUpDayOfBirth)).sendKeys("9");
             await driver.findElement(By.xpath(Selectors.SignUpMonthOfBirth)).click();
             await driver.findElement(By.xpath(Selectors.SignUpMonthOfBirthNovember)).click();
             await driver.findElement(By.xpath(Selectors.SignUpyearOfBirth)).sendKeys("1999");
-            await driver.findElement(By.xpath(Selectors.SignUpFemaleGender)).click();
+            await driver.findElement(By.xpath(Selectors.SignUpMaleGender)).click();
             await driver.findElement(By.xpath(Selectors.SignUpAccountType)).click(); 
             await driver.findElement(By.xpath(Selectors.SignUpAccountTypeReg)).click();
             await driver.findElement(By.xpath(Selectors.SignUpSubmitButton)).click();

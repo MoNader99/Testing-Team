@@ -13,6 +13,7 @@ exports.SignUpMonthOfBirth="//select[@name='month']";
 exports.SignUpMonthOfBirthNovember="//*[@name='month']/option[12]";
 exports.SignUpyearOfBirth="//input[@name='year']";
 exports.SignUpFemaleGender="//input[@value='F']";
+exports.SignUpMaleGender="//input[@value='M']";
 exports.SignUpAccountType="//select[@name='accountType']";
 exports.SignUpAccountTypeReg="//*[@id='signup-form']/div[3]/div/select/option[2]";
 exports.SignUpAccountTypePrem="//*[@id='signup-form']/div[3]/div/select/option[3]";
