@@ -51,9 +51,9 @@ exports.GetSpotifyButton="//a[@href='/signup/']";
 exports.BacktoHelpButton="";
 //////////////////////////////////////////////
 ////////////////PremiumPageSelectors All by Xpath//////////////////
-exports.Premiumbutton="";
-exports.GetPremiumbutton="";
-exports.GetPremiumbuttonAtTheEndOfThePage="";
+exports.Premiumbutton="//a[@href='/premium']";
+exports.GetPremiumbutton="//*[@id='ovflow']";
+exports.GetPremiumbuttonAtTheEndOfThePage="//*[@id='root']/div/div/div[3]/div/a";
 //////////////////////////////////////////////
 
 //Edit Profile Selectors
