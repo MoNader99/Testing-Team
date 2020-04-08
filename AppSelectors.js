@@ -55,34 +55,64 @@ exports.Premiumbutton="//a[@href='/premium']";
 exports.GetPremiumbutton="//*[@id='ovflow']";
 exports.GetPremiumbuttonAtTheEndOfThePage="//*[@id='root']/div/div/div[3]/div/a";
 //////////////////////////////////////////////
+//Account Overview
+exports.AccountOverviewHeaderXpath='//*[@id="root"]/div/div/div/div/div[2]/div/div/h1/strong';
+exports.AccountOverviewButtonXpath='/html/body/div/div/div/div/div/div[1]/div/div/a[1]';
+exports.AccountOverviewEmailXpath='//*[@id="root"]/div/div/div/div/div[2]/div/div/div[1]/p[2]';
+exports.AccountOverviewUsernameXpath='//*[@id="root"]/div/div/div/div/div[2]/div/div/div[2]/p[2]';
+exports.AccountOverviewGenderXpath='//*[@id="root"]/div/div/div/div/div[2]/div/div/div[3]/p[2]';
+exports.AccountOverviewBirthdateXpath='//*[@id="root"]/div/div/div/div/div[2]/div/div/div[4]/p[2]';
+exports.EditProfileButtonXpath2='//*[@id="root"]/div/div/div/div/div[2]/div/div/a[1]';
 
 //Edit Profile Selectors
-exports.EditProfileButtonXbath ='//*[@id="account-csr-container"]/div/article[1]/div/a';
+exports.LoginButtonHomeScreenXpath='//*[@id="navbarSupportedContent"]/ul/ul[3]/li/a';
+exports.LoginPageEmailAddressXpath='//*[@id="email-input"]';
+exports.LoginPagePasswordXpath='//*[@id="password-input"]';
+exports.LoginPageLoginButtonXpath='//*[@id="login-button"]';
 
-exports.EditProfileEmailXbath = '//*[@id="profile_email"]';
-exports.EditProfileEmailMsgErrorXbath ='//*[@id="profile"]/div[1]/label[2]';
+exports.EditProfileButtonXpath ='//*[@id="root"]/div/div/div/div/div[1]/div/div/a[2]';
+exports.EditProfilePageHeaderXpath ='//*[@id="edit-profile-h1"]';
 
-exports.EditProfileGenderXbath ='//*[@id="profile_gender"]';
+exports.EditProfileEmailXpath = '//*[@id="email"]';
 
-exports.EditProfileDayOfBirthXbath = "//select[@id='profile_birthdate_day']/option[@value='1']";
-exports.EditProfileMonthOfBirthXbath ="//select[@id='profile_birthdate_month']/option[@value='2']";
-exports.EditProfileYearOfBirthXbath = "//select[@id='profile_birthdate_year']/option[@value='2001']";
+exports.EditProfileUsernameXpath ='//*[@id="userName"]';
+exports.EditProfileUsernameErrorMsgXpath ='//*[@id="userNameError"]';
+exports.EditProfileGenderXpath ='//*[@id="gender"]';
 
-exports.EditProfileMobileNumberXbath = '//*[@id="profile_mobile_number"]';
-
-exports.EditProfileSaveButton = '//*[@id="profile_save_profile"]';
-exports.EditProfileCancelButton = '//*[@id="profile_cancel"]';
-
-exports.EditProfilePasswordMsgErrorXbath = '//*[@id="profile"]/div[1]';
-exports.EditProfilePasswordXbath ='//*[@id="profile_confirmPassword"]';
-
-exports.EditProfileSuccessMessageXbath ='/html/body/div[2]/div[2]/div[2]/div/div/div[2]/div/div[1]/div[1]';
+exports.EditProfileDayOfBirthXpath = '//*[@id="day"]';
+exports.EditProfileMonthOfBirthXpath = '//*[@id="month"]';
+exports.EditProfileYearOfBirthXpath = '//*[@id="year"]';
 
 
+exports.EditProfileSaveButton = '//*[@id="save-profile"]';
+exports.EditProfileCancelButton = '//*[@id="cancel"]';
+
+exports.EditProfilePasswordMsgErrorXpath = '//*[@id="profile"]/div[1]';
+exports.EditProfilePasswordXpath ='//*[@id="profile_confirmPassword"]';
+
+exports.EditProfileSuccessMessageXpath ='/html/body/div[2]/div[2]/div[2]/div/div/div[2]/div/div[1]/div[1]';
+exports.ProfileDropDownlistXpath='//*[@id="profile"]';
+exports.ProfileDropDownlistLogOutXpath='//*[@id="profile"]/li/div/a[2]';
+
+//Set Device Password
+exports.SetDevicePasswordXpath='//*[@id="root"]/div/div/div/div/div[1]/div/div/a[3]';
 
 
- 
+exports.SpotifyLogoFooter='//*[@id="root"]/div/div/footer/div[1]/div/div[1]/a';
+exports.HomeScreenMusiceForEveryOneXpath='//*[@id="root"]/div/div/div[1]/div/div/h1';
+exports.HelpButtonFooterXpath='//*[@id="root"]/div/div/footer/div[1]/div/div[2]/ul/li[1]/a';
+exports.HelpPageHeaderXpath='//*[@id="root"]/div/div/div[2]/div/h1';
+exports.WebPlayerButtonFooterXpath='//*[@id="root"]/div/div/footer/div[1]/div/div[2]/ul/li[2]/a';
+exports.WebPlayerRecentlyPlayedHeaderXpath='//*[@id="homepage-body"]/div[1]/div[1]/h1';
+exports.WebPlayerXpathDropDownlistXpath='//*[@id="right-drop-down"]';
+exports.WebPlayerDropDownlistProfileXpath='//*[@id="right-drop-down"]/div/a[1]';
+exports.WebPlayerDropDownlistLogOutXpath='//*[@id="right-drop-down"]/div/a[2]';
+exports.FacebookButtonFooterXpath='//*[@id="root"]/div/div/footer/div[1]/div/div[3]/a';
 
+exports.WebPlayerButtonHeaderXpath='//*[@id="navbarSupportedContent"]/ul/li[1]';
+exports.HelpButtonHeaderXpath='//*[@id="navbarSupportedContent"]/ul/li[3]';
+exports.PremiumButtonHeaderXpath='//*[@id="navbarSupportedContent"]/ul/li[2]';
+exports.PremiumPageHeaderXpath='//*[@id="get-premium"]';
 
 
 //Webplayer Selectors

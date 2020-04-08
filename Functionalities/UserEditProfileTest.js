@@ -1,124 +1,99 @@
 "use strict";
 const { Builder, By, Key, until } = require('selenium-webdriver');
-const { expect } = require('chai');   
+const { expect } = require('chai');
+var Selectors = require("../AppSelectors");
+var TestPerson = require("../TestCasesInfo");
 
-var Selectors=require("../AppSelectors");
-var TestPerson=require("../TestCasesInfo");
-
-describe('Edit Profile Test', function() {
+describe('Edit Profile Test', function () {
     this.timeout('1500000000');
-    const driver = new Builder().forBrowser('chrome').build();
+    var driver = new Builder().forBrowser('firefox').build();
     var Checkstring;
 
-    beforeEach('Open profile and go to edit proile page',async function(){
-        await driver.get('https://www.spotify.com/eg-en/')
-        var title = await driver.getTitle();
-        expect(title).to.equal('Music for everyone - Spotify');
-        await driver.findElement(By.xpath(Selectors.SignInbuttonXbath)).click()
-        await driver.sleep(3000);
-        title = await driver.getTitle();
-        expect(title).to.equal('Login - Spotify');
-        await driver.findElement(By.id(Selectors.EmailID)).sendKeys(TestPerson.EditProfileCurrentEmailAddress);
-        await driver.findElement(By.id(Selectors.PasswordID)).sendKeys(TestPerson.EditProfileCurrentEmailPassword);
-        await driver.findElement(By.css(Selectors.RememberMeCss)).click();
-        await driver.findElement(By.id(Selectors.LoginID)).click();
+    beforeEach('Open profile and go to edit proile page', async function () {
+        await driver.get('http://52.14.190.202:3000/');
         await driver.sleep(5000);
-        var title = await driver.getTitle();
-        expect(title).to.equal('Account overview - Spotify');
-        await driver.findElement(By.xpath(Selectors.EditProfileButtonXbath)).click();
-        await driver.sleep(10000);
-        await (await driver.findElement(By.xpath(Selectors.EditProfileDayOfBirthXbath))).click();
-        await driver.sleep(10000);
-        await driver.findElement(By.xpath(Selectors.EditProfileMonthOfBirthXbath)).click();
-        await driver.sleep(10000);
-        await (await driver.findElement(By.xpath(Selectors.EditProfileYearOfBirthXbath))).click();
-        expect(title).to.equal('Edit profile - Spotify');            
-    });/*
-        it('should delete email then save it', async function() {
-                await driver.findElement(By.xpath(Selectors.EditProfileEmailXbath)).clear();
-                await driver.findElement(By.xpath(Selectors.EditProfileSaveButton)).click();
-                await driver.sleep(3000);
-                Checkstring = await driver.findElement(By.xpath(Selectors.EditProfileEmailMsgErrorXbath)).getText();
-                expect(Checkstring).to.equal("You must specify your email.");
-        });
-
-        it('should enter invalid email address', async function() {
-                await driver.findElement(By.xpath(Selectors.EditProfileEmailXbath)).clear();
-                await driver.findElement(By.xpath(Selectors.EditProfileEmailXbath)).sendKeys("Heba");
-                await driver.findElement(By.xpath(Selectors.EditProfileSaveButton)).click();
-                await driver.sleep(3000);
-                Checkstring = await driver.findElement(By.xpath(Selectors.EditProfileEmailMsgErrorXbath)).getText();
-                expect(Checkstring).to.equal("The email address you supplied is invalid, please check to ensure it is correct.");
-        });
-
-        it('should change email without password then save it', async function() {
-                await driver.findElement(By.xpath(Selectors.EditProfileEmailXbath)).clear();
-                await driver.findElement(By.xpath(Selectors.EditProfileEmailXbath)).sendKeys("hebanassif@gmail.com");
-                await driver.findElement(By.xpath(Selectors.EditProfileSaveButton)).click();
-                await driver.sleep(3000);
-                Checkstring = await driver.findElement(By.xpath(Selectors.EditProfilePasswordMsgErrorXbath)).getText();
-                expect(Checkstring).to.equal("Sorry, wrong password");
-            
-        });
-        it('should change email with Wrong password then save it', async function() {
-            await driver.findElement(By.xpath(Selectors.EditProfileEmailXbath)).clear();
-            await driver.findElement(By.xpath(Selectors.EditProfileEmailXbath)).sendKeys('hebanassif@gmail.com');
-            await driver.sleep(1000); 
-            await driver.findElement(By.xpath(Selectors.EditProfilePasswordXbath)).sendKeys('HebaAli15');
-            await driver.findElement(By.xpath(Selectors.EditProfileSaveButton)).click();
-            await driver.sleep(3000);
-            Checkstring = await driver.findElement(By.xpath(Selectors.EditProfilePasswordMsgErrorXbath)).getText();
-            expect(Checkstring).to.equal("Sorry, wrong password");
-        });
-        
-        it('should change email with an existing email then save it', async function() {
-            await driver.findElement(By.xpath(Selectors.EditProfileEmailXbath)).clear();
-            await driver.findElement(By.xpath(Selectors.EditProfileEmailXbath)).sendKeys(TestPerson.EditProfileTestEmailAddress);
-            await driver.sleep(1000); 
-            await driver.findElement(By.xpath(Selectors.EditProfilePasswordXbath)).sendKeys(TestPerson.EditProfileCurrentEmailPassword);
-            await driver.findElement(By.xpath(Selectors.EditProfileSaveButton)).click();
-            await driver.sleep(3000);
-            Checkstring = await driver.findElement(By.xpath(Selectors.EditProfileEmailMsgErrorXbath)).getText();
-            expect(Checkstring).to.equal("We're sorry, that email is taken.");
-        });*/
-
-        it('should change email with current email and right password then save it', async function() {
-            await driver.findElement(By.xpath(Selectors.EditProfileEmailXbath)).clear();
-            await driver.findElement(By.xpath(Selectors.EditProfileEmailXbath)).sendKeys(TestPerson.EditProfileCurrentEmailAddress);
-            await driver.sleep(1000); 
-            await driver.findElement(By.xpath(Selectors.EditProfilePasswordXbath)).sendKeys(TestPerson.EditProfileCurrentEmailPassword);
-            await driver.findElement(By.xpath(Selectors.EditProfileSaveButton)).click();
-            await driver.sleep(3000);
-            Checkstring = await driver.findElement(By.xpath(Selectors.EditProfileSuccessMessageXbath)).getText();
-            expect(Checkstring).to.equal("Profile saved");
-        });
-
-        it('should change email with right password then save it', async function() {
-            await driver.findElement(By.xpath(Selectors.EditProfileEmailXbath)).clear();
-            await driver.findElement(By.xpath(Selectors.EditProfileEmailXbath)).sendKeys('heba.ali99@eng-status.cu.edu.eg');
-            await driver.sleep(1000); 
-            await driver.findElement(By.xpath(Selectors.EditProfilePasswordXbath)).sendKeys(TestPerson.EditProfileCurrentEmailPassword);
-            await driver.findElement(By.xpath(Selectors.EditProfileSaveButton)).click();
-            await driver.sleep(3000);
-            Checkstring = await driver.findElement(By.xpath(Selectors.EditProfileSuccessMessageXbath)).getText();
-            expect(Checkstring).to.equal("Profile saved");
-        });
-        after ('Back to Current User',async function() {
-            await driver.findElement(By.xpath(Selectors.EditProfileEmailXbath)).clear();
-            await driver.findElement(By.xpath(Selectors.EditProfileEmailXbath)).sendKeys(TestPerson.EditProfileCurrentEmailAddress);
-            await driver.sleep(1000); 
-            await driver.findElement(By.xpath(Selectors.EditProfilePasswordXbath)).sendKeys(TestPerson.EditProfileCurrentEmailPassword);
-            await driver.findElement(By.xpath(Selectors.EditProfileSaveButton)).click();
-            await driver.sleep(3000);
-            Checkstring = await driver.findElement(By.xpath(Selectors.EditProfileSuccessMessageXbath)).getText();
-            expect(Checkstring).to.equal("Profile saved");
-        });
-
-    afterEach('Log out from profile and close the broswer',async function() {
+        await driver.findElement(By.xpath(Selectors.LoginButtonHomeScreenXpath)).click()
         await driver.sleep(3000);
-        await driver.findElement(By.css(Selectors.ProfileTitleCss)).click();
-        await driver.findElement(By.linkText(Selectors.LogoutLinkText)).click();
-        await driver.sleep(3000); 
+        await driver.findElement(By.xpath(Selectors.LoginPageEmailAddressXpath)).sendKeys(TestPerson.EditProfileCurrentEmailAddress);
+        await driver.findElement(By.xpath(Selectors.LoginPagePasswordXpath)).sendKeys(TestPerson.EditProfileCurrentEmailPassword);
+        await driver.findElement(By.xpath(Selectors.LoginPageLoginButtonXpath)).click();
+        await driver.sleep(5000);
+        await driver.findElement(By.xpath(Selectors.EditProfileButtonXpath)).click();
+        await driver.sleep(5000);
+        Checkstring = await driver.findElement(By.xpath(Selectors.EditProfilePageHeaderXpath)).getText();
+        expect(Checkstring).to.equal('Edit Profile');
+
+    });
+
+    it('should check if the info exist', async function () {
+        Checkstring = await driver.findElement(By.xpath(Selectors.EditProfileEmailXpath)).getText();
+        expect(Checkstring).to.equal(TestPerson.EditProfileCurrentEmailAddress);
+        Checkstring = await driver.findElement(By.xpath(Selectors.EditProfileUsernameXpath)).getAttribute("value");
+        expect(Checkstring).to.equal(TestPerson.EditProfileCurrentUsername);
+        await driver.sleep(3000);
+    });
+    
+    it('should press Cancel button and check if it goes to overview page', async function () {
+        await driver.findElement(By.xpath(Selectors.EditProfileCancelButton)).click();
+        await driver.sleep(3000);
+        Checkstring = await driver.findElement(By.xpath(Selectors.AccountOverviewHeaderXpath)).getText();
+        expect(Checkstring).to.equal('Account overview');
+    });
+
+    it('should delete username then check for error message', async function () {
+        await (await driver.findElement(By.xpath(Selectors.EditProfileUsernameXpath))).clear();
+        await (await driver.findElement(By.xpath(Selectors.EditProfileUsernameXpath))).click();
+        await driver.sleep(3000);
+        Checkstring = await driver.findElement(By.xpath(Selectors.EditProfileUsernameErrorMsgXpath)).getText();
+        expect(Checkstring).to.equal("You must specify your username");
+    });
+
+    it('should delete username then press save ', async function () {
+        await driver.findElement(By.xpath(Selectors.EditProfileUsernameXpath)).clear();
+        await driver.findElement(By.xpath(Selectors.EditProfileSaveButton)).click();
+        await driver.sleep(3000);
+        Checkstring = await driver.findElement(By.xpath(Selectors.EditProfileUsernameErrorMsgXpath)).getText();
+        expect(Checkstring).to.equal("You must specify your username");
+    });
+
+    it('should reload the page then check if the info still exist', async function () {
+        await driver.navigate().refresh();
+        await driver.sleep(3000);
+        Checkstring = await driver.findElement(By.xpath(Selectors.EditProfileEmailXpath)).getText();
+        expect(Checkstring).to.equal(TestPerson.EditProfileCurrentEmailAddress);
+        Checkstring = await driver.findElement(By.xpath(Selectors.EditProfileUsernameXpath)).getText();
+        expect(Checkstring).to.equal(TestPerson.EditProfileCurrentUsername);
+        await driver.sleep(3000);
+    });
+    it('should enter invalid username then check for error msg', async function () {
+        await driver.findElement(By.xpath(Selectors.EditProfileUsernameXpath)).clear();
+        await driver.findElement(By.xpath(Selectors.EditProfileUsernameXpath)).sendKeys("Heba");
+        await driver.findElement(By.xpath(Selectors.EditProfileSaveButton)).click();
+        await driver.sleep(3000);
+        Checkstring = await driver.findElement(By.xpath(Selectors.EditProfileUsernameErrorMsgXpath)).getText();
+        expect(Checkstring).to.equal("We're sorry, that username is taken.");
+    });
+
+    it('should enter invalid username then check it in the overview page', async function () {
+        await driver.findElement(By.xpath(Selectors.EditProfileUsernameXpath)).clear();
+        await driver.findElement(By.xpath(Selectors.EditProfileUsernameXpath)).sendKeys("Heba");
+        await driver.findElement(By.xpath(Selectors.EditProfileSaveButton)).click();
+        await driver.sleep(5000);
+        await driver.findElement(By.xpath(Selectors.AccountOverviewButtonXpath)).click();
+        await driver.sleep(5000);
+        Checkstring = await driver.findElement(By.xpath(Selectors.AccountOverviewUsernameXpath)).getText();
+        expect(Checkstring).to.equal(TestPerson.EditProfileCurrentUsername);
+        await driver.sleep(5000);
+        await driver.findElement(By.xpath(Selectors.EditProfileButtonXpath)).click();
+        await driver.sleep(5000);
+    });
+
+    afterEach('Log out from profile and close the broswer', async function () {
+        await driver.sleep(3000);
+        await driver.findElement(By.xpath(Selectors.ProfileDropDownlistXpath)).click();
+        await driver.sleep(1000);
+        await driver.findElement(By.xpath(Selectors.ProfileDropDownlistLogOutXpath)).click();
+        await driver.sleep(3000);
     });
     after(async () => driver.quit());
 });
