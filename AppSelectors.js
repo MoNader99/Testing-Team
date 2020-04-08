@@ -5,6 +5,7 @@ exports.loginId="u_0_b";
 ///////SignUpSelectors All by Xpath//////
 exports.SignUpbutton="//a[@href='/signup']";
 exports.SpotifyButton="//*[@id='logo']/a"
+exports.SignUpLabelText="//*[@id='root']/div/div/div[2]/div/h2[2]";
 exports.SignUpEmail="//input[@name='email']";
 exports.SignUpPassword="//input[@name='password']";
 exports.SignUpDispName="//input[@name='username']";
@@ -20,6 +21,8 @@ exports.SignUpAccountTypePrem="//*[@id='signup-form']/div[3]/div/select/option[3
 exports.SignUpAccountTypeArtist="//*[@id='signup-form']/div[3]/div/select/option[4]";
 exports.SignUpSubmitButton="//button[@id='signup-button']";
 exports.SignUpLogInButton="//a[@href='/logIn']";
+exports.SubmitLoginButton="//button[@id='login-button']"
+exports.ConfirmationEmailTextElement="//*[@id='root']/div/div/div[2]/h1/strong"
 //////////////////////////////////////////////////
 ///////SignUpErrorMsgsSelectors All by Xpath//////
 exports.SignUpInvalidEmailmsg="//p[@id='empty-email']";
@@ -55,6 +58,13 @@ exports.BacktoHelpButton="";
 exports.Premiumbutton="//a[@href='/premium']";
 exports.GetPremiumbutton="//*[@id='ovflow']";
 exports.GetPremiumbuttonAtTheEndOfThePage="//*[@id='root']/div/div/div[3]/div/a";
+//////////////////////////////////////////////
+////////////////SearchPage All by Xpath//////////////////
+exports.WebPlayerbutton="//a[@href='/webplayer']";
+exports.Searchbutton="//*[@id='blur-add-to-playlist']/div/div[1]/div/div/ul/li[2]/a";
+exports.SearchBar="//*[@id='blur-add-to-playlist']/div/div[2]/div/div[1]/div[2]/input";
+exports.YourTopGenreElementSearchPage="//*[@id='blur-add-to-playlist']/div/div[2]/div/div[2]/div/h2[1]";
+
 //////////////////////////////////////////////
 //Account Overview
 exports.AccountOverviewHeaderXpath='//*[@id="root"]/div/div/div/div/div[2]/div/div/h1/strong';

@@ -14,6 +14,8 @@ describe('SignUpTest', function(){
         const titleSpotHome = await (await driver).getCurrentUrl();
         await driver.sleep(5000);
         expect(titleSpotHome).to.equal('http://52.14.190.202:3000/');//testing that i reached the req page
+        Checkstring=await driver.findElement(By.xpath(Selectors.SignUpbutton)).getText();
+        expect(Checkstring).to.equal('Sign up');
     })
 
     it('should press on SignUp button and get the new page title',async function() {
@@ -21,12 +23,16 @@ describe('SignUpTest', function(){
         await driver.sleep(5000);
         const titleSpotReg = await driver.getCurrentUrl();
         expect(titleSpotReg).to.equal('http://52.14.190.202:3000/signup');//testing that i reached the req page
+        Checkstring=await driver.findElement(By.xpath(Selectors.SignUpLabelText)).getText();
+        expect(Checkstring).to.equal('Sign up with your email address');
     }) 
     it('should press on Spotify Logo Button and get the new page title',async function() {
         await driver.findElement(By.xpath(Selectors.SpotifyButton)).click();
         await driver.sleep(5000);
         const titleSpotReg = await driver.getCurrentUrl();
         expect(titleSpotReg).to.equal('http://52.14.190.202:3000/');//testing that i reached the req page
+        Checkstring=await driver.findElement(By.xpath(Selectors.SignUpbutton)).getText();
+        expect(Checkstring).to.equal('Sign up');
         await driver.get("http://52.14.190.202:3000/signup");//getting to signup page to continue testing
     }) 
     it('should refresh the page and get the current page url',async function() {
@@ -34,6 +40,8 @@ describe('SignUpTest', function(){
         await driver.sleep(5000);
         const titleSpotReg = await driver.getCurrentUrl();
         expect(titleSpotReg).to.equal('http://52.14.190.202:3000/signup');//testing that i reached the req page
+        Checkstring=await driver.findElement(By.xpath(Selectors.SignUpLabelText)).getText();
+        expect(Checkstring).to.equal('Sign up with your email address');
     }) 
 
         ///////email test cases testing
@@ -60,22 +68,24 @@ describe('SignUpTest', function(){
                 Checkstring = await driver.findElement(By.xpath(Selectors.SignUpInvalidEmailmsg)).getText(); //finding the msg place and copying its text
                 expect(Checkstring).to.equal(Msgs.SignUpEmailInvalidErrormsg);//comparing the text copied with the expected one 
         }) 
-        /////test 4:invalid emailverylong anythinglong@anythinglong.com
-        /*it('should test the case of entering an invalid email(verylong anythinglong@anythinglong.com)',async function() { ////this test case fails and the server will be unresponsive
+       /* /////test 4:invalid emailverylong anythinglong@anythinglong.com
+        it('should test the case of entering an invalid email(verylong anythinglong@anythinglong.com)',async function() { ////this test case fails and the server will be unresponsive
+                this.timeout('0.00000000000000000000000000000000000000000000000000000000000000000000000000000000001');
                 await driver.findElement(By.xpath(Selectors.SignUpEmail)).clear();       
                 await driver.findElement(By.xpath(Selectors.SignUpEmail)).sendKeys("adshgdbhhhhhbjbbbbbbbbbbbbbbbbbbbhhhhh@hsjdcbshcbhsdbc.com");
                 await driver.sleep(5000);
                 Checkstring = await driver.findElement(By.xpath(Selectors.SignUpInvalidEmailmsg)).getText(); //finding the msg place and copying its text
                 expect(Checkstring).to.equal(Msgs.SignUpEmailInvalidErrormsg);//comparing the text copied with the expected one 
-        }) */
+        }) 
         /////test 5:invalid emailverylong anythinglong@anythinglong.com
-        /*it('should test the case of entering an invalid email(anything very long without @.com)',async function() { ////this test case fails and the server will be unresponsive
+        it('should test the case of entering an invalid email(anything very long without @.com)',async function() { ////this test case fails and the server will be unresponsive
+                this.timeout('0.00000000000000000000000000000000000000000000000000000000000000000000000000000000001');
                 await driver.findElement(By.xpath(Selectors.SignUpEmail)).clear();       
                 await driver.findElement(By.xpath(Selectors.SignUpEmail)).sendKeys("adshgdbhhhhhbjbbbbbbbbbbbbbbbbbbbhhhhhgyughjjjjjjjjftt");
                 await driver.sleep(5000);
                 Checkstring = await driver.findElement(By.xpath(Selectors.SignUpInvalidEmailmsg)).getText(); //finding the msg place and copying its text
                 expect(Checkstring).to.equal(Msgs.SignUpEmailInvalidErrormsg);//comparing the text copied with the expected one 
-        })*/ 
+        })*/
             
 
 
@@ -266,7 +276,7 @@ describe('SignUpTest', function(){
         })
              
             /////test 6: Invalid not accepting any special chars
-        it('should test the case of not accepting any letter including special chars in Year of birth',async function() { 
+        it('should test the case of not accepting any special chars in Year of birth',async function() { 
                 await driver.findElement(By.xpath(Selectors.SignUpyearOfBirth)).clear();
                 await driver.findElement(By.xpath(Selectors.SignUpyearOfBirth)).sendKeys("!@#%");
                 await driver.sleep(5000);
@@ -292,6 +302,8 @@ describe('SignUpTest', function(){
                 await driver.sleep(5000);
                 const title = await (await driver).getCurrentUrl();
                 expect(title).to.equal("http://52.14.190.202:3000/signup");
+                await driver.findElement(By.xpath(Selectors.SpotifyButton)).getText();
+                expect(Checkstring).to.equal('Spotify');
 
         }) 
   /////////////////////////////Not Entering anything TestCases
@@ -381,13 +393,15 @@ describe('SignUpTest', function(){
                 await driver.sleep(5000);
                 const title = await (await driver).getCurrentUrl();
                 expect(title).to.equal("http://52.14.190.202:3000/logIn");
+                Checkstring=await driver.findElement(By.xpath(Selectors.SubmitLoginButton)).getText();
+                expect(Checkstring).to.equal("LOG IN");
         })  
         ////Sucessfull Test case
     it('should test a Successful case',async function() {
             await driver.get("http://52.14.190.202:3000/signup");///getting back to signup page to test the successful case
-            await driver.findElement(By.xpath(Selectors.SignUpEmail)).sendKeys("aygeeddrga.samffhfeh.99@gmail.com"); 
+            await driver.findElement(By.xpath(Selectors.SignUpEmail)).sendKeys("aa.sahfeh.99@gmail.com"); 
             await driver.findElement(By.xpath(Selectors.SignUpPassword)).sendKeys("aya99sameh999");
-            await driver.findElement(By.xpath(Selectors.SignUpDispName)).sendKeys("AyajhSaddgdfxnhfmeh99");
+            await driver.findElement(By.xpath(Selectors.SignUpDispName)).sendKeys("Ayajeh99");
             await driver.findElement(By.xpath(Selectors.SignUpDayOfBirth)).sendKeys("9");
             await driver.findElement(By.xpath(Selectors.SignUpMonthOfBirth)).click();
             await driver.findElement(By.xpath(Selectors.SignUpMonthOfBirthNovember)).click();
@@ -399,6 +413,8 @@ describe('SignUpTest', function(){
             await driver.sleep(5000);
             const title = await (await driver).getCurrentUrl();
             expect(title).to.equal("http://52.14.190.202:3000/signup/emailsent/");
+            Checkstring=await driver.findElement(By.xpath(Selectors.ConfirmationEmailTextElement)).getText();
+            expect(Checkstring).to.equal("Confirmation Email Sent!");
     })   
      
  after(async () => await driver.quit());
