@@ -12,15 +12,17 @@ exports.SignUpDayOfBirth="//input[@name='day']";
 exports.SignUpMonthOfBirth="//select[@name='month']";
 exports.SignUpMonthOfBirthNovember="//*[@name='month']/option[12]";
 exports.SignUpyearOfBirth="//input[@name='year']";
-exports.SignUpFemaleGender="//input[@name='female']";
-exports.SignUpAccountType="//*[@name='account-type']/select";
-exports.SignUpAccountTypeReg="//*[@name='account-type']/select/option[2]";
-exports.SignUpAccountTypePrem="//*[@name='account-type']/select/option[3]";
-exports.SignUpAccountTypeArtist="//*[@name='account-type']/select/option[4]";
-exports.SignUpSubmitButton="//button[@name='signup-button']";
+exports.SignUpFemaleGender="//input[@value='F']";
+exports.SignUpAccountType="//select[@name='accountType']";
+exports.SignUpAccountTypeReg="//*[@id='signup-form']/div[3]/div/select/option[2]";
+exports.SignUpAccountTypePrem="//*[@id='signup-form']/div[3]/div/select/option[3]";
+exports.SignUpAccountTypeArtist="//*[@id='signup-form']/div[3]/div/select/option[4]";
+exports.SignUpSubmitButton="//button[@id='signup-button']";
+exports.SignUpLogInButton="//a[@href='/logIn']";
 //////////////////////////////////////////////////
 ///////SignUpErrorMsgsSelectors All by Xpath//////
 exports.SignUpInvalidEmailmsg="//p[@id='empty-email']";
+exports.SignUpInvalidEmailTokenmsg="//*[@id='root']/div/div/div[2]/div/h2[1]";
 exports.SignUpInvalidPasswordmsg="//p[@id='empty-password']";
 exports.SignUpInvalidDispNamemsg="//p[@id='empty-userame']";
 exports.SignUpInvalidDayOfBirthmsg="//p[@id='empty-day']";
