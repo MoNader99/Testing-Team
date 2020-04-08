@@ -3,268 +3,397 @@
 const {Builder, By, Key, until} = require("selenium-webdriver");
 const {expect} = require('chai');
 const driver = new Builder().forBrowser("chrome").build();
-var Selectors=require("../AppSelectorsRealSpot");
-var Msgs=require("../AppErrorMsgsRealSpot");
+var Selectors=require("../AppSelectors");
+var Msgs=require("../AppErrorMsgs");
 
 describe('SignUpTest', function(){
       this.timeout('1500000000');
       var Checkstring;
     it('should go to spotify.com and get its title',async function() {
-        await driver.get("https://www.spotify.com/eg-en/");
-        const titleSpotHome = await driver.getTitle();
+        await driver.get("http://52.14.190.202:3000/");
+        const titleSpotHome = await (await driver).getCurrentUrl();
         await driver.sleep(5000);
-        expect(titleSpotHome).to.equal('Music for everyone - Spotify');//testing that i reached the req page
+        expect(titleSpotHome).to.equal('http://52.14.190.202:3000/');//testing that i reached the req page
     })
 
     it('should press on SignUp button and get the new page title',async function() {
         await driver.findElement(By.xpath(Selectors.SignUpbutton)).click();
         await driver.sleep(5000);
-        const titleSpotReg = await driver.getTitle();
-        expect(titleSpotReg).to.equal('Sign up - Spotify');//testing that i reached the req page
+        const titleSpotReg = await driver.getCurrentUrl();
+        expect(titleSpotReg).to.equal('http://52.14.190.202:3000/signup');//testing that i reached the req page
+    }) 
+    it('should press on Spotify Logo Button and get the new page title',async function() {
+        await driver.findElement(By.xpath(Selectors.SpotifyButton)).click();
+        await driver.sleep(5000);
+        const titleSpotReg = await driver.getCurrentUrl();
+        expect(titleSpotReg).to.equal('http://52.14.190.202:3000/');//testing that i reached the req page
+        await driver.get("http://52.14.190.202:3000/signup");//getting to signup page to continue testing
     }) 
 
         ///////email test cases testing
-            /////test 1: invalid email //sdf//12334@gamil.com//asdfsd@gmail.co ////adshgdbhhhhhhhhh@hsjdcbshcbhsdbc.com
-    it('should test the case of entering an invalid email',async function() {        
-            await driver.findElement(By.xpath(Selectors.SignUpEmail)).sendKeys("fxv");
-            await driver.findElement(By.xpath(Selectors.SignUpConfirmEmail)).click();///clicking anywhere for the msg to appear
-            await driver.sleep(5000);
-             Checkstring = await driver.findElement(By.xpath(Selectors.SignUpInvalidEmailmsg)).getText(); //finding the msg place and copying its text
-            expect(Checkstring).to.equal(Msgs.SignUpEmailInvalidErrormsg);//comparing the text copied with the expected one 
-    }) 
+            /////test 1: invalid email veryshort without @.com //1@2.co//12334@5435.com
+        it('should test the case of entering an invalid email(veryshort without @.com)',async function() {        
+                await driver.findElement(By.xpath(Selectors.SignUpEmail)).sendKeys("fxv");
+                await driver.sleep(5000);
+                Checkstring = await driver.findElement(By.xpath(Selectors.SignUpInvalidEmailmsg)).getText(); //finding the msg place and copying its text
+                expect(Checkstring).to.equal(Msgs.SignUpEmailInvalidErrormsg);//comparing the text copied with the expected one 
+        })
+        /////test 2: invalid email 1@2.co//12334@5435.com
+        it('should test the case of entering an invalid email(only numbers such as 1@2.com)',async function() {  
+                await driver.findElement(By.xpath(Selectors.SignUpEmail)).clear();          
+                await driver.findElement(By.xpath(Selectors.SignUpEmail)).sendKeys("1@2.com");
+                await driver.sleep(5000);
+                Checkstring = await driver.findElement(By.xpath(Selectors.SignUpInvalidEmailmsg)).getText(); //finding the msg place and copying its text
+                expect(Checkstring).to.equal(Msgs.SignUpEmailInvalidErrormsg);//comparing the text copied with the expected one 
+        })
+        /////test 3:invalid email//asdfsd@gmail.co 
+        it('should test the case of entering an invalid email(anything@anything.co)',async function() {  
+                await driver.findElement(By.xpath(Selectors.SignUpEmail)).clear();      
+                await driver.findElement(By.xpath(Selectors.SignUpEmail)).sendKeys("asdfsd@hbgkgh.co");
+                await driver.sleep(5000);
+                Checkstring = await driver.findElement(By.xpath(Selectors.SignUpInvalidEmailmsg)).getText(); //finding the msg place and copying its text
+                expect(Checkstring).to.equal(Msgs.SignUpEmailInvalidErrormsg);//comparing the text copied with the expected one 
+        }) 
+        /////test 4:invalid emailverylong anythinglong@anythinglong.com
+        /*it('should test the case of entering an invalid email(verylong anythinglong@anythinglong.com)',async function() { ////this test case fails and the server will be unresponsive
+                await driver.findElement(By.xpath(Selectors.SignUpEmail)).clear();       
+                await driver.findElement(By.xpath(Selectors.SignUpEmail)).sendKeys("adshgdbhhhhhbjbbbbbbbbbbbbbbbbbbbhhhhh@hsjdcbshcbhsdbc.com");
+                await driver.sleep(5000);
+                Checkstring = await driver.findElement(By.xpath(Selectors.SignUpInvalidEmailmsg)).getText(); //finding the msg place and copying its text
+                expect(Checkstring).to.equal(Msgs.SignUpEmailInvalidErrormsg);//comparing the text copied with the expected one 
+        }) */
+        /////test 5:invalid emailverylong anythinglong@anythinglong.com
+        /*it('should test the case of entering an invalid email(anything very long without @.com)',async function() { ////this test case fails and the server will be unresponsive
+                await driver.findElement(By.xpath(Selectors.SignUpEmail)).clear();       
+                await driver.findElement(By.xpath(Selectors.SignUpEmail)).sendKeys("adshgdbhhhhhbjbbbbbbbbbbbbbbbbbbbhhhhhgyughjjjjjjjjftt");
+                await driver.sleep(5000);
+                Checkstring = await driver.findElement(By.xpath(Selectors.SignUpInvalidEmailmsg)).getText(); //finding the msg place and copying its text
+                expect(Checkstring).to.equal(Msgs.SignUpEmailInvalidErrormsg);//comparing the text copied with the expected one 
+        })*/ 
+            
 
-            /////test 2: Already exist ///not supported by app Spot
-    it('should test the case of entering an email which is already token',async function() {       
-            await driver.findElement(By.xpath(Selectors.SignUpEmail)).clear();
-            await driver.findElement(By.xpath(Selectors.SignUpEmail)).sendKeys("maram311999@hotmail.com");
-            await driver.findElement(By.xpath(Selectors.SignUpPassword)).click();///clicking anywhere for the msg to appear
-            await driver.sleep(5000);
-            Checkstring = await driver.findElement(By.xpath(Selectors.SignUpInvalidEmailmsg)).getText(); //finding the msg place and copying its text
-            expect(Checkstring).to.equal(Msgs.SignUpEmailTakenErrormsg);//comparing the text copied with the expected one 
-    })    
 
-            /////test 3: Not entered
-    it('should test the case of not entering an email',async function() {
-            await driver.findElement(By.xpath(Selectors.SignUpEmail)).clear();
-            await driver.findElement(By.xpath(Selectors.SignUpPassword)).click();///clicking anywhere for the msg to appear
-            await driver.sleep(5000);
-            Checkstring = await driver.findElement(By.xpath(Selectors.SignUpInvalidEmailmsg)).getText(); //finding the msg place and copying its text
-            expect(Checkstring).to.equal(Msgs.SignUpEmailEmptyErrormsg);//comparing the text copied with the expected one
-    })
-
-        ///////confirm email test cases testing
-            //test 1: confirm email doesn't match  ///not supported by app Spot
-    it('should test the case of entering a confirm email which does not match the entered one',async function() {       
-            await driver.findElement(By.xpath(Selectors.SignUpConfirmEmail)).sendKeys("aya.sameh.99@gmail.com");
-            await driver.findElement(By.xpath(Selectors.SignUpPassword)).click();///clicking anywhere for the msg to appear
-            await driver.sleep(5000);
-            Checkstring = await driver.findElement(By.xpath(Selectors.SignUpInvalidConfirmEmailmsg)).getText();
-            expect(Checkstring).to.equal(Msgs.SignUpEmailNotMatchingErrormsg);
-    })    
-
-            //test 2: invalid email 
-    it('should test the case of entering an Invalid confirm email',async function() {
-            await driver.findElement(By.xpath(Selectors.SignUpConfirmEmail)).clear();
-            await driver.findElement(By.xpath(Selectors.SignUpConfirmEmail)).sendKeys("sda");
-            await driver.findElement(By.xpath(Selectors.SignUpPassword)).click();///clicking anywhere for the msg to appear
-            await driver.sleep(5000);
-            Checkstring = await driver.findElement(By.xpath(Selectors.SignUpInvalidConfirmEmailmsg)).getText();
-            expect(Checkstring).to.equal(Msgs.SignUpEmailInvalidErrormsg);
-    })
-
-            //test 3: Not entered 
-    it('should test the case of  not entering an confirm email',async function() {        
-            await driver.findElement(By.xpath(Selectors.SignUpConfirmEmail)).clear();
-            await driver.findElement(By.xpath(Selectors.SignUpPassword)).click();///clicking anywhere for the msg to appear
-            await driver.sleep(5000);
-            Checkstring = await driver.findElement(By.xpath(Selectors.SignUpInvalidConfirmEmailmsg)).getText();
-            expect(Checkstring).to.equal(Msgs.SignUpEmailEmptyErrormsg);
-    })    
-
-        ///////Password test cases testing
-            /////test 1: Very Short password//or verylong on real spotify they don't accept more than 30 char
-    it('should test the case of entering a very short password',async function() { 
+       ///////Password test cases testing
+            /////test 1: Very Short password
+        it('should test the case of entering a very short password',async function() { 
             await driver.findElement(By.xpath(Selectors.SignUpPassword)).sendKeys("aya");
-            await driver.findElement(By.xpath(Selectors.SignUpConfirmEmail)).click();///clicking anywhere for the msg to appear
             await driver.sleep(5000);
             Checkstring = await driver.findElement(By.xpath(Selectors.SignUpInvalidPasswordmsg)).getText();
             expect(Checkstring).to.equal(Msgs.SignUpPasswordShortErrormsg);
-    })
+        })
+        /////test 2: Very long 
+        it('should test the case of entering a very long password',async function() { 
+                await driver.findElement(By.xpath(Selectors.SignUpPassword)).clear();
+                await driver.findElement(By.xpath(Selectors.SignUpPassword)).sendKeys("ayafhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhgggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggdddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddlllllllllllllllllllllllllllllllllllllllll");
+                await driver.sleep(5000);
+                Checkstring=await driver.findElement(By.xpath(Selectors.SignUpPassword)).getAttribute("value");
+                expect(Checkstring).to.equal("ayafhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh");
+        })
+        /////test 3:only entering numbers no chars in it
+        it('should test the case of entering only numbers password',async function() { 
+                await driver.findElement(By.xpath(Selectors.SignUpPassword)).clear();
+                await driver.findElement(By.xpath(Selectors.SignUpPassword)).sendKeys("123456789");
+                await driver.sleep(5000);
+                Checkstring = await driver.findElement(By.xpath(Selectors.SignUpInvalidPasswordmsg)).getText();
+                expect(Checkstring).to.equal(Msgs.SignUpPasswordShortErrormsg);
+        })
+        /////test 4:only entering special chars
+        it('should test the case of entering only special chars password',async function() { 
+                await driver.findElement(By.xpath(Selectors.SignUpPassword)).clear();
+                await driver.findElement(By.xpath(Selectors.SignUpPassword)).sendKeys("@#$%^&*(");
+                await driver.sleep(5000);
+                Checkstring = await driver.findElement(By.xpath(Selectors.SignUpInvalidPasswordmsg)).getText();
+                expect(Checkstring).to.equal(Msgs.SignUpPasswordShortErrormsg);
+        })
+        /////test 5:only entering decimals numbers
+        it('should test the case of entering only decimals numbers password',async function() { 
+                await driver.findElement(By.xpath(Selectors.SignUpPassword)).clear();
+                await driver.findElement(By.xpath(Selectors.SignUpPassword)).sendKeys("2.343556");
+                await driver.sleep(5000);
+                Checkstring = await driver.findElement(By.xpath(Selectors.SignUpInvalidPasswordmsg)).getText();
+                expect(Checkstring).to.equal(Msgs.SignUpPasswordShortErrormsg);
+        })
 
-            /////test 2: Not entered
-    it('should test the case of not entering a password',async function() { 
-            await driver.findElement(By.xpath(Selectors.SignUpPassword)).clear();
-            await driver.findElement(By.xpath(Selectors.SignUpConfirmEmail)).click();///clicking anywhere for the msg to appear
-            await driver.sleep(5000);
-            Checkstring = await driver.findElement(By.xpath(Selectors.SignUpInvalidPasswordmsg)).getText();
-            expect(Checkstring).to.equal(Msgs.SignUpPasswordEmptyErrormsg);
-    })
 
-        ///////Displayname test cases testing
+       ///////Displayname test cases testing 
             /////test 1: very long max 30 length
-    it('should test the case of entering a very long Displayname',async function() {         
-            await driver.findElement(By.xpath(Selectors.SignUpDispName)).sendKeys("lsvffffffffffdddddddddddddddddkkkkkk");//should only take till lsvffffffffffddddddddddddddddd only
-            await driver.findElement(By.xpath(Selectors.SignUpConfirmEmail)).click();
-            await driver.sleep(5000);
-            //Checkstring = await driver.findElement(By.xpath(Selectors.SignUpDispName)).getText();
-            //expect(Checkstring).to.equal("lsvffffffffffddddddddddddddddd");
-    })        
-            
-            /////test 2: Not entered
-    it('should test the case of not entering a Displayname',async function() {          
-            await driver.findElement(By.xpath(Selectors.SignUpDispName)).clear();
-            await driver.findElement(By.xpath(Selectors.SignUpSubmitButton)).click();///msg won't appear untill we press the submit button
-            await driver.sleep(6000);
-            Checkstring = await driver.findElement(By.xpath(Selectors.SignUpInvalidDispNamemsg)).getText();
-            expect(Checkstring).to.equal(Msgs.SignUpDispNameEmptyErrormsg);///not working here
-    })     
+        it('should test the case of entering a very long Displayname',async function() {         
+                await driver.findElement(By.xpath(Selectors.SignUpDispName)).sendKeys("lsvffffffffffdddddddddddddddddkkkkkkkkkkkkkuhjuhhhhhhhhhhhhhhhkkk");//should only take till lsvffffffffffddddddddddddddddd only
+                await driver.sleep(5000);
+                Checkstring=await driver.findElement(By.xpath(Selectors.SignUpDispName)).getAttribute("value");
+                expect(Checkstring).to.equal("lsvffffffffffdddddddddddddddddkkk");
+          
+        }) 
+       /////test 2: Very Short      
+        it('should test the case of entering a very short Displayname',async function() { 
+                await driver.findElement(By.xpath(Selectors.SignUpDispName)).clear();        
+                await driver.findElement(By.xpath(Selectors.SignUpDispName)).sendKeys("1");
+                await driver.sleep(5000);
+                Checkstring = await driver.findElement(By.xpath(Selectors.SignUpInvalidDispNamemsg)).getText();
+                expect(Checkstring).to.equal(Msgs.SignUpDispNameEmptyErrormsg);
+        })    
+        /////test 3:invalid special char//@#%@
+        it('should test the case of entering invalid Displayname(using only special chars)',async function() { 
+                await driver.findElement(By.xpath(Selectors.SignUpDispName)).clear();        
+                await driver.findElement(By.xpath(Selectors.SignUpDispName)).sendKeys("@#%@");
+                await driver.sleep(5000);
+                Checkstring = await driver.findElement(By.xpath(Selectors.SignUpInvalidDispNamemsg)).getText();
+                expect(Checkstring).to.equal(Msgs.SignUpDispNameEmptyErrormsg);
+        }) 
+          
+        /////test 5: OnlyNumbers    
+        it('should test the case of entering only numbers Displayname',async function() { 
+                await driver.findElement(By.xpath(Selectors.SignUpDispName)).clear();        
+                await driver.findElement(By.xpath(Selectors.SignUpDispName)).sendKeys("12764");
+                await driver.sleep(5000);
+                Checkstring = await driver.findElement(By.xpath(Selectors.SignUpInvalidDispNamemsg)).getText();
+                expect(Checkstring).to.equal(Msgs.SignUpDispNameEmptyErrormsg);
+        })  
+        /////test 5: Only decimal number   
+        it('should test the case of entering decimal number Displayname',async function() { 
+                await driver.findElement(By.xpath(Selectors.SignUpDispName)).clear();        
+                await driver.findElement(By.xpath(Selectors.SignUpDispName)).sendKeys("2.67904");
+                await driver.sleep(5000);
+                Checkstring = await driver.findElement(By.xpath(Selectors.SignUpInvalidDispNamemsg)).getText();
+                expect(Checkstring).to.equal(Msgs.SignUpDispNameEmptyErrormsg);
+        })    
+        
 
-        ///////Day of birth test cases testing
+       ///////Day of birth test cases testing
             /////test 1: Invalid not less than 1
-    it('should test the case of entering an invalid Day of birth (less than 1)',async function() {         
+        it('should test the case of entering an invalid Day of birth (less than 1)',async function() {         
             await driver.findElement(By.xpath(Selectors.SignUpDayOfBirth)).sendKeys("0");
-            await driver.findElement(By.xpath(Selectors.SignUpConfirmEmail)).click();///clicking anywhere for the msg to appear
             await driver.sleep(5000);
             Checkstring = await driver.findElement(By.xpath(Selectors.SignUpInvalidDayOfBirthmsg)).getText();
             expect(Checkstring).to.equal(Msgs.SignUpDayInvalidErrormsg);
-    })
+        })
 
             /////test 2: Invalid not more than 31
-    it('should test the case of entering an invalid Day of birth (more than 31)',async function() {
+        it('should test the case of entering an invalid Day of birth (more than 31)',async function() {
             await driver.findElement(By.xpath(Selectors.SignUpDayOfBirth)).clear();
-            await driver.findElement(By.xpath(Selectors.SignUpDayOfBirth)).sendKeys("35");
-            await driver.findElement(By.xpath(Selectors.SignUpConfirmEmail)).click();///clicking anywhere for the msg to appear
+            await driver.findElement(By.xpath(Selectors.SignUpDayOfBirth)).sendKeys("32");
             await driver.sleep(5000);
             Checkstring = await driver.findElement(By.xpath(Selectors.SignUpInvalidDayOfBirthmsg)).getText();
             expect(Checkstring).to.equal(Msgs.SignUpDayInvalidErrormsg);
-    })
+        })
 
-            /////test 3: Invalid not more than 2 digits such as 017 /***/
-    it('should test the case of entering an invalid Day of birth (more than 2 digits)',async function() {
+            /////test 3: Invalid not more than 2 digits such as 017 
+        it('should test the case of entering an invalid Day of birth (more than 2 digits)',async function() {
             await driver.findElement(By.xpath(Selectors.SignUpDayOfBirth)).clear();
-            await driver.findElement(By.xpath(Selectors.SignUpDayOfBirth)).sendKeys("006");
-            await driver.findElement(By.xpath(Selectors.SignUpConfirmEmail)).click();///clicking anywhere for the msg to appear
+            await driver.findElement(By.xpath(Selectors.SignUpDayOfBirth)).sendKeys("017");
             await driver.sleep(5000);
             Checkstring = await driver.findElement(By.xpath(Selectors.SignUpInvalidDayOfBirthmsg)).getText();
             expect(Checkstring).to.equal(Msgs.SignUpDayInvalidErrormsg);
-    })       
-            /////test 4: Invalid entering negative number//or a decimal no.//or + /***/
-    it('should test the case of entering an invalid Day of birth (negative number)',async function() {       
+        })       
+            /////test 4: Invalid entering negative number 
+        it('should test the case of entering an invalid Day of birth (negative number)',async function() {       
             await driver.findElement(By.xpath(Selectors.SignUpDayOfBirth)).clear();
             await driver.findElement(By.xpath(Selectors.SignUpDayOfBirth)).sendKeys("-4");
-            await driver.findElement(By.xpath(Selectors.SignUpConfirmEmail)).click();///clicking anywhere for the msg to appear
             await driver.sleep(5000);
             Checkstring = await driver.findElement(By.xpath(Selectors.SignUpInvalidDayOfBirthmsg)).getText();
             expect(Checkstring).to.equal(Msgs.SignUpDayInvalidErrormsg);
-    })        
-            /////test 5: Invalid not entered
-    it('should test the case of not entering a Day of birth',async function() {        
+        })   
+            /////test 5: Invalid entering a decimal no.    
+        it('should test the case of entering an invalid Day of birth (Decimal number)',async function() {       
             await driver.findElement(By.xpath(Selectors.SignUpDayOfBirth)).clear();
-            await driver.findElement(By.xpath(Selectors.SignUpConfirmEmail)).click();///clicking anywhere for the msg to appear
+            await driver.findElement(By.xpath(Selectors.SignUpDayOfBirth)).sendKeys("30.9999999999999999999999999999999999999999999999999999999");
             await driver.sleep(5000);
             Checkstring = await driver.findElement(By.xpath(Selectors.SignUpInvalidDayOfBirthmsg)).getText();
-            expect(Checkstring).to.equal(Msgs.SignUpDayEmptyErrormsg);
-    })         
-
-             ////////////////////////////////////////////
-            //////////////////////////////////test 6: Invalid not accepting any letter including special chars
-             ////////////////////////////////////////////
-
-
-        ///////Month of birth test cases testing
-            /////test 1: Not entered
-    it('should test the case of not entering a Month of birth',async function() {         
-            await driver.findElement(By.xpath(Selectors.SignUpSubmitButton)).click();///msg won't appear untill we press the submit button
-            await driver.sleep(6000);
-            Checkstring = await driver.findElement(By.xpath(Selectors.SignUpInvalidMonthOfBirthmsg)).getText();
-            expect(Checkstring).to.equal(Msgs.SignUpMonthInvalidErrormsg);
-    })    
-        
+            expect(Checkstring).to.equal(Msgs.SignUpDayInvalidErrormsg);
+        })             
+            /////test 6: Invalid not accepting any  special chars
+            it('should test the case of not accepting any special chars in Day of birth',async function() { 
+                await driver.findElement(By.xpath(Selectors.SignUpDayOfBirth)).clear();
+                await driver.findElement(By.xpath(Selectors.SignUpDayOfBirth)).sendKeys("!@#%");
+                await driver.sleep(5000);
+                Checkstring = await driver.findElement(By.xpath(Selectors.SignUpDayOfBirth)).getAttribute("value");
+                expect(Checkstring).to.equal("");
+        })
+            /////test 7: Invalid not accepting any letter 
+            it('should test the case of not accepting any letter in Day of birth',async function() { 
+                await driver.findElement(By.xpath(Selectors.SignUpDayOfBirth)).clear();
+                await driver.findElement(By.xpath(Selectors.SignUpDayOfBirth)).sendKeys("abcdefghijklmnopqrstuvwxyz");
+                await driver.sleep(5000);
+                Checkstring = await driver.findElement(By.xpath(Selectors.SignUpDayOfBirth)).getAttribute("value");
+                expect(Checkstring).to.equal("&");
+        })
        ///////Year of birth test cases testing
             /////test 1: Invalid not less than 1900
-    it('should test the case of entering an invalid Year of birth (less than 1900)',async function() {        
+        it('should test the case of entering an invalid Year of birth (less than 1900)',async function() {        
             await driver.findElement(By.xpath(Selectors.SignUpyearOfBirth)).sendKeys("1800");
-            await driver.findElement(By.xpath(Selectors.SignUpConfirmEmail)).click();///clicking anywhere for the msg to appear
             await driver.sleep(5000);
             Checkstring = await driver.findElement(By.xpath(Selectors.SignUpInvalidyearOfBirthmsg)).getText();
             expect(Checkstring).to.equal(Msgs.SignUpYearInvalidErrormsg);
-    })
-            /////test 2: Invalid not more than 1999
-    it('should test the case of entering an invalid Year of birth (more than 1999)',async function() {  
+        })
+            /////test 2: Invalid not more than 2020
+        it('should test the case of entering an invalid Year of birth (more than 2020)',async function() {  
             await driver.findElement(By.xpath(Selectors.SignUpyearOfBirth)).clear();
-            await driver.findElement(By.xpath(Selectors.SignUpyearOfBirth)).sendKeys("2000");
-            await driver.findElement(By.xpath(Selectors.SignUpConfirmEmail)).click();///clicking anywhere for the msg to appear
+            await driver.findElement(By.xpath(Selectors.SignUpyearOfBirth)).sendKeys("2030");
             await driver.sleep(5000);
             Checkstring = await driver.findElement(By.xpath(Selectors.SignUpInvalidyearOfBirthmsg)).getText();
             expect(Checkstring).to.equal(Msgs.SignUpYearInvalidTooYoungErrormsg);
-    })
-            /////test 3: Invalid not more than 4 digits such as 01956 /***/
-    it('should test the case of entering an invalid Year of birth (more than 4 digits)',async function() {          
+        })
+            /////test 3: Invalid not more than 4 digits such as 01956 
+        it('should test the case of entering an invalid Year of birth (more than 4 digits)',async function() {          
             await driver.findElement(By.xpath(Selectors.SignUpyearOfBirth)).clear();
-            await driver.findElement(By.xpath(Selectors.SignUpyearOfBirth)).sendKeys("01956");
-            await driver.findElement(By.xpath(Selectors.SignUpConfirmEmail)).click();///clicking anywhere for the msg to appear
+            await driver.findElement(By.xpath(Selectors.SignUpyearOfBirth)).sendKeys("01999");
             await driver.sleep(5000);
             Checkstring = await driver.findElement(By.xpath(Selectors.SignUpInvalidyearOfBirthmsg)).getText();
             expect(Checkstring).to.equal(Msgs.SignUpYearInvalidErrormsg);
-    })        
-            /////test 4: Invalid entering negative number //or a decimal no.//or + /***/
-    it('should test the case of entering an invalid Year of birth (negative number)',async function() {         
+        })        
+            /////test 4: Invalid entering negative number 
+        it('should test the case of entering an invalid Year of birth (negative number)',async function() {         
             await driver.findElement(By.xpath(Selectors.SignUpyearOfBirth)).clear();
             await driver.findElement(By.xpath(Selectors.SignUpyearOfBirth)).sendKeys("-1956");
-            await driver.findElement(By.xpath(Selectors.SignUpConfirmEmail)).click();///clicking anywhere for the msg to appear
             await driver.sleep(5000);
             Checkstring = await driver.findElement(By.xpath(Selectors.SignUpInvalidyearOfBirthmsg)).getText();
             expect(Checkstring).to.equal(Msgs.SignUpYearInvalidErrormsg);
-    })
+        })
+        /////test 5: Invalid entering deciemal number 
+        //1999.99999999999999999999999999999999999999999999
+        it('should test the case of entering an invalid Year of birth (deciemal number )',async function() {         
+                await driver.findElement(By.xpath(Selectors.SignUpyearOfBirth)).clear();
+                await driver.findElement(By.xpath(Selectors.SignUpyearOfBirth)).sendKeys("2019.99999999999999999999999999999999999999999999999999999999");
+                await driver.sleep(5000);
+                Checkstring = await driver.findElement(By.xpath(Selectors.SignUpInvalidyearOfBirthmsg)).getText();
+                expect(Checkstring).to.equal(Msgs.SignUpYearInvalidErrormsg);
+        })
+             
+            /////test 6: Invalid not accepting any special chars
+        it('should test the case of not accepting any letter including special chars in Year of birth',async function() { 
+                await driver.findElement(By.xpath(Selectors.SignUpyearOfBirth)).clear();
+                await driver.findElement(By.xpath(Selectors.SignUpyearOfBirth)).sendKeys("!@#%");
+                await driver.sleep(5000);
+                Checkstring = await driver.findElement(By.xpath(Selectors.SignUpyearOfBirth)).getAttribute("value");
+                expect(Checkstring).to.equal("");
+        })
+            /////test 7: Invalid not accepting any letter 
+        it('should test the case of not accepting any letter in Year of birth',async function() { 
+                await driver.findElement(By.xpath(Selectors.SignUpyearOfBirth)).clear();
+                await driver.findElement(By.xpath(Selectors.SignUpyearOfBirth)).sendKeys("abcdefghijklmnopqrstuvwxyz");
+                await driver.sleep(5000);
+                Checkstring = await driver.findElement(By.xpath(Selectors.SignUpyearOfBirth)).getAttribute("value");
+                expect(Checkstring).to.equal("&");
+        })
+  /////////////////////clearing data and submiting
+        it('should test The case clearing the data and not submitting ',async function() {
+                await driver.findElement(By.xpath(Selectors.SignUpEmail)).clear();///clearing the element for not entering test
+                await driver.findElement(By.xpath(Selectors.SignUpPassword)).clear();
+                await driver.findElement(By.xpath(Selectors.SignUpDispName)).clear();
+                await driver.findElement(By.xpath(Selectors.SignUpDayOfBirth)).clear();
+                await driver.findElement(By.xpath(Selectors.SignUpyearOfBirth)).clear();
+                await driver.findElement(By.xpath(Selectors.SignUpSubmitButton)).click();
+                await driver.sleep(5000);
+                const title = await (await driver).getCurrentUrl();
+                expect(title).to.equal("http://52.14.190.202:3000/signup");
 
-            /////test 5: Invalid not entered
-    it('should test the case of not entering a Year of birth',async function() { 
-            await driver.findElement(By.xpath(Selectors.SignUpyearOfBirth)).clear();
-            await driver.findElement(By.xpath(Selectors.SignUpConfirmEmail)).click();///clicking anywhere for the msg to appear
-            await driver.sleep(5000);
-            Checkstring = await driver.findElement(By.xpath(Selectors.SignUpInvalidyearOfBirthmsg)).getText();
-            expect(Checkstring).to.equal(Msgs.SignUpYearEmptyErrormsg);
-    })
-             ////////////////////////////////////////////
-            //////////////////////////////////test 6: Invalid not accepting any letter including special chars
-             ////////////////////////////////////////////
+        }) 
+  /////////////////////////////Not Entering anything TestCases
+        /////test1:Empty Email
+        it('should test The case of not entering Email ',async function() {
+                Checkstring = await driver.findElement(By.xpath(Selectors.SignUpInvalidEmailmsg)).getText(); 
+                expect(Checkstring).to.equal(Msgs.SignUpEmailEmptyErrormsg);
+        })   
+         /////test2:Empty Password
+        it('should test The case of not entering Password',async function() {
+                
+                Checkstring = await driver.findElement(By.xpath(Selectors.SignUpInvalidPasswordmsg)).getText();
+                expect(Checkstring).to.equal(Msgs.SignUpPasswordEmptyErrormsg);
+        })   
+          /////test3:Empty UserName
+        it('should test The case of not entering UserName',async function() {
+               
+                Checkstring = await driver.findElement(By.xpath(Selectors.SignUpInvalidDispNamemsg)).getText();
+                expect(Checkstring).to.equal(Msgs.SignUpDispNameEmptyErrormsg);
+        }) 
+          /////test4:Empty DayofBirth
+        it('should test The case of not entering DayofBirth',async function() {
+                Checkstring = await driver.findElement(By.xpath(Selectors.SignUpInvalidDayOfBirthmsg)).getText();
+                expect(Checkstring).to.equal(Msgs.SignUpDayEmptyErrormsg);
+        })
+          /////test5:Empty MonthofBirth
+        it('should test The case of not entering MonthofBirth',async function() {
+                Checkstring = await driver.findElement(By.xpath(Selectors.SignUpInvalidMonthOfBirthmsg)).getText();
+                expect(Checkstring).to.equal(Msgs.SignUpMonthInvalidErrormsg);
+        }) 
+          /////test6:Empty YearofBirth
+        it('should test The case of not entering YearofBirth',async function() {
+                Checkstring = await driver.findElement(By.xpath(Selectors.SignUpInvalidyearOfBirthmsg)).getText();
+                expect(Checkstring).to.equal(Msgs.SignUpYearEmptyErrormsg);
+        }) 
+          /////test7:Empty Gender selection
+        it('should test The case of not selecting a Gender',async function() {
+                Checkstring = await driver.findElement(By.xpath(Selectors.SignUpInvalidGendermsg)).getText();
+                expect(Checkstring).to.equal(Msgs.SignUpGenderEmptyErrormsg);
+        })      
+         /////test8:Empty Account Type selection
+        it('should test The case of not selecting an Account Type',async function() {
+                Checkstring = await driver.findElement(By.xpath(Selectors.SignUpInvalidAccountTypemsg)).getText();
+                expect(Checkstring).to.equal(Msgs.SignUpAccountEmptyErrormsg);
+        }) 
 
-        ///////Female-male test cases testing
-            /////test 1: Not entered
-    it('should test the case of not choosing a gender',async function() {        
-            await driver.findElement(By.xpath(Selectors.SignUpSubmitButton)).click();///msg won't appear untill we press the submit button
-            await driver.sleep(6000);
-            Checkstring = await driver.findElement(By.xpath(Selectors.SignUpInvalidGendermsg)).getText();
-            expect(Checkstring).to.equal(Msgs.SignUpGenderEmptyErrormsg);
-    })
-        ////////Account Type test cases   ////extra for app spot
-            /////test1:Not Entered
-   // it('should test the case of not choosing an account',async function() {        
-        //await driver.findElement(By.xpath(Selectors.SignUpSubmitButton)).click();///msg won't appear untill we press the submit button
-        //await driver.sleep(6000);
-        //Checkstring = await driver.findElement(By.xpath(Selectors.SignUpAccountEmptyErrormsg)).getText();
-        //expect(Checkstring).to.equal("What type of account do you like?");
-     //})
-
-    ///signingup with facebook
-
+   
+         /////test 6 of email: Already exist 
+         it('should test the case of entering an email which is already token',async function() {      
+                await driver.findElement(By.xpath(Selectors.SignUpEmail)).clear();
+                await driver.findElement(By.xpath(Selectors.SignUpEmail)).sendKeys("Hebanassif19@gmail.com");
+                await driver.findElement(By.xpath(Selectors.SignUpPassword)).sendKeys("aya99sacsameh999");
+                await driver.findElement(By.xpath(Selectors.SignUpDispName)).sendKeys("hmvmhgcszcvgv");
+                await driver.findElement(By.xpath(Selectors.SignUpDayOfBirth)).sendKeys("9");
+                await driver.findElement(By.xpath(Selectors.SignUpMonthOfBirth)).click();
+                await driver.findElement(By.xpath(Selectors.SignUpMonthOfBirthNovember)).click();
+                await driver.findElement(By.xpath(Selectors.SignUpyearOfBirth)).sendKeys("1999");
+                await driver.findElement(By.xpath(Selectors.SignUpFemaleGender)).click();
+                await driver.findElement(By.xpath(Selectors.SignUpAccountType)).click(); 
+                await driver.findElement(By.xpath(Selectors.SignUpAccountTypeReg)).click();
+                await driver.findElement(By.xpath(Selectors.SignUpSubmitButton)).click();
+                await driver.sleep(5000);
+                Checkstring = await driver.findElement(By.xpath(Selectors.SignUpInvalidEmailTokenmsg)).getText(); //finding the msg place and copying its text
+                expect(Checkstring).to.equal(Msgs.SignUpEmailorSUserNameTakenErrormsg);//comparing the text copied with the expected one 
+            })   
+            /////test 4: already exist username     
+        it('should test the case of entering already exist Displayname',async function() { 
+                await driver.findElement(By.xpath(Selectors.SignUpEmail)).sendKeys("Hef19@gmail.com");
+                await driver.findElement(By.xpath(Selectors.SignUpDispName)).clear();        
+                await driver.findElement(By.xpath(Selectors.SignUpDispName)).sendKeys("heba");
+                await driver.findElement(By.xpath(Selectors.SignUpPassword)).sendKeys("aya99samejdhnkh999");
+                await driver.findElement(By.xpath(Selectors.SignUpDayOfBirth)).sendKeys("9");
+                await driver.findElement(By.xpath(Selectors.SignUpMonthOfBirth)).click();
+                await driver.findElement(By.xpath(Selectors.SignUpMonthOfBirthNovember)).click();
+                await driver.findElement(By.xpath(Selectors.SignUpyearOfBirth)).sendKeys("1999");
+                await driver.findElement(By.xpath(Selectors.SignUpFemaleGender)).click();
+                await driver.findElement(By.xpath(Selectors.SignUpAccountType)).click(); 
+                await driver.findElement(By.xpath(Selectors.SignUpAccountTypeReg)).click();
+                await driver.findElement(By.xpath(Selectors.SignUpSubmitButton)).click();
+                await driver.sleep(5000);
+                Checkstring = await driver.findElement(By.xpath(Selectors.SignUpInvalidEmailTokenmsg)).getText();
+                expect(Checkstring).to.equal(Msgs.SignUpEmailorSUserNameTakenErrormsg);
+        }) 
+        ////////////Testing Having an account login button
+        it('should test Having an account login button',async function() {
+                await driver.findElement(By.xpath(Selectors.SignUpLogInButton)).click();
+                await driver.sleep(5000);
+                const title = await (await driver).getCurrentUrl();
+                expect(title).to.equal("http://52.14.190.202:3000/logIn");
+        })  
         ////Sucessfull Test case
     it('should test a Successful case',async function() {
-            await driver.findElement(By.xpath(Selectors.SignUpEmail)).sendKeys("aya.sameh.99@gmail.com"); 
-            await driver.findElement(By.xpath(Selectors.SignUpConfirmEmail)).sendKeys("aya.sameh.99@gmail.com");
-            await driver.findElement(By.xpath(Selectors.SignUpPassword)).sendKeys("aya99sameh");
-            await driver.findElement(By.xpath(Selectors.SignUpDispName)).sendKeys("AyaSameh99");
+            await driver.get("http://52.14.190.202:3000/signup");///getting back to signup page to test the successful case
+            await driver.findElement(By.xpath(Selectors.SignUpEmail)).sendKeys("aygeerga.samffhfeh.99@gmail.com"); 
+            await driver.findElement(By.xpath(Selectors.SignUpPassword)).sendKeys("aya99sameh999");
+            await driver.findElement(By.xpath(Selectors.SignUpDispName)).sendKeys("AyajhSagdfxnhfmeh99");
             await driver.findElement(By.xpath(Selectors.SignUpDayOfBirth)).sendKeys("9");
             await driver.findElement(By.xpath(Selectors.SignUpMonthOfBirth)).click();
             await driver.findElement(By.xpath(Selectors.SignUpMonthOfBirthNovember)).click();
             await driver.findElement(By.xpath(Selectors.SignUpyearOfBirth)).sendKeys("1999");
             await driver.findElement(By.xpath(Selectors.SignUpFemaleGender)).click();
-            //await driver.findElement(By.xpath(Selectors.SignUpAccountType)).click(); //extra for app Spot
-            //await driver.findElement(By.xpath(Selectors.SignUpAccountTypeReg)).click();
+            await driver.findElement(By.xpath(Selectors.SignUpAccountType)).click(); 
+            await driver.findElement(By.xpath(Selectors.SignUpAccountTypeReg)).click();
+            await driver.findElement(By.xpath(Selectors.SignUpSubmitButton)).click();
+            await driver.sleep(5000);
+            const title = await (await driver).getCurrentUrl();
+            expect(title).to.equal("http://52.14.190.202:3000/signup/emailsent/");
     })   
-
-        //It is not going to submit since in the actual spotify there is "i am not a robot" icon so i commented the following line
-        //await driver.findElement(By.xpath(Selectors.SignUpSubmitButton)).click();
      
  after(async () => await driver.quit());
 });
