@@ -3,9 +3,8 @@
 /////////////////////////////
 /////SignUpErrorMsgs///////
 exports.SignUpEmailErrormsg = "The email address you entered is invalid.";
-exports.SignUpEmailTakenErrormsg = ""
+exports.SignUpEmailTakenErrormsg = "UserName and/or email already exist"
 exports.SignUpEmailEmptyErrormsg = "Please enter your email."
-exports.SignUpEmailNotMatchingErrormsg = ""
 exports.SignUpPasswordShortErrormsg = "The password you entered is too short."
 exports.SignUpPasswordEmptyErrormsg ="Please enter your password."
 exports.SignUpDispNameEmptyErrormsg ="What should we call you?"
