@@ -157,7 +157,7 @@ describe('SignUpTest', function(){
                 expect(Checkstring).to.equal(Msgs.SignUpDispNameEmptyErrormsg);
         }) 
           
-        /////test 5: OnlyNumbers    
+        /////test 4: OnlyNumbers    
         it('should test the case of entering only numbers Displayname',async function() { 
                 await driver.findElement(By.xpath(Selectors.SignUpDispName)).clear();        
                 await driver.findElement(By.xpath(Selectors.SignUpDispName)).sendKeys("12764");
