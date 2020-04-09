@@ -1,7 +1,5 @@
 "use strict";
-
 require("./helpers/setup");
-
 var wd = require("wd"),
     _ = require('underscore'),
     serverConfigs = require('./helpers/appium-servers');
@@ -11,8 +9,8 @@ describe("SignUp Test", function () {
   var driver;
   var allPassed = true;
   var appSelectors=require("./helpers/AppSelectorsAndroid");
-  
-  before(function () {
+  var CheckString;
+  before( async function () {
     var serverConfig = serverConfigs.local;
     driver = wd.promiseChainRemote(serverConfig);
     require("./helpers/logging").configure(driver);
@@ -29,25 +27,25 @@ describe("SignUp Test", function () {
       .setImplicitWaitTimeout(10000);
   });
 
-  after(function () {
+  after( async function () {
     return driver
       .quit()
       .finally(function () {
       });
   });
 
-  afterEach(function () {
+  afterEach( async function () {
     allPassed = allPassed && this.currentTest.state === 'passed';
   });
 
-  it("should press on sign up button", function () {
+  it("should press on sign up button", async  function () {
     return driver
 	  .sleep(10000)
-      .elementById(appSelectors.SignupButton)
-      .click()
-    .sleep(10000)  
-      .elementById(appSelectors.SignUpUserNameID)//to check that the next page has been reached successfuly
-     
+    .elementById(appSelectors.SignupButton).click()
+    .click()
+    .sleep(3000)  
+    .elementById(appSelectors.SignUpUserNameTextID)
+    .text().should.become('Username');
   });
   
    ///////Displayname test cases testing
@@ -56,25 +54,28 @@ describe("SignUp Test", function () {
       return driver
       .sleep(5000)
         .elementById(appSelectors.SignUpUserNameID)
-        .click()
-        .sendKeys('fffffffffffffffffffffffgggghhh')
-        ///check that it only accepts till the last g letter
+        .sendKeys('ffffffffffffffffsdddddddddddddddddssssssssssssssssssssssscfffffffgggghhh')
+        .elementById(appSelectors.SignUpUserNameID)
+        .text().should.become('ffffffffffffffffsddddddddddddddddd');
+        ///check that it only accepts till the last d letter
        
   });
     /////test 2: Not entered
   it("should test if the username is not entered", function () {
       return driver
       .sleep(5000)
+        .elementById(appSelectors.SignUpPasswordID)
+        .sendKeys('fff')
         .elementById(appSelectors.SignUpUserNameID)
+        .clear()
+        .elementById(appSelectors.SignUpNextButtonOfThePassAndUsernamePage) 
         .click()
-      .sleep(5000)  
-        .elementById(appSelectors.SignUpPasswordID)//clicking anywhere for the error msg to appear
-        ///check the error msg
-       
+        .elementById(appSelectors.SignUpUserNameTextID) ///to check that we are on the same page
+        .text().should.become('Username');
   });
    ///////Password test cases testing
     /////test 1: Very Short password
-  it("should test if the password is not entered", function () {
+  /*it("should test if the password is not entered", function () {
       return driver
       .sleep(5000)
         .elementById(appSelectors.SignUpPasswordID)
@@ -161,12 +162,12 @@ describe("SignUp Test", function () {
           .click()
          /////checking error msg
         
-  });
+  });*/
 
-   ///////confirm email test cases testing //they didn't do it
-    //test 1: confirm email doesn't match 
-    //test 2: invalid email 
-    //test 3: Not entered 
+   ////lama bados back el 7aga mawgoda bas law dost next ba3d ma rege3t kol 7aga betetmese7
     ///signingup with facebook      
- 
+ ///error msgs of the date just appears for few seconds
+ //date of birth limits[]for validdation
+ //date of birth limits[] as to be very young to have an account
+ ///kol magy a8yr el date beyft7 el calender 3ala el current date we74 awe eny hafdl arg3 keter 3a4an ageb el birth date
 });
