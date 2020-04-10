@@ -105,10 +105,17 @@ exports.EditProfileSuccessMessageXpath ='/html/body/div[2]/div[2]/div[2]/div/div
 exports.ProfileDropDownlistXpath='//*[@id="profile"]';
 exports.ProfileDropDownlistLogOutXpath='//*[@id="profile"]/li/div/a[2]';
 
+
 //Set Device Password
 exports.SetDevicePasswordXpath='//*[@id="root"]/div/div/div/div/div[1]/div/div/a[3]';
+exports.SetDevicePasswordHeaderXpath='//*[@id="root"]/div/div/div/div/div[2]/div/div/div[1]/h1';
+exports.SetDevicePasswordCurrentPasswordPassXpath='//*[@id="newPassword-input1"]';
+exports.SetDevicePasswordNewPasswordtPassXpath='//*[@id="newPassword-input2"]';
+exports.SetDevicePasswordCurrentPasswordPassErrorXpath='//*[@id="missing-current"]';
+exports.SetDevicePasswordNewPasswordtPassErrorXpath='//*[@id="missing-new"]';
+exports.SetDevicePasswordSubmitButtonXpath='//*[@id="container2"]/form/button';
 
-
+exports.SpotifyLogoHeader='//*[@id="root"]/div/div/section/nav/div/a';
 exports.SpotifyLogoFooter='//*[@id="root"]/div/div/footer/div[1]/div/div[1]/a';
 exports.HomeScreenMusiceForEveryOneXpath='//*[@id="root"]/div/div/div[1]/div/div/h1';
 exports.HelpButtonFooterXpath='//*[@id="root"]/div/div/footer/div[1]/div/div[2]/ul/li[1]/a';

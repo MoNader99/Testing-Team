@@ -88,6 +88,103 @@ describe('Edit Profile Test', function () {
         await driver.sleep(5000);
     });
 
+    it('should test Account Overview button', async function () {
+        await driver.findElement(By.xpath(Selectors.AccountOverviewButtonXpath)).click();
+        await driver.sleep(5000);
+        Checkstring = await driver.findElement(By.xpath(Selectors.AccountOverviewHeaderXpath)).getText();
+        expect(Checkstring).to.equal('Account overview');
+        Checkstring = await driver.findElement(By.xpath(Selectors.AccountOverviewEmailXpath)).getText();
+        expect(Checkstring).to.equal(TestPerson.EditProfileCurrentEmailAddress);
+        Checkstring = await driver.findElement(By.xpath(Selectors.AccountOverviewUsernameXpath)).getText();
+        expect(Checkstring).to.equal(TestPerson.EditProfileCurrentUsername);
+        Checkstring = await driver.findElement(By.xpath(Selectors.AccountOverviewGenderXpath)).getText();
+        expect(Checkstring).to.equal(TestPerson.EditProfileCurrentGender);
+        Checkstring = await driver.findElement(By.xpath(Selectors.AccountOverviewBirthdateXpath)).getText();
+        expect(Checkstring).to.equal(TestPerson.EditProfileCurrenDateOfbirth);
+        await driver.sleep(3000);
+
+    });
+
+    it('should test set password button', async function () {
+        await driver.sleep(3000);
+        await driver.findElement(By.xpath(Selectors.SetDevicePasswordXpath)).click();
+        await driver.sleep(5000);
+        Checkstring = await driver.findElement(By.xpath(Selectors.SetDevicePasswordHeaderXpath)).getText();
+        expect(Checkstring).to.equal('Set device Password');
+    });
+
+    it('should test Spotify logo in the footer', async function () {
+        await driver.sleep(3000);
+        await (await driver.findElement(By.xpath(Selectors.SpotifyLogoFooter))).click();
+        await driver.sleep(3000);
+        Checkstring = await driver.findElement(By.xpath(Selectors.HomeScreenMusiceForEveryOneXpath)).getText();
+        expect(Checkstring).to.equal('Music For Everyone.');
+    });
+
+    it('should test Help button in the footer', async function () {
+        await driver.sleep(3000);
+        await (await driver.findElement(By.xpath(Selectors.HelpButtonFooterXpath))).click();
+        await driver.sleep(3000);
+        Checkstring = await driver.findElement(By.xpath(Selectors.HelpPageHeaderXpath)).getText();
+        expect(Checkstring).to.equal('How can we help you?');
+    });
+
+    it('should test Web Player button in the footer', async function () {
+        await driver.sleep(3000);
+        await (await driver.findElement(By.xpath(Selectors.WebPlayerButtonFooterXpath))).click();
+        await driver.sleep(3000);
+        Checkstring = await driver.findElement(By.xpath(Selectors.WebPlayerRecentlyPlayedHeaderXpath)).getText();
+        expect(Checkstring).to.equal('Recently played');
+        await (await driver.findElement(By.xpath(Selectors.WebPlayerXpathDropDownlistXpath))).click();
+        await driver.sleep(3000);
+        await (await driver.findElement(By.xpath(Selectors.WebPlayerDropDownlistProfileXpath))).click();
+        await driver.sleep(3000);
+    });
+
+    it('should test Facebook button in the footer(no link yet)', async function () {
+        await driver.sleep(3000);
+        await (await driver.findElement(By.xpath(Selectors.FacebookButtonFooterXpath))).click();
+        await driver.sleep(3000);
+        //Checkstring = await driver.findElement(By.xpath(Selectors.HelpPageHeaderXpath)).getText();
+        //expect(Checkstring).to.equal('How can we help you?');
+    });
+
+    it('should test Spotify logo in the header', async function () {
+        await driver.sleep(3000);
+        await (await driver.findElement(By.xpath(Selectors.SpotifyLogoHeader))).click();
+        await driver.sleep(3000);
+        Checkstring = await driver.findElement(By.xpath(Selectors.HomeScreenMusiceForEveryOneXpath)).getText();
+        expect(Checkstring).to.equal('Music For Everyone.');
+    });
+
+    it('should test Help button in the header', async function () {
+        await driver.sleep(3000);
+        await (await driver.findElement(By.xpath(Selectors.HelpButtonHeaderXpath))).click();
+        await driver.sleep(3000);
+        Checkstring = await driver.findElement(By.xpath(Selectors.HelpPageHeaderXpath)).getText();
+        expect(Checkstring).to.equal('How can we help you?');
+    });
+
+    it('should test Web Player button in the header', async function () {
+        await driver.sleep(3000);
+        await (await driver.findElement(By.xpath(Selectors.WebPlayerButtonHeaderXpath))).click();
+        await driver.sleep(3000);
+        Checkstring = await driver.findElement(By.xpath(Selectors.WebPlayerRecentlyPlayedHeaderXpath)).getText();
+        expect(Checkstring).to.equal('Recently played');
+        await (await driver.findElement(By.xpath(Selectors.WebPlayerXpathDropDownlistXpath))).click();
+        await driver.sleep(3000);
+        await (await driver.findElement(By.xpath(Selectors.WebPlayerDropDownlistProfileXpath))).click();
+        await driver.sleep(3000);
+    });
+
+    it('should test Premium button in the header', async function () {
+        await driver.sleep(3000);
+        await (await driver.findElement(By.xpath(Selectors.PremiumButtonHeaderXpath))).click();
+        await driver.sleep(3000);
+        Checkstring = await driver.findElement(By.xpath(Selectors.PremiumPageHeaderXpath)).getText();
+        expect(Checkstring).to.equal('Get Premium free for 1 month');
+    });
+
     afterEach('Log out from profile and close the broswer', async function () {
         await driver.sleep(3000);
         await driver.findElement(By.xpath(Selectors.ProfileDropDownlistXpath)).click();

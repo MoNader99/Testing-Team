@@ -9,7 +9,7 @@ describe('Edit Profile Test', function () {
     var driver = new Builder().forBrowser('firefox').build();
     var Checkstring;
 
-    beforeEach('Open profile and go to edit proile page', async function () {
+    beforeEach('Open Website then log in and go to home page', async function () {
         await driver.get('http://52.14.190.202:3000/');
         await driver.sleep(5000);
         await driver.findElement(By.xpath(Selectors.LoginButtonHomeScreenXpath)).click()
@@ -20,56 +20,11 @@ describe('Edit Profile Test', function () {
         await driver.sleep(5000);
         Checkstring = await driver.findElement(By.xpath(Selectors.AccountOverviewHeaderXpath)).getText();
         expect(Checkstring).to.equal('Account overview');
-
+        await driver.sleep(3000);
+        Checkstring = await driver.findElement(By.xpath(Selectors.HomeScreenMusiceForEveryOneXpath)).getText();
+        expect(Checkstring).to.equal('Music For Everyone.');
     });
-
-    it('should check if the info exist', async function () {
-        Checkstring = await driver.findElement(By.xpath(Selectors.AccountOverviewEmailXpath)).getText();
-        expect(Checkstring).to.equal(TestPerson.EditProfileCurrentEmailAddress);
-        Checkstring = await driver.findElement(By.xpath(Selectors.AccountOverviewUsernameXpath)).getText();
-        expect(Checkstring).to.equal(TestPerson.EditProfileCurrentUsername);
-        Checkstring = await driver.findElement(By.xpath(Selectors.AccountOverviewGenderXpath)).getText();
-        expect(Checkstring).to.equal(TestPerson.EditProfileCurrentGender);
-        Checkstring = await driver.findElement(By.xpath(Selectors.AccountOverviewBirthdateXpath)).getText();
-        expect(Checkstring).to.equal(TestPerson.EditProfileCurrenDateOfbirth);
-        await driver.sleep(3000);
-    });
-
-    it('should reload the page then check if the info still exist', async function () {
-        await driver.navigate().refresh();
-        await driver.sleep(3000);
-        Checkstring = await driver.findElement(By.xpath(Selectors.AccountOverviewEmailXpath)).getText();
-        expect(Checkstring).to.equal(TestPerson.EditProfileCurrentEmailAddress);
-        Checkstring = await driver.findElement(By.xpath(Selectors.AccountOverviewUsernameXpath)).getText();
-        expect(Checkstring).to.equal(TestPerson.EditProfileCurrentUsername);
-        Checkstring = await driver.findElement(By.xpath(Selectors.AccountOverviewGenderXpath)).getText();
-        expect(Checkstring).to.equal(TestPerson.EditProfileCurrentGender);
-        Checkstring = await driver.findElement(By.xpath(Selectors.AccountOverviewBirthdateXpath)).getText();
-        expect(Checkstring).to.equal(TestPerson.EditProfileCurrenDateOfbirth);
-        await driver.sleep(3000);
-    });
-
-    it('should test edit profile button', async function () {
-        await driver.sleep(3000);
-        await (await driver.findElement(By.xpath(Selectors.EditProfileButtonXpath2))).click();
-        await driver.sleep(3000);
-        Checkstring = await driver.findElement(By.xpath(Selectors.EditProfilePageHeaderXpath)).getText();
-        expect(Checkstring).to.equal('Edit Profile');
-        Checkstring = await driver.findElement(By.xpath(Selectors.EditProfileEmailXpath)).getText();
-        expect(Checkstring).to.equal(TestPerson.EditProfileCurrentEmailAddress);
-        Checkstring = await driver.findElement(By.xpath(Selectors.EditProfileUsernameXpath)).getAttribute("value");
-        expect(Checkstring).to.equal(TestPerson.EditProfileCurrentUsername);
-        await driver.sleep(3000);
-    });
-
-    it('should test set password button', async function () {
-        await driver.sleep(3000);
-        await driver.findElement(By.xpath(Selectors.SetDevicePasswordXpath)).click();
-        await driver.sleep(5000);
-        Checkstring = await driver.findElement(By.xpath(Selectors.SetDevicePasswordHeaderXpath)).getText();
-        expect(Checkstring).to.equal('Set device Password');
-    });
-
+    
     it('should test Spotify logo in the footer', async function () {
         await driver.sleep(3000);
         await (await driver.findElement(By.xpath(Selectors.SpotifyLogoFooter))).click();
@@ -86,14 +41,6 @@ describe('Edit Profile Test', function () {
         expect(Checkstring).to.equal('How can we help you?');
     });
 
-    it('should test Help button in the header', async function () {
-        await driver.sleep(3000);
-        await (await driver.findElement(By.xpath(Selectors.HelpButtonHeaderXpath))).click();
-        await driver.sleep(3000);
-        Checkstring = await driver.findElement(By.xpath(Selectors.HelpPageHeaderXpath)).getText();
-        expect(Checkstring).to.equal('How can we help you?');
-    });
-
     it('should test Web Player button in the footer', async function () {
         await driver.sleep(3000);
         await (await driver.findElement(By.xpath(Selectors.WebPlayerButtonFooterXpath))).click();
@@ -104,6 +51,14 @@ describe('Edit Profile Test', function () {
         await driver.sleep(3000);
         await (await driver.findElement(By.xpath(Selectors.WebPlayerDropDownlistProfileXpath))).click();
         await driver.sleep(3000);
+    });
+
+    it('should test Help button in the header', async function () {
+        await driver.sleep(3000);
+        await (await driver.findElement(By.xpath(Selectors.HelpButtonHeaderXpath))).click();
+        await driver.sleep(3000);
+        Checkstring = await driver.findElement(By.xpath(Selectors.HelpPageHeaderXpath)).getText();
+        expect(Checkstring).to.equal('How can we help you?');
     });
 
     it('should test Web Player button in the header', async function () {
