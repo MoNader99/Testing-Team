@@ -18,9 +18,29 @@ exports.SignupDateOfBirthOkButton="android:id/button1"; //ok
 exports.SignupDateOfBirthCancelButton="android:id/button2"; //cancel
 exports.SignupYear="android:id/date_picker_header_year";
 exports.SignupYearsIDInSwipeList="android:id/text1";
-exports.SignupYear2007BYXPATH="/hierarchy/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.DatePicker/android.widget.LinearLayout/android.widget.ViewAnimator/android.widget.ListView/android.widget.TextView[1]"
 exports.SignupDoneButton="com.example.spotify:id/doneButton";
+exports.AfterSignupDoneButtonTitleText="com.example.spotify:id/titleOfFragment";
+//By Xpath
+exports.SignupYear2007BYXPATH="/hierarchy/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.DatePicker/android.widget.LinearLayout/android.widget.ViewAnimator/android.widget.ListView/android.widget.TextView[1]";
+exports.SignupYear2022BYXPATH="/hierarchy/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.DatePicker/android.widget.LinearLayout/android.widget.ViewAnimator/android.widget.ListView/android.widget.TextView[4]";
+///////////SignUpErrorMsgs Selectors ByText/////////////
+exports.EmailErrormsgByText="";
+///////////////////////////////////////
+///SearchPage Selectors all by Id/////
+exports.SearchButton="com.example.spotify:id/imageView3";
+exports.TOPSearchiCON="com.example.spotify:id/action_search";
+exports.SearchText="com.example.spotify:id/searchText";
+exports.SearchBar="com.example.spotify:id/search_src_text";
+///SearchPage Selectors all by Xpath/////
+exports.SearchRockResult="/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout[2]/android.view.ViewGroup/android.widget.GridView/android.view.ViewGroup[1]/android.widget.TextView";
+exports.SearchHipHopResult="/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout[2]/android.view.ViewGroup/android.widget.GridView/android.view.ViewGroup[2]/android.widget.TextView";
+exports.SearchPOPResult="/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout[2]/android.view.ViewGroup/android.widget.GridView/android.view.ViewGroup[3]/android.widget.TextView";
+exports.SearchCountryResult="/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout[2]/android.view.ViewGroup/android.widget.GridView/android.view.ViewGroup[4]/android.widget.TextView";
+exports.SearchArabicResult="/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout[2]/android.view.ViewGroup/android.widget.GridView/android.view.ViewGroup[5]/android.widget.TextView";
+exports.SearchRAndBResult="/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout[2]/android.view.ViewGroup/android.widget.GridView/android.view.ViewGroup[6]/android.widget.TextView";
+exports.FirstSearchResultText="/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout[2]/android.view.ViewGroup/androidx.recyclerview.widget.RecyclerView/android.view.ViewGroup[1]/android.widget.TextView[1]";
 
+//////////////////////////////////
 ///////EditProfileSelectors//////
 exports.SettingButtonID="com.example.spotify:id/settingsImageview";
 
@@ -48,10 +68,4 @@ exports.LoginPasswordID='com.example.spotify:id/passwordLoginEdittext';
 exports.LoginSubmitID='com.example.spotify:id/loginButton';
                       
 
-exports.AfterSignupDoneButtonTitleText="com.example.spotify:id/titleOfFragment";
-/////by Text since they have same id
-exports.SignUpFemaleGenderID="F";//both have same id
-exports.SignUpMaleGenderID="M";//both have same id
-exports.SignupDateOfBirthDayButton="1";
-///////////SignUpErrorMsgs Selectors ByText/////////////
-exports.EmailErrormsgByText="";
+

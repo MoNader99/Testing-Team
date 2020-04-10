@@ -385,8 +385,52 @@ describe("SignUp Test", function () {
      .text().should.become('Date of birth');
   });
    ///date of birth
-       ////test1: 
-
+       ////test1:a very old date 
+       it("should test putting a very old date which must be refused", async function () {
+         return driver
+            .sleep(3000)
+              .elementById(appSelectors.SignupDateOfBirthId)
+              .click()
+              .elementById(appSelectors.SignupYear)
+              .click()
+              .elementById(appSelectors.SignupYearsIDInSwipeList)
+              .then(function (els){
+                
+                  return driver.swipe({
+                    startX: '70', startY: '543',
+                    endX: '70', endY: '1750',
+                    duration: 200
+                });
+              })
+              .elementByXPath(appSelectors.SignupYear2007BYXPATH)
+              .click()
+              .elementById(appSelectors.SignupDateOfBirthOkButton)
+              .click()
+              //.elementById(appSelectors.SignupDoneButton)
+              //.click()
+              //.sleep(3000)
+              //.elementById(appSelectors.SignupDateOfBirthTextId)
+              //.text().should.become('Date of birth');
+            
+        });
+      ////test2: current date
+      it("should test putting a recent date which must be refused", async function () {
+        return driver
+            .sleep(3000)
+              .elementById(appSelectors.SignupDateOfBirthId)
+              .click()
+              .elementById(appSelectors.SignupYear)
+              .click()
+              .elementByXPath(appSelectors.SignupYear2022BYXPATH)
+              .click()
+              .elementById(appSelectors.SignupDateOfBirthOkButton)
+              .click()
+              //.elementById(appSelectors.SignupDoneButton)
+              //.click()
+              //.sleep(3000)
+              //.elementById(appSelectors.SignupDateOfBirthTextId)
+              //.text().should.become('Date of birth');  
+      });
        ///Successful Case to Complete signUp Script
   it("should put a successful date to complete signingUp", async function () {
     return driver
