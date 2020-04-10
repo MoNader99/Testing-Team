@@ -18,6 +18,7 @@ exports.SignupDateOfBirthOkButton="android:id/button1"; //ok
 exports.SignupDateOfBirthCancelButton="android:id/button2"; //cancel
 exports.SignupYear="android:id/date_picker_header_year";
 exports.SignupYearsIDInSwipeList="android:id/text1";
+exports.SignupYear2007BYXPATH="/hierarchy/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.DatePicker/android.widget.LinearLayout/android.widget.ViewAnimator/android.widget.ListView/android.widget.TextView[1]"
 exports.SignupDoneButton="com.example.spotify:id/doneButton";
 
 ///////EditProfileSelectors//////

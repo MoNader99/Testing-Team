@@ -399,12 +399,15 @@ describe("SignUp Test", function () {
           .then(function (els){
             
               return driver.swipe({
-                startX: '70', startY: '755',
-                endX: '70', endY: '1296',
-                duration: 800
+                startX: '70', startY: '543',
+                endX: '70', endY: '1750',
+                duration: 500
             });
           })
-          
+          .elementByXPath(appSelectors.SignupYear2007BYXPATH)
+          .click()
+          .elementById(appSelectors.SignupDateOfBirthOkButton)
+          .click()
           //.elementById(appSelectors.SignupDoneButton)
           //.click()
           //.sleep(3000)
