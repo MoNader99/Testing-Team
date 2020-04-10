@@ -16,12 +16,13 @@ exports.SignupDateOfBirthPrevButton="android:id/prev";
 exports.SignupDateOfBirthNextButton="android:id/next";
 exports.SignupDateOfBirthOkButton="android:id/button1"; //ok
 exports.SignupDateOfBirthCancelButton="android:id/button2"; //cancel
+exports.SignupYear="android:id/date_picker_header_year";
+exports.SignupYearsIDInSwipeList="android:id/text1";
 exports.SignupDoneButton="com.example.spotify:id/doneButton";
 exports.AfterSignupDoneButtonTitleText="com.example.spotify:id/titleOfFragment";
 /////by Text since they have same id
 exports.SignUpFemaleGenderID="F";//both have same id
 exports.SignUpMaleGenderID="M";//both have same id
 exports.SignupDateOfBirthDayButton="1";
-exports.AfterSignupDoneButtonTitleTextMsg="Made for you";
 ///////////SignUpErrorMsgs Selectors ByText/////////////
 exports.EmailErrormsgByText="";
