@@ -1,13 +1,13 @@
 "use strict";
 require("./helpers/setup");
+ 
 var wd = require("wd"),
     _ = require('underscore'),
     serverConfigs = require('./helpers/appium-servers');
-
+    Q = require('q');
 describe("SignUp Test", function () {
   this.timeout(300000);
   var driver;
-  var Q;
   var allPassed = true;
   var appSelectors=require("./helpers/AppSelectorsAndroid");
   before( async function () {
