@@ -3,8 +3,11 @@ require("./helpers/setup");
  
 var wd = require("wd"),
     _ = require('underscore'),
+    actions = require("./helpers/actions"),
     serverConfigs = require('./helpers/appium-servers');
-    Q = require('q');
+  wd.addPromiseChainMethod('swipe', actions.swipe);
+
+
 describe("SignUp Test", function () {
   this.timeout(300000);
   var driver;
@@ -386,7 +389,7 @@ describe("SignUp Test", function () {
 
        ///Successful Case to Complete signUp Script
   it("should put a successful date to complete signingUp", async function () {
-        return driver
+    return driver
         .sleep(3000)
           .elementById(appSelectors.SignupDateOfBirthId)
           .click()
@@ -394,20 +397,14 @@ describe("SignUp Test", function () {
           .click()
           .elementById(appSelectors.SignupYearsIDInSwipeList)
           .then(function (els){
-            return Q.all([
-              els[7].getLocation(),
-              els[3].getLocation()
-            ]).then(function (locs){
+            
               return driver.swipe({
-                startX: locs[0].x, startY: locs[0].y,
-                endX: locs[1].x, endY: locs[1].y,
+                startX: '70', startY: '755',
+                endX: '70', endY: '1296',
                 duration: 800
-              });
             });
           })
-          .click()
-          .elementById(appSelectors.SignupDateOfBirthOkButton)
-          .click()
+          
           //.elementById(appSelectors.SignupDoneButton)
           //.click()
           //.sleep(3000)
