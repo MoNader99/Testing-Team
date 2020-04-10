@@ -86,7 +86,14 @@ describe('SignUpTest', function(){
                 Checkstring = await driver.findElement(By.xpath(Selectors.SignUpInvalidEmailmsg)).getText(); //finding the msg place and copying its text
                 expect(Checkstring).to.equal(Msgs.SignUpEmailInvalidErrormsg);//comparing the text copied with the expected one 
         })*/
-            
+        /////test 6:invalid email 2.345@2.46.ff
+        it('should test the case of entering an invalid email(2.345@2.46.ff)',async function() {  
+            await driver.findElement(By.xpath(Selectors.SignUpEmail)).clear();      
+            await driver.findElement(By.xpath(Selectors.SignUpEmail)).sendKeys("2.345@2.46.ff");
+            await driver.sleep(5000);
+            Checkstring = await driver.findElement(By.xpath(Selectors.SignUpInvalidEmailmsg)).getText(); //finding the msg place and copying its text
+            expect(Checkstring).to.equal(Msgs.SignUpEmailInvalidErrormsg);//comparing the text copied with the expected one 
+        })     
 
 
        ///////Password test cases testing
@@ -128,6 +135,14 @@ describe('SignUpTest', function(){
                 await driver.sleep(5000);
                 Checkstring = await driver.findElement(By.xpath(Selectors.SignUpInvalidPasswordmsg)).getText();
                 expect(Checkstring).to.equal(Msgs.SignUpPasswordShortErrormsg);
+        })
+        /////test 6:only spaces
+        it('should test the case of entering only spaces password',async function() { 
+            await driver.findElement(By.xpath(Selectors.SignUpPassword)).clear();
+            await driver.findElement(By.xpath(Selectors.SignUpPassword)).sendKeys("             ");
+            await driver.sleep(5000);
+            Checkstring = await driver.findElement(By.xpath(Selectors.SignUpInvalidPasswordmsg)).getText();
+            expect(Checkstring).to.equal(Msgs.SignUpPasswordShortErrormsg);
         })
 
 
@@ -173,6 +188,14 @@ describe('SignUpTest', function(){
                 Checkstring = await driver.findElement(By.xpath(Selectors.SignUpInvalidDispNamemsg)).getText();
                 expect(Checkstring).to.equal(Msgs.SignUpDispNameEmptyErrormsg);
         })    
+        /////test 6: username contain spaces  
+        it('should test the case of entering username contain spaces  ',async function() { 
+            await driver.findElement(By.xpath(Selectors.SignUpDispName)).clear();        
+            await driver.findElement(By.xpath(Selectors.SignUpDispName)).sendKeys("     fg     ");
+            await driver.sleep(5000);
+            Checkstring = await driver.findElement(By.xpath(Selectors.SignUpInvalidDispNamemsg)).getText();
+            expect(Checkstring).to.equal(Msgs.SignUpDispNameEmptyErrormsg);
+    })  
         
 
        ///////Day of birth test cases testing
