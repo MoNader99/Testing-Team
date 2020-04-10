@@ -8,7 +8,10 @@ var Selectors=require("../AppSelectors");
 describe('SearchPageTest', function(){
     this.timeout('1500000000');
     var Checkstring;
-    it('should go to spotify.com and get its title',async function() {
+    var Checkstring2;
+    var Checkstring3;
+    var found;
+    it('should go to spotify and get its title',async function() {
         await driver.get("http://52.14.190.202:3000/");
         const titleSpotHome = await (await driver).getCurrentUrl();
         await driver.sleep(5000);
@@ -32,11 +35,87 @@ describe('SearchPageTest', function(){
         Checkstring=await driver.findElement(By.xpath(Selectors.YourTopGenreElementSearchPage)).getText();
         expect(Checkstring).to.equal('Your top genres');
     })
-    ///// some special chars search forever such as (  )  + _ * takes too much time ///including spaces
-    /////all searches takes alot of time
-    ///// some special chars such as % no results found and at other time results are found but the results don't contain % 
-   //// infinity input such as &"netvkghvkdfuvhjdfhbvkdjbashbkhsjdcbkhsdbchsdcbhdcbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbjjjjjjjjjjjjjjjjjjjjjjjjjjjjjsssssssssssssssssssssskkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzoooooooooooooooooooooooooooooooooooooooooooooooookaaaaaaaaaaaaaaaaaaaa
-   ///see the video i recorded when i putted the above input (flashing of the images)  
+    ///testing the search stability
+    it('should press on Search bar and enter a letter',async function() {
+        await driver.findElement(By.xpath(Selectors.SearchBar)).sendKeys("n");
+        await driver.sleep(5000);
+        Checkstring=await driver.findElement(By.xpath(Selectors.TopResultsText)).getText();//checking that it shows results
+        expect(Checkstring).to.equal('Top result');
+    })
+    it('should check that the results still the same if we click anywhere on the border',async function() {
+        await driver.sleep(3000);
+        Checkstring=await driver.findElement(By.xpath(Selectors.TopSearchResultAfterSearching)).getText();
+        await driver.findElement(By.xpath(Selectors.BorderSearchPage)).click();
+        await driver.sleep(3000);
+        Checkstring2=await driver.findElement(By.xpath(Selectors.TopSearchResultAfterSearching)).getText();
+        expect(Checkstring2).to.equal(Checkstring);
+    })
+    it('should check that the results still the same if we click on the search bar',async function() {
+        await driver.findElement(By.xpath(Selectors.SearchBar)).click();
+        await driver.sleep(3000);
+        Checkstring3=await driver.findElement(By.xpath(Selectors.TopSearchResultAfterSearching)).getText();
+        expect(Checkstring3).to.equal(Checkstring);
+    })
+    // some results of the letter searched for doesn't contain the letter
+    it('should test if the results contains the char that i searched for',async function() {
+        await driver.sleep(2000);
+        await driver.findElement(By.xpath(Selectors.SearchBar)).sendKeys('\b');///clear() is not working here !!!!
+        await driver.sleep(2000);
+        await driver.findElement(By.xpath(Selectors.SearchBar)).sendKeys("c");
+        await driver.sleep(3000);
+        found=0;
+        Checkstring=await driver.findElement(By.xpath(Selectors.TopSearchResultAfterSearching)).getText();
+        if (Checkstring.indexOf('c') > -1){
+         found=1;   
+        }
+        expect(found).to.equal("1");
+    })
+    //$ # ^ &  el space shows same results not including the char searched on //+  and the space shows results
+    it('should test if it searches for special chars and if the results contain this special char',async function() {
+        await driver.sleep(3000);
+        await driver.findElement(By.xpath(Selectors.SearchBar)).sendKeys('\b');///clear() is not working here !!!!
+        await driver.sleep(2000);
+        await driver.findElement(By.xpath(Selectors.SearchBar)).sendKeys("#");
+        await driver.sleep(3000);
+        found=0;
+        Checkstring=await driver.findElement(By.xpath(Selectors.TopSearchResultAfterSearching)).getText();
+        if (Checkstring.indexOf('#') > -1){
+         found=1;   
+        }
+        expect(found).to.equal("1");
+    })
+    
+    ///// some special chars search forever such as (  ) * takes forever time
+    it('should test that for any input it does not search forever',async function() {
+        await driver.findElement(By.xpath(Selectors.SearchBar)).sendKeys('\b');
+        await driver.findElement(By.xpath(Selectors.SearchBar)).sendKeys("(");
+        await driver.sleep(5000);
+        Checkstring=await driver.findElement(By.xpath(Selectors.TopResultsText)).getText();//checking that it shows results
+        expect(Checkstring).to.equal('Top result');
+    })
+    //searching on more than one letter
+    it('should test searching on more than one letter',async function() {
+        await driver.sleep(3000);
+        await driver.findElement(By.xpath(Selectors.SearchBar)).sendKeys('\b');///clear() is not working here !!!!
+        await driver.sleep(2000);
+        await driver.findElement(By.xpath(Selectors.SearchBar)).sendKeys("Can");
+        await driver.sleep(3000);
+        found=0;
+        Checkstring=await driver.findElement(By.xpath(Selectors.TopSearchResultAfterSearching)).getText();
+        if (Checkstring.indexOf('Can') > -1){
+         found=1;   
+        }
+        expect(found).to.equal(1);
+    })
+   //// any infinity input shows results
+   it('should test that for any infinity input it shows No results found',async function() {
+        await driver.findElement(By.xpath(Selectors.SearchBar)).sendKeys('\b');
+        await driver.findElement(By.xpath(Selectors.SearchBar)).sendKeys("&netvkghvkdfuvhjdfhbvkdjbashbkhsjdcbkhsdbchsdcbhdcbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbjjjjjjjjjjjjjjjjjjjjjjjjjjjjjsssssssssssssssssssssskkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzoooooooooooooooooooooooooooooooooooooooooooooooookaaaaaaaaaaaaaaaaaaaa");
+        await driver.sleep(5000);
+        Checkstring=await driver.findElement(By.xpath(Selectors.NoResultFoundText)).getText();//checking that it shows results
+        expect(Checkstring).to.equal('No results found for "&netvkghvkdfuvhjdfhbvkdjbashbkhsjdcbkhsdbchsdcbhdcbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbjjjjjjjjjjjjjjjjjjjjjjjjjjjjjsssssssssssssssssssssskkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzoooooooooooooooooooooooooooooooooooooooooooooooookaaaaaaaaaaaaaaaaaaaa"');
+    })
+
 
     
     after(async () => await driver.quit());
