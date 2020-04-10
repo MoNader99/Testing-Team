@@ -7,11 +7,11 @@ var TestPerson=require("../TestCasesInfo");
 
 describe('Change Password Test', function() {
     this.timeout('1500000000');
-    const driver = new Builder().forBrowser('firefox').build();
+    const driver = new Builder().forBrowser(require("../Driver").Drive).build();
     var Checkstring;
 
     beforeEach('Open profile and go to Set Password page',async function(){
-        await driver.get('http://52.14.190.202:5000/')
+        await driver.get('http://52.14.190.202:3000/')
         await driver.sleep(5000);
         await driver.findElement(By.xpath(Selectors.LoginButtonHomeScreenXpath)).click()
         await driver.sleep(5000);
@@ -40,7 +40,7 @@ describe('Change Password Test', function() {
         await driver.findElement(By.xpath(Selectors.SetDevicePasswordSubmitButtonXpath)).click();
         await driver.sleep(5000);
         Checkstring = await driver.findElement(By.xpath(Selectors.SetDevicePasswordCurrentPasswordPassErrorXpath)).getText();
-        expect(Checkstring).to.equal("Enter a password to continue.");
+        expect(Checkstring).to.equal("Enter your current password.");
     });
 
     it('should change password with empty new password', async function() {
@@ -48,7 +48,7 @@ describe('Change Password Test', function() {
         await driver.findElement(By.xpath(Selectors.SetDevicePasswordSubmitButtonXpath)).click();
         await driver.sleep(5000);
         Checkstring = await driver.findElement(By.xpath(Selectors.SetDevicePasswordNewPasswordtPassErrorXpath)).getText();
-        expect(Checkstring).to.equal("Enter a password to continue.");
+        expect(Checkstring).to.equal("Enter your new password.");
     });
 
     it('should change password with wrong current password', async function() {
@@ -60,7 +60,7 @@ describe('Change Password Test', function() {
         expect(Checkstring).to.equal("Sorry, wrong password");
     });
 
-    it('should test the case of entering a very new short new password',async function() { 
+    it('should test the case of entering a very short new password',async function() { 
         await driver.findElement(By.xpath(Selectors.SetDevicePasswordCurrentPasswordPassXpath)).sendKeys(TestPerson.EditProfileCurrentEmailPassword);
         await driver.findElement(By.xpath(Selectors.SetDevicePasswordNewPasswordtPassXpath)).sendKeys("aya");
         await driver.findElement(By.xpath(Selectors.SetDevicePasswordSubmitButtonXpath)).click();

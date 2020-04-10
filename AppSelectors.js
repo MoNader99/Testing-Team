@@ -163,3 +163,17 @@ exports.NoPasswordEnteredXpath = "//p[@id='missing-password']";
 //Log out Selectors
 exports.ProfileXpath = "//a[contains(text(),'Profile')]";
 exports.LogoutFromProfileXpath = "//a[contains(text(),'Sign out')]";
+
+//ForgetPassword Selectors
+exports.ForgetPasswordButtonXpath='//*[@id="root"]/div/div/div[2]/a[2]';
+exports.ForgetPasswordPageHeader='//*[@id="root"]/div/div/div[2]/h1/strong';
+exports.ForgetPasswordPageEmailXpath='//*[@id="my-text"]';
+exports.ForgetPasswordPageSendButtonXpath='//*[@id="anchor"]';
+exports.ForgetPasswordPageEmailErrMsgXpath='//*[@id="empty-input"]';
+exports.ForgetPasswordPageVerificationMsgXpath='//*[@id="paragraph"]';
+exports.ForgetPasswordPageHelpButtonXpath='/html/body/div/div/div/div[3]/nav/div/div[1]/ul/div[1]/a/span';
+exports.ForgetPasswordPageLogInButtonXpath='/html/body/div/div/div/div[3]/nav/div/div[1]/ul/div[2]';
+exports.ForgetPasswordPageSignUpButtonXpath='/html/body/div/div/div/div[3]/nav/div/div[1]/ul/div[3]/a/span';
+exports.ForgetPasswordPageSpotifyLogo='//*[@id="top-nav"]/div';
+exports.SignUpHeaderXpath='//*[@id="root"]/div/div/div[2]/div/h2[2]';
+exports.SigninHeaderXpath='//*[@id="root"]/div/div/div[2]/p[1]';
