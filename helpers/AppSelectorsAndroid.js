@@ -42,6 +42,11 @@ exports.EditProfileCurrentPasswordID='com.example.spotify:id/passworEditText';
 exports.EditProfileNewPasswordID='com.example.spotify:id/newpassworEditText';
 exports.EditProfileSaveButtonID='com.example.spotify:id/SavetextView';
 
+exports.LoginButtonID='com.example.spotify:id/login';
+exports.LoginEmailAddressID='com.example.spotify:id/usernameLoginEdittext';
+exports.LoginPasswordID='com.example.spotify:id/passwordLoginEdittext';
+exports.LoginSubmitID='com.example.spotify:id/loginButton';
+                      
 
 exports.AfterSignupDoneButtonTitleText="com.example.spotify:id/titleOfFragment";
 /////by Text since they have same id
