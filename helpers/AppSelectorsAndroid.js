@@ -66,6 +66,12 @@ exports.LoginButtonID='com.example.spotify:id/login';
 exports.LoginEmailAddressID='com.example.spotify:id/usernameLoginEdittext';
 exports.LoginPasswordID='com.example.spotify:id/passwordLoginEdittext';
 exports.LoginSubmitID='com.example.spotify:id/loginButton';
-                      
+
+exports.LoginWithFacebookButtonID="com.example.spotify:id/login_button";
+exports.LoginWithFacebookContiueButtonXpath='//android.widget.Button[@content-desc="Continue"]';
+exports.LoginWithFacebookCancelButtonXpath='//android.widget.Button[@content-desc="Cancel"]';
+exports.LoginWithFacebookEmailID='';
+exports.LoginWithFacebookPasswordID='';
+exports.SpotifyLogoHomeScreen="com.example.spotify:id/spotifyLogo";
 
 
