@@ -34,7 +34,7 @@ describe("Test Edit Profile", function () {
       .click()
       .sendKeys(TestPerson.AccountPassword)
       .sleep(300)
-      .elementById(Selectors.SpotifyLogoID)
+      .elementById('com.example.spotify:id/spotifyImageView')
       .click()
       .sleep(300)
       .elementById(Selectors.LoginSubmitID)

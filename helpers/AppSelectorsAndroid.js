@@ -1,30 +1,3 @@
-//Login 
-exports.LoginButtonID="com.example.spotify:id/login"
-exports.LoginEmailAddressID="com.example.spotify:id/usernameLoginEdittext"
-exports.LoginPasswordID="com.example.spotify:id/passwordLoginEdittext"
-exports.LoginSubmitID="com.example.spotify:id/loginButton"
-exports.SpotifyLogoID="com.example.spotify:id/spotifyImageView"
-
-
-
-//Forgot Password
-exports.ForgotPasswordButtonID="com.example.spotify:id/forgotPasswordLoginPage"
-exports.ForgotPasswordSubmitID="com.example.spotify:id/sendEmailButton"
-exports.ForgotPasswordEmailID="com.example.spotify:id/emailEditText"
-
-
-//HomePage
-exports.LibraryIconID="com.example.spotify:id/imageView4"
-
-//Create playlist
-exports.CreatePlaylistID="com.example.spotify:id/createPlaylistButtonLayout"
-exports.CreatePlaylistTextFieldID="com.example.spotify:id/playlistNameEditText"
-exports.CreatePlaylistSetID="com.example.spotify:id/setButton"
-exports.CreatePlaylistCancelID="com.example.spotify:id/cancelButton"
-exports.CreatedPlaylistNameID="com.example.spotify:id/aNametxt"
-
-
-
 
 ///////SignUpSelectors//////
 //////All by resource id////
@@ -46,7 +19,28 @@ exports.SignupDateOfBirthCancelButton="android:id/button2"; //cancel
 exports.SignupYear="android:id/date_picker_header_year";
 exports.SignupYearsIDInSwipeList="android:id/text1";
 exports.SignupDoneButton="com.example.spotify:id/doneButton";
+exports.AfterSignupDoneButtonTitleText="com.example.spotify:id/titleOfFragment";
+//By Xpath
+exports.SignupYear2007BYXPATH="/hierarchy/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.DatePicker/android.widget.LinearLayout/android.widget.ViewAnimator/android.widget.ListView/android.widget.TextView[1]";
+exports.SignupYear2022BYXPATH="/hierarchy/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.DatePicker/android.widget.LinearLayout/android.widget.ViewAnimator/android.widget.ListView/android.widget.TextView[4]";
+///////////SignUpErrorMsgs Selectors ByText/////////////
+exports.EmailErrormsgByText="";
+///////////////////////////////////////
+///SearchPage Selectors all by Id/////
+exports.SearchButton="com.example.spotify:id/imageView3";
+exports.TOPSearchiCON="com.example.spotify:id/action_search";
+exports.SearchText="com.example.spotify:id/searchText";
+exports.SearchBar="com.example.spotify:id/search_src_text";
+///SearchPage Selectors all by Xpath/////
+exports.SearchRockResult="/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout[2]/android.view.ViewGroup/android.widget.GridView/android.view.ViewGroup[1]/android.widget.TextView";
+exports.SearchHipHopResult="/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout[2]/android.view.ViewGroup/android.widget.GridView/android.view.ViewGroup[2]/android.widget.TextView";
+exports.SearchPOPResult="/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout[2]/android.view.ViewGroup/android.widget.GridView/android.view.ViewGroup[3]/android.widget.TextView";
+exports.SearchCountryResult="/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout[2]/android.view.ViewGroup/android.widget.GridView/android.view.ViewGroup[4]/android.widget.TextView";
+exports.SearchArabicResult="/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout[2]/android.view.ViewGroup/android.widget.GridView/android.view.ViewGroup[5]/android.widget.TextView";
+exports.SearchRAndBResult="/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout[2]/android.view.ViewGroup/android.widget.GridView/android.view.ViewGroup[6]/android.widget.TextView";
+exports.FirstSearchResultText="/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout[2]/android.view.ViewGroup/androidx.recyclerview.widget.RecyclerView/android.view.ViewGroup[1]/android.widget.TextView[1]";
 
+//////////////////////////////////
 ///////EditProfileSelectors//////
 exports.SettingButtonID="com.example.spotify:id/settingsImageview";
 
@@ -79,12 +73,5 @@ exports.LoginWithFacebookCancelButtonXpath='//android.widget.Button[@content-des
 exports.LoginWithFacebookEmailID='';
 exports.LoginWithFacebookPasswordID='';
 exports.SpotifyLogoHomeScreen="com.example.spotify:id/spotifyLogo";
-exports.AfterSignupDoneButtonTitleText="com.example.spotify:id/titleOfFragment";
-/////by Text since they have same id
-exports.SignUpFemaleGenderID="F";//both have same id
-exports.SignUpMaleGenderID="M";//both have same id
-exports.SignupDateOfBirthDayButton="1";
-///////////SignUpErrorMsgs Selectors ByText/////////////
-exports.EmailErrormsgByText="";
 
 
