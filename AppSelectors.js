@@ -145,6 +145,8 @@ exports.ExitCreateNewPlaylistXpath = "//div[@id='popup']/div/button/i";
 exports.CreateNewPlaylistXpath = "//div[@id='popup']/div[3]/div/div[2]/a";
 exports.InputNewPlaylistNameID = "new-playlist-name";
 exports.NewPlaylistPopUpID ="blur";
+exports.DropdownListID="Dropdown"
+exports.DeletePlaylistXpath="//a[contains(text(),'Delete')]"
 //exports.NewPlaylistPopUpXpath = "//a[contains(text(),'Create Playlist')]"
 //exports.NewPlaylistPopUpNotActiveXpath = "//a[contains(text(),'Create Playlist')]"
 
