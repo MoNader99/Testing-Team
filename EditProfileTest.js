@@ -34,13 +34,13 @@ describe("Test Edit Profile", function () {
       .click()
       .sendKeys(TestPerson.AccountPassword)
       .sleep(300)
-      .elementById('com.example.spotify:id/spotifyImageView')
+      .elementById(Selectors.SpotifyLogoID)
       .click()
       .sleep(300)
       .elementById(Selectors.LoginSubmitID)
       .click()
       .sleep(300)
-      .elementByXPath('/hierarchy/android.widget.Toast')
+      .elementByXPath(Selectors.ToastMessageXpath)
       .text().should.become('YAY')
   });
 
@@ -89,7 +89,7 @@ describe("Test Edit Profile", function () {
       .elementById(Selectors.EditProfileSaveButtonID)
       .click()
       .sleep(1000)
-      .elementByXPath('/hierarchy/android.widget.Toast')
+      .elementByXPath(Selectors.ToastMessageXpath)
       .text().should.become("info saved")
   });
 
@@ -114,7 +114,7 @@ describe("Test Edit Profile", function () {
       .elementById(Selectors.EditProfileSaveButtonID)
       .click()
       .sleep(1000)
-      .elementByXPath('/hierarchy/android.widget.Toast')
+      .elementByXPath(Selectors.ToastMessageXpath)
       .text().should.become("Enter your username")
   });
 
@@ -128,7 +128,7 @@ describe("Test Edit Profile", function () {
       .elementById(Selectors.EditProfileSaveButtonID)
       .click()
       .sleep(1000)
-      .elementByXPath('/hierarchy/android.widget.Toast')
+      .elementByXPath(Selectors.ToastMessageXpath)
       .text().should.become("Username is used")
   });
 
@@ -142,7 +142,7 @@ describe("Test Edit Profile", function () {
       .elementById(Selectors.EditProfileSaveButtonID)
       .click()
       .sleep(1000)
-      .elementByXPath('/hierarchy/android.widget.Toast')
+      .elementByXPath(Selectors.ToastMessageXpath)
       .text().should.become("info saved")
   });
 
@@ -169,7 +169,7 @@ describe("Test Edit Profile", function () {
       .elementById(Selectors.EditProfileSaveButtonID)
       .click()
       .sleep(1000)
-      .elementByXPath('/hierarchy/android.widget.Toast')
+      .elementByXPath(Selectors.ToastMessageXpath)
       .text().should.become("info saved")
   });
 
@@ -196,7 +196,7 @@ describe("Test Edit Profile", function () {
       .elementById(Selectors.EditProfileSaveButtonID)
       .click()
       .sleep(1000)
-      .elementByXPath('/hierarchy/android.widget.Toast')
+      .elementByXPath(Selectors.ToastMessageXpath)
       .text().should.become("Enter your old password correctly")
   });
 
@@ -214,7 +214,7 @@ describe("Test Edit Profile", function () {
       .elementById(Selectors.EditProfileSaveButtonID)
       .click()
       .sleep(1000)
-      .elementByXPath('/hierarchy/android.widget.Toast')
+      .elementByXPath(Selectors.ToastMessageXpath)
       .text().should.become("Password is too short")
 
   });
@@ -246,7 +246,7 @@ describe("Test Edit Profile", function () {
       .elementById(Selectors.EditProfileSaveButtonID)
       .click()
       .sleep(1000)
-      .elementByXPath('/hierarchy/android.widget.Toast')
+      .elementByXPath(Selectors.ToastMessageXpath)
       .text().should.become("new password is saved")
   });
 
@@ -277,7 +277,7 @@ describe("Test Edit Profile", function () {
       .elementById(Selectors.EditProfileSaveButtonID)
       .click()
       .sleep(1000)
-      .elementByXPath('/hierarchy/android.widget.Toast')
+      .elementByXPath(Selectors.ToastMessageXpath)
       .text().should.become("new password is saved")
   });
 
