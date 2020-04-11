@@ -53,7 +53,7 @@ describe("SignUp Test", function () {
   
    ///////Displayname test cases testing
     /////test 1: very long max 30 length
-  /*it("should test the username length", async  function () {
+  it("should test the username length", async  function () {
       return driver
       .sleep(5000)
         .elementById(appSelectors.SignUpUserNameID)
@@ -210,7 +210,7 @@ describe("SignUp Test", function () {
       .sleep(3000)
       .elementById(appSelectors.SignUpUserNameTextID) ///to check that we are on the same page
       .text().should.become('Username'); 
-  });*/
+  });
     ///////////////////////////////
     //successful case for username and password to get to the next page
   it("should put a successful case for username and password to get to the next page", async function () {
@@ -223,14 +223,14 @@ describe("SignUp Test", function () {
         .sendKeys("akjdhbh")
         .elementById(appSelectors.SignUpNextButtonOfThePassAndUsernamePage) 
         .click()
-        .sleep(3000)
+        .sleep(5000)
         .elementById(appSelectors.SignUpEmailTextID) ///to check that we are on the same page
         .text().should.become('Email'); 
   });
     //////////////////////////////
    //////////email test cases
     ///////test1:invalid mail without @ or .com
-  /*it("should test entering invalid email without @ or .com ", async function () {
+  it("should test entering invalid email without @ or .com ", async function () {
     return driver
 	  .sleep(3000)
       .elementById(appSelectors.SignUpEmailID)
@@ -370,7 +370,7 @@ describe("SignUp Test", function () {
         .sleep(3000)
         .elementById(appSelectors.SignUpEmailTextID) ///to check that we are on the same page
         .text().should.become('Email'); 
-  });*/
+  });
 
    ///////entering a successful case to reach the next page
   it("should enter a successful case for email and gender to reach the next page ", async function () {
@@ -380,7 +380,7 @@ describe("SignUp Test", function () {
      .sendKeys("aya.sameh.99@gmail.com")
      .elementById(appSelectors.SignUpNextButtonOfTheEmailAndGenderPage)
      .click()
-     .sleep(3000)
+     .sleep(5000)
      .elementById(appSelectors.SignupDateOfBirthTextId)
      .text().should.become('Date of birth');
   });

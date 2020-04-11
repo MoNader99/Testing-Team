@@ -5,7 +5,7 @@ var wd = require("wd"),
     _ = require('underscore'),
     actions = require("./helpers/actions"),
     serverConfigs = require('./helpers/appium-servers');
-describe("SignUp Test", function () {
+describe("SearchPage Test", function () {
     this.timeout(300000);
   var driver;
   var allPassed = true;
