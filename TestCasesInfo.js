@@ -5,3 +5,6 @@ exports.EditProfileCurrentGender = "F";
 exports.EditProfileCurrenDateOfbirth = "1999-03-03";
 exports.EditProfileTestEmailAddress = "maram311999@hotmail.com";
 exports.EditProfileTestEmailPassword = "MaramHosni31";
+exports.LoginTestEmailAddress = "mohammeddsaadd@yahoo.com";
+exports.LoginTestPassword = "123456";
+
