@@ -1,7 +1,7 @@
 "use strict";
 const { Builder, By, Key, until } = require('selenium-webdriver');
 const { expect } = require('chai');   
-const driver = new Builder().forBrowser('firefox').build();
+const driver = new Builder().forBrowser(require("../Driver").Driver).build();
 var Selectors=require("../AppSelectorsRealSpot");
 var TestPerson=require("../TestCasesInfo");
 
