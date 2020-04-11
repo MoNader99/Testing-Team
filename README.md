@@ -4,6 +4,7 @@ https://github.com/MohammedNader99/Testing-Team.git
 
 Bug Report - ( google docs link )
 https://docs.google.com/spreadsheets/d/1-pbsExw0CJZHoDsEoXC873Dl5veI_xefPxyEbVAq49o/edit?usp=sharing
+https://docs.google.com/spreadsheets/d/1-pbsExw0CJZHoDsEoXC873Dl5veI_xefPxyEbVAq49o/edit#gid=113813400
 
 ## Dependencies
 For all test types:
