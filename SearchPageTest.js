@@ -38,40 +38,36 @@ describe("SearchPage Test", function () {
           .sleep(3000)
           .elementById('com.example.spotify:id/login')
           .click()
-          .sleep(5000)
-          //.elementById('com.example.spotify:id/login')
-          //.click()
-          .sleep(5000)
+          .sleep(10000)
           .elementById('com.example.spotify:id/usernameLoginEdittext')
           .sendKeys("ayaelsackaan.1999@gmail.com")
-        
+          .sleep(3000)
           .elementById('com.example.spotify:id/passwordLoginEdittext')
           .sendKeys("222")
           .sleep(3000)
-        
-    
+          .elementById('com.example.spotify:id/loginButton')
+          .click()
+          .sleep(3000)
           .elementById('com.example.spotify:id/loginButton')
           .click()
           .sleep(5000)
     
-          .elementByXPath('/hierarchy/android.widget.Toast')
-          .text().should.become('YAY')
-    
+          //.elementByXPath('/hierarchy/android.widget.Toast')
+          //.text().should.become('YAY')
     });
     it("should press on search button", async  function () {
         return driver
           .sleep(10000)
             .elementById(appSelectors.SearchButton).click()
-            .sleep(3000)  
-            .elementById(appSelectors.SearchRockResult)
-            .text().should.become('Rock');
+            .sleep(10000)  
+            .elementById(appSelectors.SearchText)
+            .text().should.become('Search');
     });
     it("should press on search icon to start searching", async  function () {
         return driver
           .sleep(10000)
-            .elementById(appSelectors.SearchButton).click()
-            .sleep(3000)  
             .elementById(appSelectors.TOPSearchiCON).click()
+            .sleep(3000)
             .elementById(appSelectors.SearchText)
             .text().should.become('Search');
     });
@@ -80,7 +76,7 @@ describe("SearchPage Test", function () {
         return driver
           .sleep(10000)
             .elementById(appSelectors.SearchBar).sendKeys("$()*+")
-            .sleep(3000)  
+            .sleep(10000)  
             .elementById(appSelectors.FirstSearchResultText)
             .text().should.become('No Results Found');
     });
@@ -88,7 +84,7 @@ describe("SearchPage Test", function () {
         return driver
           .sleep(10000)
             .elementById(appSelectors.SearchBar).sendKeys("gfgggggggggggggggggggggggggggggggggggggggsssssssssssssssssssssssshhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjsxxxxxxxxxxx")
-            .sleep(3000)  
+            .sleep(10000)  
             .elementById(appSelectors.FirstSearchResultText)
             .text().should.become('No Results Found');
     });
@@ -97,7 +93,7 @@ describe("SearchPage Test", function () {
         return driver
           .sleep(10000)
             .elementById(appSelectors.SearchBar).sendKeys("Cas")
-            .sleep(3000)  
+            .sleep(10000)  
             .elementById(appSelectors.FirstSearchResultText)
             .text().should.become('Castle On The Hill');
     });
