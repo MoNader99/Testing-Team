@@ -28,7 +28,18 @@ ___Note___ :open using Visual Studio Code
 steps to install dependencies:
 
 ```sh
-npm install
+For all test types:
+* npm install Mocha
+* npm install Chai
+For web:
+* npm install selenium-webdriver
+* npm install geckodriver
+* npm install chromedriver
+For android:
+* npm install appium-uiautomator2-driver
+* npm install wd
+* npm install underscore
+* npm install appium
 ```
 
 ## Example code
