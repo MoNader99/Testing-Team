@@ -2,7 +2,7 @@
 
 const {Builder, By, Key, until} = require("selenium-webdriver");
 const {expect} = require('chai');
-const driver = new Builder().forBrowser("chrome").build();
+const driver = new Builder().forBrowser(require("../Driver").Driver).build();
 var Selectors=require("../AppSelectors");
 var Msgs=require("../AppErrorMsgs");
 
@@ -422,9 +422,9 @@ describe('SignUpTest', function(){
         ////Sucessfull Test case
     it('should test a Successful case',async function() {
             await driver.get("http://52.14.190.202:3000/signup");///getting back to signup page to test the successful case
-            await driver.findElement(By.xpath(Selectors.SignUpEmail)).sendKeys("aa.sahfeh.99@gmail.com"); 
-            await driver.findElement(By.xpath(Selectors.SignUpPassword)).sendKeys("aya99sameh999");
-            await driver.findElement(By.xpath(Selectors.SignUpDispName)).sendKeys("Ayajeh99");
+            await driver.findElement(By.xpath(Selectors.SignUpEmail)).sendKeys("afga.safhfeh.99@gmail.com"); 
+            await driver.findElement(By.xpath(Selectors.SignUpPassword)).sendKeys("aya99samdsdeh999");
+            await driver.findElement(By.xpath(Selectors.SignUpDispName)).sendKeys("Ayajegfh99");
             await driver.findElement(By.xpath(Selectors.SignUpDayOfBirth)).sendKeys("9");
             await driver.findElement(By.xpath(Selectors.SignUpMonthOfBirth)).click();
             await driver.findElement(By.xpath(Selectors.SignUpMonthOfBirthNovember)).click();

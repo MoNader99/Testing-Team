@@ -2,7 +2,7 @@
 
 const {Builder, By, Key, until} = require("selenium-webdriver");
 const {expect} = require('chai');
-const driver = new Builder().forBrowser("chrome").build();
+const driver = new Builder().forBrowser(require("../Driver").Driver).build();
 var Selectors=require("../AppSelectors");
 //var Msgs=require("../AppErrorMsgs");
 describe('SearchPageTest', function(){
@@ -59,7 +59,7 @@ describe('SearchPageTest', function(){
     // some results of the letter searched for doesn't contain the letter
     it('should test if the results contains the char that i searched for',async function() {
         await driver.sleep(2000);
-        await driver.findElement(By.xpath(Selectors.SearchBar)).sendKeys('\b');///clear() is not working here !!!!
+        await driver.findElement(By.xpath(Selectors.SearchBar)).clear()///instead of .clear() use .sendKeys('\b') if u are using chrome driver
         await driver.sleep(2000);
         await driver.findElement(By.xpath(Selectors.SearchBar)).sendKeys("c");
         await driver.sleep(3000);
@@ -73,7 +73,7 @@ describe('SearchPageTest', function(){
     //$ # ^ &  el space shows same results not including the char searched on //+  and the space shows results
     it('should test if it searches for special chars and if the results contain this special char',async function() {
         await driver.sleep(3000);
-        await driver.findElement(By.xpath(Selectors.SearchBar)).sendKeys('\b');///clear() is not working here !!!!
+        await driver.findElement(By.xpath(Selectors.SearchBar)).clear()///instead of .clear() use .sendKeys('\b') if u are using chrome driver
         await driver.sleep(2000);
         await driver.findElement(By.xpath(Selectors.SearchBar)).sendKeys("#");
         await driver.sleep(3000);
@@ -87,7 +87,7 @@ describe('SearchPageTest', function(){
     
     ///// some special chars search forever such as (  ) * takes forever time
     it('should test that for any input it does not search forever',async function() {
-        await driver.findElement(By.xpath(Selectors.SearchBar)).sendKeys('\b');
+        await driver.findElement(By.xpath(Selectors.SearchBar)).clear();///instead of .clear() use .sendKeys('\b') if u are using chrome driver
         await driver.findElement(By.xpath(Selectors.SearchBar)).sendKeys("(");
         await driver.sleep(5000);
         Checkstring=await driver.findElement(By.xpath(Selectors.TopResultsText)).getText();//checking that it shows results
@@ -96,7 +96,7 @@ describe('SearchPageTest', function(){
     //searching on more than one letter
     it('should test searching on more than one letter',async function() {
         await driver.sleep(3000);
-        await driver.findElement(By.xpath(Selectors.SearchBar)).sendKeys('\b');///clear() is not working here !!!!
+        await driver.findElement(By.xpath(Selectors.SearchBar)).clear();///instead of .clear() use .sendKeys('\b') if u are using chrome driver
         await driver.sleep(2000);
         await driver.findElement(By.xpath(Selectors.SearchBar)).sendKeys("Can");
         await driver.sleep(3000);
@@ -109,7 +109,7 @@ describe('SearchPageTest', function(){
     })
    //// any infinity input shows results
    it('should test that for any infinity input it shows No results found',async function() {
-        await driver.findElement(By.xpath(Selectors.SearchBar)).sendKeys('\b');
+        await driver.findElement(By.xpath(Selectors.SearchBar)).clear();///instead of .clear() use .sendKeys('\b') if u are using chrome driver
         await driver.findElement(By.xpath(Selectors.SearchBar)).sendKeys("&netvkghvkdfuvhjdfhbvkdjbashbkhsjdcbkhsdbchsdcbhdcbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbjjjjjjjjjjjjjjjjjjjjjjjjjjjjjsssssssssssssssssssssskkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzoooooooooooooooooooooooooooooooooooooooooooooooookaaaaaaaaaaaaaaaaaaaa");
         await driver.sleep(5000);
         Checkstring=await driver.findElement(By.xpath(Selectors.NoResultFoundText)).getText();//checking that it shows results

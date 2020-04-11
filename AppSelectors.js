@@ -105,6 +105,7 @@ exports.EditProfilePasswordMsgErrorXpath = '//*[@id="profile"]/div[1]';
 exports.EditProfilePasswordXpath ='//*[@id="profile_confirmPassword"]';
 
 exports.EditProfileSuccessMessageXpath ='/html/body/div[2]/div[2]/div[2]/div/div/div[2]/div/div[1]/div[1]';
+exports.ProfileDropDownlistXpath='//*[@id="navbarDropdown"]';
 exports.ProfileDropDownlistXpath='//*[@id="profile"]';
 exports.ProfileDropDownlistLogOutXpath='//*[@id="profile"]/li/div/a[2]';
 
@@ -163,3 +164,29 @@ exports.IncorrentUsernameOrPassworXpath = "//p[2]";
 //Log out Selectors
 exports.ProfileXpath = "//a[contains(text(),'Profile')]";
 exports.LogoutFromProfileXpath = "//a[contains(text(),'Sign out')]";
+
+//ForgetPassword Selectors
+exports.ForgetPasswordButtonXpath='//*[@id="root"]/div/div/div[2]/a[2]';
+exports.ForgetPasswordPageHeader='//*[@id="root"]/div/div/div[2]/h1/strong';
+exports.ForgetPasswordPageEmailXpath='//*[@id="my-text"]';
+exports.ForgetPasswordPageSendButtonXpath='//*[@id="anchor"]';
+exports.ForgetPasswordPageEmailErrMsgXpath='//*[@id="empty-input"]';
+exports.ForgetPasswordPageVerificationMsgXpath='//*[@id="paragraph"]';
+exports.ForgetPasswordPageHelpButtonXpath='/html/body/div/div/div/div[3]/nav/div/div[1]/ul/div[1]/a/span';
+exports.ForgetPasswordPageLogInButtonXpath='/html/body/div/div/div/div[3]/nav/div/div[1]/ul/div[2]';
+exports.ForgetPasswordPageSignUpButtonXpath='/html/body/div/div/div/div[3]/nav/div/div[1]/ul/div[3]/a/span';
+exports.ForgetPasswordPageSpotifyLogo='//*[@id="top-nav"]/div';
+
+exports.SignUpHeaderXpath='//*[@id="root"]/div/div/div[2]/div/h2[2]';
+exports.SigninHeaderXpath='//*[@id="root"]/div/div/div[2]/p[1]';
+
+exports.SpotifyLogoFooterHomeScreen='//*[@id="root"]/div/div/div[2]/footer/div[1]/div/div[1]/a';
+exports.HelpFooterHomeScreen='//*[@id="root"]/div/div/div[2]/footer/div[1]/div/div[2]/ul/li[1]/a';
+exports.WebPlayerFooterHomeScreen='//*[@id="root"]/div/div/div[2]/footer/div[1]/div/div[2]/ul/li[2]/a';
+exports.FacebookFooterHomeScreen='//*[@id="root"]/div/div/div[2]/footer/div[1]/div/div[3]/a/i';
+exports.GetSpotifyFreeButton='//*[@id="button-sign"]';
+
+exports.HomeScreenDropDownlistXpath='//*[@id="navbarDropdown"]';
+exports.HomeScreenDownlistAccountXpath='//*[@id="profile"]/li/div/a[1]';
+exports.HomeScreenDropDownlistLogOutXpath='//*[@id="profile"]/li/div/a[2]';
+
