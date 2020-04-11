@@ -149,8 +149,13 @@ exports.DropdownListID="Dropdown";
 exports.DeletePlaylistXpath="//a[contains(text(),'Delete')]";
 exports.NewPlaylistPopUpXpath = "//*[@id='popup']/div[2]/form/div/label";
 //exports.NewPlaylistPopUpNotActiveXpath = "//a[contains(text(),'Create Playlist')]"
-
-
+exports.FirstPlayListInTheList = "//*[@id='my-playlist']/li[1]";
+exports.PlayListDropDown ="//*[@id='Dropdown']";
+exports.DeleteInPlalistDropDown ="//*[@id='blur-add-to-playlist']/div/div[2]/div/div/div[2]/div/div[1]/ul/li[4]/div/div/a[2]";
+exports.DeletePlalist ="//*[@id='delete']/div/div/div/div/div[2]/a";
+exports.CancelDeletePlalist ="//*[@id='delete']/div/div/div/div/div[1]/button";
+exports.CancelDeletePlalistWithX ="//*[@id='delete']/div/div/button/i"
+exports.DeletePopUpText ="//*[@id='delete']/div/div/h2";
 //Log in Selectors
 exports.SignInbuttonLinkText = "Log in";
 exports.EmailID = "email-input";

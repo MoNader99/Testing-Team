@@ -106,12 +106,46 @@ describe('Login on Spotify website to use webplayer', function() {
 
     
 
-    /*it('Try create new playlist then delete it', async function() {
-        await driver.findElement(By.id(Selectors.InputNewPlaylistNameID)).sendKeys('Rock');
+    it('Try to delete Existing Playlist then Canceling with cancel', async function() {
+        await driver.findElement(By.xpath(Selectors.ExitCreateNewPlaylistXpath)).click(); 
         await driver.sleep(3000);
-
-        await driver.findElement(By.xpath(Selectors.CreateNewPlaylistXpath)).click(); 
-        await driver.sleep(3000); 
-    });*/
+        await driver.findElement(By.xpath(Selectors.FirstPlayListInTheList)).click(); 
+        await driver.sleep(5000);
+        await driver.findElement(By.xpath(Selectors.PlayListDropDown)).click();
+        await driver.findElement(By.xpath(Selectors.DeleteInPlalistDropDown)).click();
+        var text;
+        text=await driver.findElement(By.xpath(Selectors.DeletePopUpText)).getText();
+        expect(text).to.equal('Do you really want to delete this playlist ?')
+        await driver.findElement(By.xpath(Selectors.CancelDeletePlalist)).click();
+        text=await driver.findElement(By.xpath(Selectors.DeletePopUpText)).getText();
+        expect(text).to.equal('')
+    });
+    it('Try to delete Existing Playlist then Canceling with x', async function() {
+        await driver.findElement(By.xpath(Selectors.ExitCreateNewPlaylistXpath)).click(); 
+        await driver.sleep(3000);
+        await driver.findElement(By.xpath(Selectors.FirstPlayListInTheList)).click(); 
+        await driver.sleep(5000);
+        await driver.findElement(By.xpath(Selectors.PlayListDropDown)).click();
+        await driver.findElement(By.xpath(Selectors.DeleteInPlalistDropDown)).click();
+        var text;
+        text=await driver.findElement(By.xpath(Selectors.DeletePopUpText)).getText();
+        expect(text).to.equal('Do you really want to delete this playlist ?')
+        await driver.findElement(By.xpath(Selectors.CancelDeletePlalistWithX)).click();
+        text=await driver.findElement(By.xpath(Selectors.DeletePopUpText)).getText();
+        expect(text).to.equal('')
+        
+    });
+    it('Try to delete Existing Playlist ', async function() {
+        await driver.findElement(By.xpath(Selectors.ExitCreateNewPlaylistXpath)).click(); 
+        await driver.sleep(3000);
+        await driver.findElement(By.xpath(Selectors.FirstPlayListInTheList)).click(); 
+        await driver.sleep(5000);
+        await driver.findElement(By.xpath(Selectors.PlayListDropDown)).click();
+        await driver.findElement(By.xpath(Selectors.DeleteInPlalistDropDown)).click();
+        await driver.findElement(By.xpath(Selectors.DeletePlalist)).click();
+        var text;
+        text=await driver.findElement(By.xpath(Selectors.DeletePopUpText)).getText();
+        expect(text).to.equal('')
+    });
 
 });
