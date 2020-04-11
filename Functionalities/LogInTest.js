@@ -16,7 +16,7 @@ describe("try log in into app", function () {
     driver = wd.promiseChainRemote(serverConfig);
     require("../helpers/logging").configure(driver);
 
-    var desired =_.clone(require("../helpers/caps").androidHA);
+    var desired =_.clone(require("../helpers/caps").android);
     desired.automationName= "UiAutomator2",
     desired.app="C:/Users/maram/Downloads/TestApp.apk"
 
