@@ -76,15 +76,19 @@ describe('Login on Spotify website to use webplayer', function() {
 
 
     it('Try create new playlist with no name', async function() {
-        await driver.findElement(By.linkText(Selectors.NewPlaylistLinkText)).click(); 
-        await driver.sleep(3000);
-
-        //Click create
-        await driver.findElement(By.xpath(Selectors.CreateNewPlaylistXpath)).click(); 
-        
-        await driver.sleep(3000);
+ 
 
 
+
+    });
+
+
+    it('Try create new playlist with new name', async function() {
+ 
+
+    });
+
+    it('Try create new playlist then delete it', async function() {
 
     });
 
