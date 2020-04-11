@@ -2,6 +2,9 @@
 git clone - ( repository link )
 https://github.com/MohammedNader99/Testing-Team.git
 
+Bug Report - ( google docs link )
+https://docs.google.com/spreadsheets/d/1-pbsExw0CJZHoDsEoXC873Dl5veI_xefPxyEbVAq49o/edit?usp=sharing
+
 ## Dependencies
 For all test types:
 * Mocha  
