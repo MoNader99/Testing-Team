@@ -62,6 +62,8 @@ exports.EditProfileUsernameID='com.example.spotify:id/usernameEditText2';
 exports.EditProfileCurrentPasswordID='com.example.spotify:id/passworEditText';
 exports.EditProfileNewPasswordID='com.example.spotify:id/newpassworEditText';
 exports.EditProfileSaveButtonID='com.example.spotify:id/SavetextView';
+exports.EditProfileLogoID='com.example.spotify:id/UsernametextView';
+
 
 exports.LoginButtonID='com.example.spotify:id/login';
 exports.LoginEmailAddressID='com.example.spotify:id/usernameLoginEdittext';

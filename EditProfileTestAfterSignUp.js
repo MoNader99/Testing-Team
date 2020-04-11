@@ -8,7 +8,7 @@ var wd = require("wd"),
 wd.addPromiseChainMethod('swipe', actions.swipe);
 
 describe("Edit Profile", function () {
-  this.timeout(300000);
+  this.timeout(30000000);
   var driver;
   var allPassed = true;
   var appSelectors = require("./helpers/appSelectorsAndroid");
@@ -129,8 +129,8 @@ describe("Edit Profile", function () {
       .elementById(appSelectors.EditProfileSaveButtonID)
       .click()
       .sleep(1000)
-      .elementByXPath('/hierarchy/android.widget.Toast')
-      .text().should.become("Enter your username")
+      .elementById(appSelectors.EditProfileLogoID)
+      .text().should.become("Edit profile ")
   });
 
   it("Should change username with existing one then press save", async function () {
@@ -143,8 +143,8 @@ describe("Edit Profile", function () {
       .elementById(appSelectors.EditProfileSaveButtonID)
       .click()
       .sleep(1000)
-      .elementByXPath('/hierarchy/android.widget.Toast')
-      .text().should.become("Username is used")
+      .elementById(appSelectors.EditProfileLogoID)
+      .text().should.become("Edit profile ")
   });
 
   it("Should change username with right one then press save", async function () {
@@ -185,8 +185,8 @@ describe("Edit Profile", function () {
       .elementById(appSelectors.EditProfileSaveButtonID)
       .click()
       .sleep(1000)
-      .elementByXPath('/hierarchy/android.widget.Toast')
-      .text().should.become("Enter your old password correctly")
+      .elementById(appSelectors.EditProfileLogoID)
+      .text().should.become("Edit profile ");
   });
 
   it("Should change password with too short new password ", async function () {
@@ -203,8 +203,8 @@ describe("Edit Profile", function () {
       .elementById(appSelectors.EditProfileSaveButtonID)
       .click()
       .sleep(1000)
-      .elementByXPath('/hierarchy/android.widget.Toast')
-      .text().should.become("Password is too short")
+      .elementById(appSelectors.EditProfileLogoID)
+      .text().should.become("Edit profile ");
 
   });
 

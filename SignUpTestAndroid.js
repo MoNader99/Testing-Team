@@ -9,7 +9,7 @@ var wd = require("wd"),
 
 
 describe("SignUp Test", function () {
-  this.timeout(300000);
+  this.timeout(30000000);
   var driver;
   var allPassed = true;
   var appSelectors=require("./helpers/AppSelectorsAndroid");
