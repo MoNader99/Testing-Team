@@ -138,13 +138,13 @@ exports.PremiumPageHeaderXpath='//*[@id="get-premium"]';
 
 
 //Webplayer Selectors
-exports.GoToWebPlayerLinkText = "Web Player";
+exports.GoToWebPlayerHeaderXpath = '//a[contains(text(),"Web player")]'
 exports.NewPlaylistLinkText = "Create Playlist";
-exports.CancelCreateNewPlaylistXpath = "//div[@id='popup']/div[3]/div/div/button"
-exports.ExitCreateNewPlaylistXpath = "//div[@id='popup']/div/button/i"
-exports.CreateNewPlaylistXpath = "//div[@id='popup']/div[3]/div/div[2]/a"
-exports.InputNewPlaylistNameID = "new-playlist-name"
-exports.NewPlaylistPopUpID ="popup"
+exports.CancelCreateNewPlaylistXpath = "//div[@id='popup']/div[3]/div/div/button";
+exports.ExitCreateNewPlaylistXpath = "//div[@id='popup']/div/button/i";
+exports.CreateNewPlaylistXpath = "//div[@id='popup']/div[3]/div/div[2]/a";
+exports.InputNewPlaylistNameID = "new-playlist-name";
+exports.NewPlaylistPopUpID ="blur";
 //exports.NewPlaylistPopUpXpath = "//a[contains(text(),'Create Playlist')]"
 //exports.NewPlaylistPopUpNotActiveXpath = "//a[contains(text(),'Create Playlist')]"
 
