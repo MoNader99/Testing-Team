@@ -97,3 +97,4 @@ exports.CreatedPlaylistNameID="com.example.spotify:id/aNametxt"
 exports.SignUpFemaleGenderID="F";//both have same id
 exports.SignUpMaleGenderID="M";//both have same id
 exports.SignupDateOfBirthDayButton="1";
+exports.LoginWithFacebookCloseButtonXpath='//android.widget.ImageButton[@content-desc="Close tab"]';

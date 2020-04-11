@@ -46,33 +46,41 @@ describe("Login with Facebook", function () {
     return driver
     .resetApp()
     .sleep(3000)
-    .elementById(appSelectors.LoginWithFacebookButtonID).click()
+    .elementById(appSelectors.LoginWithFacebookButtonID)
     .click()
-    .sleep(3000)
-});
+    .sleep(3000);
+  });
 
   it("Should press cancel button", async function () {
     return driver
-      .sleep(100000)
-      .elementByXpath(appSelectors.LoginWithFacebookCancelButtonXpath)
+      .sleep(1000)
+      .elementByXPath(appSelectors.LoginWithFacebookCancelButtonXpath)
       .click()
       .sleep(3000)
       .elementById(appSelectors.SpotifyLogoHomeScreen)
       .text().should.become("Spotify");
   });
-  it("Should press Contiue button", async function () {
+
+  it("Should press close button", async function () {
     return driver
-      .sleep(100000)
-      .elementByXpath(appSelectors.LoginWithFacebookContiueButtonXpath)
+      .sleep(1000)
+      .elementByXPath(appSelectors.LoginWithFacebookCloseButtonXpath)
       .click()
       .sleep(3000)
-      .elementByXPath('/hierarchy/android.widget.Toast')
-      .text().should.become('YAY')
+      .elementById(appSelectors.SpotifyLogoHomeScreen)
+      .text().should.become("Spotify");
   });
+
   it("Should press Contiue button", async function () {
     return driver
-      .sleep(3000)
+      .sleep(1000)
+      .elementByXPath(appSelectors.LoginWithFacebookContiueButtonXpath)
+      .click()
+      .sleep(1000)
+      .elementById(appSelectors.SettingButtonID)
+      .click()
   });
+
 
 
 });
