@@ -10,7 +10,7 @@ describe('Forget Password Test', function() {
     const driver = new Builder().forBrowser(require("../Driver").Driver).build();
     var Checkstring;
 
-    beforeEach('Open profile and go to forget password page',async function(){
+    beforeEach('Open website and go to forget password page',async function(){
         await driver.get('http://52.14.190.202:3000/')
         await driver.sleep(5000);
         await driver.findElement(By.xpath(Selectors.LoginButtonHomeScreenXpath)).click();
@@ -84,7 +84,7 @@ describe('Forget Password Test', function() {
         expect(Checkstring).to.equal('Music For Everyone.');
     });
 
-    afterEach('Log out from profile and close the broswer', async function () {
+    afterEach('', async function () {
         await driver.sleep(5000);
     });
     after(async () => driver.quit());

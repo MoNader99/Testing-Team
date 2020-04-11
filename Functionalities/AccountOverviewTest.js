@@ -6,7 +6,7 @@ var TestPerson = require("../TestCasesInfo");
 
 describe('Edit Profile Test', function () {
     this.timeout('1500000000');
-    var driver = new Builder().forBrowser('firefox').build();
+    var driver = new Builder().forBrowser(require("../Driver").build();
     var Checkstring;
 
     beforeEach('Open profile and go to edit proile page', async function () {
