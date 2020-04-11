@@ -1,24 +1,24 @@
 "use strict";
 
-require("./helpers/setup");
+require("../helpers/setup");
 
 var wd = require("wd"),
     _ = require('underscore'),
-    serverConfigs = require('./helpers/appium-servers');
+    serverConfigs = require('../helpers/appium-servers');
 
 describe("try log in", function () {
   this.timeout(300000);
   var driver;
   var allPassed = true;
   var TestPerson = require("./TestCasesInfo");
-  var Selectors = require("./helpers/AppSelectorsAndroid");
+  var Selectors = require("../helpers/AppSelectorsAndroid");
 
   before(function () {
     var serverConfig = serverConfigs.local;
     driver = wd.promiseChainRemote(serverConfig);
-    require("./helpers/logging").configure(driver);
+    require("../helpers/logging").configure(driver);
 
-    var desired =_.clone(require("./helpers/caps").androidVirtualMM);
+    var desired =_.clone(require("../helpers/caps").android);
     desired.automationName= "UiAutomator2",
     desired.appPackage = "com.example.spotify",
     desired.appActivity = "com.example.spotify.MainActivity"

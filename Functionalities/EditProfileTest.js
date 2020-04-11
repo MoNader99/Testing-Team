@@ -1,35 +1,53 @@
 "use strict";
-require("./helpers/setup");
+require("../helpers/setup");
 const { assert } = require('chai');
 var wd = require("wd"),
   _ = require('underscore'),
-  actions = require("./helpers/actions"),
-  serverConfigs = require('./helpers/appium-servers');
-wd.addPromiseChainMethod('swipe', actions.swipe);
+  serverConfigs = require('../helpers/appium-servers');
 
-describe("Edit Profile", function () {
+describe("Test Edit Profile", function () {
   this.timeout(300000);
   var driver;
   var allPassed = true;
-  var appSelectors = require("./helpers/appSelectorsAndroid");
   var TestPerson = require("./TestCasesInfo");
-  before(async function () {
+  var Selectors = require("../helpers/AppSelectorsAndroid");
+  before("Login to the profile", async function () {
     var serverConfig = serverConfigs.local;
     driver = wd.promiseChainRemote(serverConfig);
-    require("./helpers/logging").configure(driver);
+    require("../helpers/logging").configure(driver);
 
-
-
-    var desired = _.clone(require("./helpers/caps").android);
+    var desired = _.clone(require("../helpers/caps").android);
     desired.automationName = "UiAutomator2",
       desired.appPackage = "com.example.spotify",
       desired.appActivity = "com.example.spotify.MainActivity"
 
-    return driver
+    return await driver
       .init(desired)
-      .setImplicitWaitTimeout(10000);
+      .setImplicitWaitTimeout(3000);
   });
 
+  beforeEach(function () {
+    return driver
+      .resetApp()
+      .sleep(3000)
+      .elementById(Selectors.LoginButtonID)
+      .click()
+      .elementById(Selectors.LoginEmailAddressID)
+      .click()
+      .sendKeys(TestPerson.AccountEmailAddress)
+      .elementById(Selectors.LoginPasswordID)
+      .click()
+      .sendKeys(TestPerson.AccountPassword)
+      .sleep(300)
+      .elementById(Selectors.SpotifyLogoHomeScreen)
+      .click()
+      .sleep(300)
+      .elementById(Selectors.LoginSubmitID)
+      .click()
+      .sleep(300)
+      .elementByXPath('/hierarchy/android.widget.Toast')
+      .text().should.become('YAY')
+  });
 
   after(async function () {
     return driver
@@ -42,73 +60,16 @@ describe("Edit Profile", function () {
     allPassed = allPassed && this.currentTest.state === 'passed';
   });
 
-  beforeEach( function () {
-    return driver
-    .resetApp()
-    .sleep(3000)
-    .elementById(appSelectors.SignupButton).click()
-    .click()
-    .sleep(3000)
-    .elementById(appSelectors.SignUpUserNameTextID)
-    .text().should.become('Username')
-    //.back().sleep(5000)
-    .elementById(appSelectors.SignUpUserNameID)
-    .sendKeys(TestPerson.EditProfileCurrentUsername)
-    .elementById(appSelectors.SignUpPasswordID)
-    .sendKeys(TestPerson.EditProfileCurrentEmailPassword)
-    .elementById(appSelectors.SignUpNextButtonOfThePassAndUsernamePage)
-    .click()
-    .sleep(5000)
-    .elementById(appSelectors.SignUpEmailTextID) ///to check that we are on the same page
-    .text().should.become('Email')
-    .sleep(5000)
-    .elementById(appSelectors.SignUpEmailID)
-    .sendKeys(TestPerson.EditProfileCurrentEmailAddress)
-    .elementById(appSelectors.SignUpNextButtonOfTheEmailAndGenderPage)
-    .click()
-    .sleep(5000)
-    .elementById(appSelectors.SignupDateOfBirthTextId)
-    .text().should.become('Date of birth')
-    .sleep(3000)
-    .elementById(appSelectors.SignupDateOfBirthId)
-    .click()
-    .elementById(appSelectors.SignupYear)
-    .click()
-    .elementById(appSelectors.SignupYearsIDInSwipeList)
-    .then(function (els) {
-
-        return driver.swipe({
-            startX: '70', startY: '543',
-            endX: '70', endY: '1750',
-            duration: 500
-        });
-    })
-    .elementByXPath(appSelectors.SignupYear2007BYXPATH)
-    .click()
-    .elementById(appSelectors.SignupDateOfBirthOkButton)
-    .click()
-    .elementById(appSelectors.SignupDoneButton)
-    .click()
-    .sleep(3000)
-    .elementById(appSelectors.SettingButtonID)
-    .click()
-    .sleep(3000)
-    .elementById(appSelectors.ViewProfileButtonInSettingsO1ID)
-    .click()
-    .sleep(1000)
-    .elementById(appSelectors.EditProfileButtonID)
-    .click();            
-});
-
+ 
   it("Should check if the info exist", async function () {
     return driver
       .sleep(3000)
       .elementById(appSelectors.EditProfileUsernameID)
       .text().should.become(TestPerson.EditProfileCurrentUsername)
       .elementById(appSelectors.EditProfileCurrentPasswordID)
-      .text().should.become("")
+      .text().should.become("Create your password")
       .elementById(appSelectors.EditProfileNewPasswordID)
-      .text().should.become("");
+      .text().should.become("Create your password");
   });
 
   it("Should press save without any change", async function () {
@@ -118,7 +79,7 @@ describe("Edit Profile", function () {
       .click()
       .sleep(1000)
       .elementByXPath('/hierarchy/android.widget.Toast')
-      .text().should.become("info saved")
+      .text().should.become("info saved ")
   });
 
   it("Should clear username then press save", async function () {
@@ -129,8 +90,8 @@ describe("Edit Profile", function () {
       .elementById(appSelectors.EditProfileSaveButtonID)
       .click()
       .sleep(1000)
-      .elementByXPath('/hierarchy/android.widget.Toast')
-      .text().should.become("Enter your username")
+      .elementById(appSelectors.EditProfileLogoID)
+      .text().should.become("Edit profile")
   });
 
   it("Should change username with existing one then press save", async function () {
@@ -143,8 +104,8 @@ describe("Edit Profile", function () {
       .elementById(appSelectors.EditProfileSaveButtonID)
       .click()
       .sleep(1000)
-      .elementByXPath('/hierarchy/android.widget.Toast')
-      .text().should.become("Username is used")
+      .elementById(appSelectors.EditProfileLogoID)
+      .text().should.become("Edit profile")
   });
 
   it("Should change username with right one then press save", async function () {
@@ -172,7 +133,40 @@ describe("Edit Profile", function () {
       .click()
       .sleep(1000)
       .elementByXPath('/hierarchy/android.widget.Toast')
-      .text().should.become("info saved")
+      .text().should.become("info saved ")
+  });
+
+  it("Should change password with empty current password ", async function () {
+    return driver
+      .sleep(3000)
+      .elementById(appSelectors.EditProfileCurrentPasswordID)
+      .clear()
+      .elementById(appSelectors.EditProfileNewPasswordID)
+      .clear()
+      .elementById(appSelectors.EditProfileNewPasswordID)
+      .sendKeys(TestPerson.EditProfileTestEmailPassword)
+      .elementById(appSelectors.EditProfileSaveButtonID)
+      .click()
+      .sleep(1000)
+      .elementById(appSelectors.EditProfileLogoID)
+      .text().should.become("Edit profile");
+  });
+
+  it("Should change password with empty new password ", async function () {
+    return driver
+      .sleep(3000)
+      .elementById(appSelectors.EditProfileCurrentPasswordID)
+      .clear()
+      .elementById(appSelectors.EditProfileCurrentPasswordID)
+      .sendKeys(TestPerson.EditProfileCurrentEmailPassword)
+      .elementById(appSelectors.EditProfileNewPasswordID)
+      .clear()
+      .elementById(appSelectors.EditProfileSaveButtonID)
+      .click()
+      .sleep(1000)
+      .elementById(appSelectors.EditProfileLogoID)
+      .text().should.become("Edit profile");
+
   });
 
   it("Should change password with wrong current password ", async function () {
@@ -185,8 +179,8 @@ describe("Edit Profile", function () {
       .elementById(appSelectors.EditProfileSaveButtonID)
       .click()
       .sleep(1000)
-      .elementByXPath('/hierarchy/android.widget.Toast')
-      .text().should.become("Enter your old password correctly")
+      .elementById(appSelectors.EditProfileLogoID)
+      .text().should.become("Edit profile");
   });
 
   it("Should change password with too short new password ", async function () {
@@ -195,7 +189,7 @@ describe("Edit Profile", function () {
       .elementById(appSelectors.EditProfileCurrentPasswordID)
       .clear()
       .elementById(appSelectors.EditProfileCurrentPasswordID)
-      .sendKeys(TestPerson.EditProfileCurrentPasswordID)
+      .sendKeys(TestPerson.EditProfileCurrentEmailPassword)
       .elementById(appSelectors.EditProfileNewPasswordID)
       .clear()
       .elementById(appSelectors.EditProfileNewPasswordID)
@@ -203,8 +197,8 @@ describe("Edit Profile", function () {
       .elementById(appSelectors.EditProfileSaveButtonID)
       .click()
       .sleep(1000)
-      .elementByXPath('/hierarchy/android.widget.Toast')
-      .text().should.become("Password is too short")
+      .elementById(appSelectors.EditProfileLogoID)
+      .text().should.become("Edit profile");
 
   });
 
@@ -214,7 +208,7 @@ describe("Edit Profile", function () {
       .elementById(appSelectors.EditProfileCurrentPasswordID)
       .clear()
       .elementById(appSelectors.EditProfileCurrentPasswordID)
-      .sendKeys(TestPerson.EditProfileCurrentPasswordID)
+      .sendKeys(TestPerson.EditProfileCurrentEmailPassword)
       .elementById(appSelectors.EditProfileNewPasswordID)
       .clear()
       .elementById(appSelectors.EditProfileNewPasswordID)
@@ -223,25 +217,6 @@ describe("Edit Profile", function () {
       .click()
       .sleep(1000)
       .elementByXPath('/hierarchy/android.widget.Toast')
-      .text().should.become("new password is saved")
+      .text().should.become(" new password is saved ")
   });
-
-  it("Should change password new password (back to its default)", async function () {
-    return driver
-      .sleep(3000)
-      .elementById(appSelectors.EditProfileCurrentPasswordID)
-      .clear()
-      .elementById(appSelectors.EditProfileCurrentPasswordID)
-      .sendKeys(TestPerson.EditProfileCurrentPasswordID)
-      .elementById(appSelectors.EditProfileNewPasswordID)
-      .clear()
-      .elementById(appSelectors.EditProfileNewPasswordID)
-      .sendKeys(TestPerson.EditProfileTestEmailPassword)
-      .elementById(appSelectors.EditProfileSaveButtonID)
-      .click()
-      .sleep(1000)
-      .elementByXPath('/hierarchy/android.widget.Toast')
-      .text().should.become("new password is saved")
-  });
-
 });

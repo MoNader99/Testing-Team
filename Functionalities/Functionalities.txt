@@ -1,0 +1,8 @@
+EditProfileTest.js (Not working as login does not work)
+EditProfileTestAfterSignUp.js
+LogInTest.js
+LoginWithFacebook.js
+SearchPageTest.js
+SignUpTestAndroid.js
+CreatePlaylistTest.js
+ForgotPasswordTest.js
