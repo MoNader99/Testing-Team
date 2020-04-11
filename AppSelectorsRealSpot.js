@@ -99,7 +99,9 @@ exports.ChangePasswordNewErrorXpath = '//*[@id="change_password"]/div[2]/div/div
 
 
 //New Playlist Selectors
-exports.GoToWebPlayerXpath = '//a[contains(@href, "https://www.spotify.com/eg-en/redirect/webplayerlink/")]'
+exports.GoToWebPlayerFooterXpath = '//a[contains(@href, "https://www.spotify.com/eg-en/redirect/webplayerlink/")]'
+exports.GoToWebPlayerHeaderXpath = '//a[contains(text(),"Web player")]'
+
 exports.CreateNewPlaylistCss = '.CreatePlaylistButton__svg'
 exports.CancelCreateNewPlaylistXpath = "(//button[@type='button'])[5]"
 exports.ConfirmCreateNewPlaylistXpath = "(//button[@type='button'])[6]"
