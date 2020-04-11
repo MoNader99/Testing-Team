@@ -157,7 +157,7 @@ exports.LoginWithFacebookID = "facebook-button"
 
 exports.NoEmailOrUsernameEnteredXpath = "//p[@id='missing-email']";
 exports.NoPasswordEnteredXpath = "//p[@id='missing-password']";
-//exports.IncorrentUsernameOrPasswordID = "//*[@class='content']/div[2]/div/p/span";
+exports.IncorrentUsernameOrPassworXpath = "//p[2]";
 
 
 //Log out Selectors
