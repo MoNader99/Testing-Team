@@ -15,7 +15,7 @@ describe('Login on Spotify website to use webplayer', function() {
         console.log("Open Spotify website")
         driver.get('http://52.14.190.202:3000/')
 
-        await driver.findElement(By.linkText(Selectors.SignInbuttonLinkText)).click()
+        /*await driver.findElement(By.linkText(Selectors.SignInbuttonLinkText)).click()
         
         await driver.sleep(3000);
         await driver.getCurrentUrl().then(function(URL){expect(URL).equals("http://52.14.190.202:3000/logIn")});
@@ -30,7 +30,8 @@ describe('Login on Spotify website to use webplayer', function() {
         await driver.findElement(By.xpath(Selectors.GoToWebPlayerHeaderXpath)).click();
         
         await driver.sleep(3000);
-        await driver.getCurrentUrl().then(function(URL){expect(URL).equals("http://52.14.190.202:3000/webplayer" )});
+        await driver.getCurrentUrl().then(function(URL){expect(URL).equals("http://52.14.190.202:3000/webplayer" )});*/
+        driver.get('http://52.14.190.202:3000/webplayer')
 
     });
 
@@ -47,10 +48,6 @@ describe('Login on Spotify website to use webplayer', function() {
         text = await driver.findElement(By.xpath(Selectors.NewPlaylistPopUpXpath)).getText();
         expect(text).to.equal('Playlist Name');
 
-
-
-        //await driver.findElement(By.id(Selectors.NewPlaylistPopUpID.));
-
         await driver.findElement(By.xpath(Selectors.CancelCreateNewPlaylistXpath)).click(); 
         await driver.sleep(3000);
 
@@ -64,6 +61,9 @@ describe('Login on Spotify website to use webplayer', function() {
 
         await driver.findElement(By.xpath(Selectors.ExitCreateNewPlaylistXpath)).click(); 
         await driver.sleep(3000);
+        var text;
+        text = await driver.findElement(By.xpath(Selectors.NewPlaylistPopUpXpath)).getText();
+        expect(text).to.equal('');
 
     });
 
@@ -75,36 +75,43 @@ describe('Login on Spotify website to use webplayer', function() {
 
         await driver.findElement(By.xpath(Selectors.CreateNewPlaylistXpath)).click(); 
         await driver.sleep(3000);
-
+        var text;
+        text = await driver.findElement(By.xpath(Selectors.NewPlaylistPopUpXpath)).getText();
+        expect(text).to.equal('Playlist Name')
     });
 
 
     it('Try create new playlist with no name', async function() {
         await driver.findElement(By.xpath(Selectors.CreateNewPlaylistXpath)).click(); 
         await driver.sleep(3000);
-
+        var text;
+        text = await driver.findElement(By.xpath(Selectors.NewPlaylistPopUpXpath)).getText();
+        expect(text).to.equal('Playlist Name')
 
 
     });
 
 
     it('Try create new playlist with new name', async function() {
-        await driver.findElement(By.id(Selectors.InputNewPlaylistNameID)).sendKeys('Jazz');
+        await driver.findElement(By.id(Selectors.InputNewPlaylistNameID)).sendKeys('Jazzzzzz');
         await driver.sleep(3000);
 
         await driver.findElement(By.xpath(Selectors.CreateNewPlaylistXpath)).click(); 
         await driver.sleep(3000); 
+        var text;
+        text = await driver.findElement(By.xpath(Selectors.NewPlaylistPopUpXpath)).getText();
+        expect(text).to.equal('')
 
     });
 
     
 
-    it('Try create new playlist then delete it', async function() {
+    /*it('Try create new playlist then delete it', async function() {
         await driver.findElement(By.id(Selectors.InputNewPlaylistNameID)).sendKeys('Rock');
         await driver.sleep(3000);
 
         await driver.findElement(By.xpath(Selectors.CreateNewPlaylistXpath)).click(); 
         await driver.sleep(3000); 
-    });
+    });*/
 
 });
