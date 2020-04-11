@@ -1,6 +1,6 @@
 const {Builder, By, Key, until} = require("selenium-webdriver");
 const {expect} = require('chai');
-const driver = new Builder().forBrowser("chrome").build();
+const driver = new Builder().forBrowser(require("../Driver").Driver).build();
 var Selectors=require("../AppSelectorsRealSpot");
 describe('HelpPageTest', function(){
       this.timeout('1500000000');
