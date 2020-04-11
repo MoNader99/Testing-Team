@@ -62,10 +62,31 @@ exports.EditProfileCurrentPasswordID='com.example.spotify:id/passworEditText';
 exports.EditProfileNewPasswordID='com.example.spotify:id/newpassworEditText';
 exports.EditProfileSaveButtonID='com.example.spotify:id/SavetextView';
 
-exports.LoginButtonID='com.example.spotify:id/login';
-exports.LoginEmailAddressID='com.example.spotify:id/usernameLoginEdittext';
-exports.LoginPasswordID='com.example.spotify:id/passwordLoginEdittext';
-exports.LoginSubmitID='com.example.spotify:id/loginButton';
-                      
+                  
+
+//Login 
+exports.LoginButtonID="com.example.spotify:id/login"
+exports.LoginEmailAddressID="com.example.spotify:id/usernameLoginEdittext"
+exports.LoginPasswordID="com.example.spotify:id/passwordLoginEdittext"
+exports.LoginSubmitID="com.example.spotify:id/loginButton"
+exports.SpotifyLogoID="com.example.spotify:id/spotifyImageView"
+
+
+
+//Forgot Password
+exports.ForgotPasswordButtonID="com.example.spotify:id/forgotPasswordLoginPage"
+exports.ForgotPasswordSubmitID="com.example.spotify:id/sendEmailButton"
+exports.ForgotPasswordEmailID="com.example.spotify:id/emailEditText"
+
+
+//HomePage
+exports.LibraryIconID="com.example.spotify:id/imageView4"
+
+//Create playlist
+exports.CreatePlaylistID="com.example.spotify:id/createPlaylistButtonLayout"
+exports.CreatePlaylistTextFieldID="com.example.spotify:id/playlistNameEditText"
+exports.CreatePlaylistSetID="com.example.spotify:id/setButton"
+exports.CreatePlaylistCancelID="com.example.spotify:id/cancelButton"
+exports.CreatedPlaylistNameID="com.example.spotify:id/aNametxt"
 
 
