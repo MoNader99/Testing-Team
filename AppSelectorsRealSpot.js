@@ -73,9 +73,10 @@ exports.BacktoHelpButton="//*[@id='nav-link-help']";
 //////////////////////////////////////////////
 ////////////////PremiumPageSelectors All by Xpath//////////////////
 exports.Premiumbutton="//a[@data-ga-action='premium']";
-exports.GetPremiumbutton="//*[@id='HERO-0']/article/header/div/div[4]/div/a/span";
-exports.GetPremiumbuttonAtTheEndOfThePage="//*[@id='PLANS']/article/article[1]/article/a";
-
+exports.Get3monthFreebutton="//*[@id='HERO-0']/article/header/div/div[4]/div[1]/a";
+exports.ViewPlansbutton="//*[@id='HERO-0']/article/header/div/div[4]/div[2]/a";
+exports.GetStartedIndividualbutton="//*[@id='PLANS']/article/div/div[2]/div/a";
+exports.GetStartedFamilybutton="//*[@id='PLANS']/article/div/div[5]/div/a";
 
 
 //////////////////////////////////////////////
